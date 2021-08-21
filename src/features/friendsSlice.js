@@ -24,15 +24,12 @@ export const fetchFriends = () => {
           authorization: jwt,
         },
       });
-
       if (result.status !== 200) {
         console.error(await result.text(), result.status);
         return;
       }
 
       const data = await result.json();
-
-      console.log(data);
 
       dispatch(friendsSlice.actions.setFriends(data.friends));
     } catch (e) {

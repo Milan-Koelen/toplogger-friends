@@ -16,16 +16,11 @@ const Logout = () => {
 
   useEffect(() => {
     dispatch(fetchFriends());
-  }, [dispatch, user.token]);
-
+  }, [dispatch, user.token, user.name]);
   return (
     <div className="logout">
       <h1>
-        Welcome{" "}
-        <span className="user__name">
-          {user.name}
-          {JSON.stringify(friends)}
-        </span>
+        Welcome <span className="user__name">{user.name}</span>
       </h1>
       <button className="logout__btn" onClick={e => handleLogout(e)}>
         Logout

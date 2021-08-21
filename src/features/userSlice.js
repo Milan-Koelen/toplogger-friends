@@ -10,6 +10,9 @@ export const userSlice = createSlice({
     setToken: (state, action) => {
       state.user = { ...state.user, ...action.payload };
     },
+    setName: (state, action) => {
+      state.user = { ...state.user, ...action.payload };
+    },
     logout: state => {
       state.user = {};
     },
@@ -34,8 +37,11 @@ export const login = ({ email, password }) => {
       }
 
       const data = await result.json();
+      console.log(data);
+      console.log(data.name);
 
       dispatch(userSlice.actions.setToken({ token: data.token }));
+      dispatch(userSlice.actions.setName({ name: data.name }));
     } catch (e) {
       console.error(e);
     }
