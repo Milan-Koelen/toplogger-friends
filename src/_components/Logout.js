@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../features/userSlice";
-import { fetchFriends, selectFriends } from "../features/friendsSlice";
+// import { fetchFriends, selectFriends } from "../features/followingSlice";
+import { fetchFollowing } from "../features/followingSlice";
 import "./Logout.css";
 
 const Logout = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const friends = useSelector(selectFriends);
+  // const friends = useSelector(selectFriends);
 
   const handleLogout = e => {
     e.preventDefault();
@@ -15,8 +16,8 @@ const Logout = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchFriends());
-  }, [dispatch, user.token, user.name]);
+    dispatch(fetchFollowing());
+  }, [dispatch, user.token, user.name, user.TL_Grade]);
   return (
     <div className="logout">
       <h1>

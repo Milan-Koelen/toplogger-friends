@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
-import friendsReducer from "../features/friendsSlice";
+import followingSlice from "../features/followingSlice";
 import userReducer from "../features/userSlice";
 
 export default configureStore({
   reducer: {
     user: userReducer,
-    friends: friendsReducer,
+    following: followingSlice,
   },
   middleware: getDefaultMiddleware => [thunk, ...getDefaultMiddleware()],
 });

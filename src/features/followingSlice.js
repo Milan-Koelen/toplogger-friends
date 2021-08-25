@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { URL } from "../config";
 
-export const friendsSlice = createSlice({
-  name: "friends",
+export const followingSlice = createSlice({
+  name: "followers",
   initialState: {
-    friends: [],
+    following: [],
   },
   reducers: {
-    setFriends: (state, action) => {
-      state.friends = action.payload;
+    setFollowing: (state, action) => {
+      state.following = action.payload;
     },
   },
 });
 
-export const fetchFriends = () => {
+export const fetchFollowing = () => {
   return async (dispatch, getState) => {
     try {
       const state = getState();
@@ -31,13 +31,13 @@ export const fetchFriends = () => {
 
       const data = await result.json();
 
-      dispatch(friendsSlice.actions.setFriends(data.friends));
+      dispatch(followingSlice.actions.setFollowing(data.following));
     } catch (e) {
       console.error(e);
     }
   };
 };
 
-export const selectFriends = state => state.friends.friends;
+export const selectFollowing = state => state.following.following;
 
-export default friendsSlice.reducer;
+export default followingSlice.reducer;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 
-import { login } from "../features/userSlice";
+import { login, signup } from "../features/userSlice";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
+  const handleSignin = e => {
     e.preventDefault();
 
     dispatch(
@@ -27,16 +27,32 @@ const Login = () => {
     setPassword("");
   };
 
+  const handleSignup = e => {
+    e.preventDefault();
+
+    dispatch(
+      signup({
+        // name: name,
+        email: email,
+        password: password,
+        loggedIn: true,
+      })
+    );
+
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <div className="login">
-      <form className="login__form" onSubmit={e => handleSubmit(e)}>
-        <h1>Login</h1>
-        {/* <input
+      <h1>Login</h1>
+      {/* <input
           type="name"
           placeholder="Name"
           value={name}
           onChange={e => setName(e.target.value)}
         ></input> */}
+      <div className="login__form">
         <input
           type="email"
           placeholder="Email"
@@ -49,9 +65,13 @@ const Login = () => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         ></input>
-        <button className="submit__btn">Log In</button>
-        <button className="register__btn"> Register </button>
-      </form>
+        <button className="submit__btn" onClick={handleSignin}>
+          Log In
+        </button>
+        <button className="register__btn" onClick={handleSignup}>
+          Register
+        </button>
+      </div>
     </div>
   );
 };
