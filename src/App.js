@@ -1,15 +1,23 @@
-import { useSelector } from "react-redux";
 import "./App.css";
 import Login from "./_components/Login";
-import Logout from "./_components/Logout";
-import { selectUser } from "./features/userSlice";
+import Dashboard from "./_components/Dashboard";
+import { Route, Switch } from "react-router-dom";
+import PrivateRoute from "./_components/PrivateRoute";
 
 function App() {
-  const user = useSelector(selectUser);
-
   return (
     <div className="App">
-      <div>{!!user.token ? <Logout /> : <Login />}</div>
+      {/* <div>{!!user.token ? <Logout /> : <Login />}</div> */}
+
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <PrivateRoute path="/" exact>
+          <Dashboard />
+        </PrivateRoute>
+        <PrivateRoute path="/search">zoek pagina</PrivateRoute>
+      </Switch>
     </div>
   );
 

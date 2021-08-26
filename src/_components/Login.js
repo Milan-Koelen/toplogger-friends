@@ -3,6 +3,9 @@ import "./Login.css";
 
 import { login, signup } from "../features/userSlice";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
+import { useHistory } from "react-router";
 
 const Login = () => {
   // const [name, setName] = useState("");
@@ -10,6 +13,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
+  const history = useHistory();
+
+  if (user && user.token) {
+    history.push("/");
+    return <></>;
+  }
 
   const handleSignin = e => {
     e.preventDefault();

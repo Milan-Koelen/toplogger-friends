@@ -25,3 +25,8 @@
   font-family: "Inter";
   border-radius: 3px;
 }
+
+.chart {
+  width: 80vw;
+  max-width: 700px;
+}

@@ -5,6 +5,15 @@ import { logout, selectUser } from "../features/userSlice";
 import { fetchFollowing } from "../features/followingSlice";
 import "./Dashboard.css";
 
+import { VictoryBar, VictoryChart } from "victory";
+
+const data = [
+  { quarter: 1, earnings: 13000 },
+  { quarter: 2, earnings: 16500 },
+  { quarter: 3, earnings: 14250 },
+  { quarter: 4, earnings: 19000 },
+];
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -20,6 +29,11 @@ const Dashboard = () => {
   }, [dispatch, user.token, user.name, user.TL_Grade]);
   return (
     <div className="logout">
+      <div className="chart">
+        <VictoryChart>
+          <VictoryBar data={data} x="quarter" y="earnings" />
+        </VictoryChart>
+      </div>
       <h1>
         Welcome <span className="user__name">{user.name}</span>
       </h1>
