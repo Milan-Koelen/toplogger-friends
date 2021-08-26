@@ -23,7 +23,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: milankoelen/toplogger-api:latest
+          tags: milankoelen/toplogger-friends:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
       - name: executing remote ssh commands using password
@@ -33,4 +33,4 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
-          script: docker-compose pull toplogger-api && docker-compose up -d toplogger-api
+          script: docker-compose pull toplogger-friends && docker-compose up -d toplogger-friends
