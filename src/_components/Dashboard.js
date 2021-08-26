@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../features/userSlice";
 // import { fetchFriends, selectFriends } from "../features/followingSlice";
 import { fetchFollowing } from "../features/followingSlice";
-import "./Logout.css";
+import "./Dashboard.css";
 
-const Logout = () => {
+const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   // const friends = useSelector(selectFriends);
@@ -30,4 +30,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export default Dashboard;
