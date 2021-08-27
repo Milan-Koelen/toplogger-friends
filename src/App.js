@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./_components/PrivateRoute";
 import Search from "./_components/Search";
 import Layout from "./_components/Layout";
+import User from "./_components/User";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/search">
             <Search />
+          </PrivateRoute>
+          <PrivateRoute path="/user">
+            <User />
           </PrivateRoute>
         </Switch>
       </Layout>
