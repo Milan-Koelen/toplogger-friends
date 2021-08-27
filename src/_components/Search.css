@@ -47,11 +47,35 @@
   grid-column: auto;
   font-family: "Inter";
 }
+.search_result {
+  height: 75px;
+  margin: 5px;
+  border: solid, 2px, purple;
+  border-radius: 0.75em;
+}
+
 .search_result > .name {
-  /* font-family: "Inter"; */
   text-align: left;
+  font-weight: 600;
+  margin-bottom: 25px;
+  align-items: center;
   color: purple;
+  font-size: 1.1em;
 }
 .search_result > .grade {
   text-align: right;
+  font-size: 0.8em;
+}
+.search_result > .profilepicture {
+  width: 65px;
+  grid-row: auto;
+  border-radius: 50%;
+}
+.follow_btn {
+  background-color: purple;
+  border-radius: 25%;
+  border: none;
+  height: 45px;
+  width: 45px;
+  float: right;
 }

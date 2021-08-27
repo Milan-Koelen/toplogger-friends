@@ -28,6 +28,14 @@ const SearchUser = () => {
     }
   };
 
+  const handleKeypress = e => {
+    //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      handleSearch();
+      console.log("enter pressed");
+    }
+  };
+
   return (
     <div className="search">
       <h1>Search</h1>
@@ -36,6 +44,7 @@ const SearchUser = () => {
           placeholder="Search"
           value={search}
           onChange={e => setSearch(e.target.value)}
+          onKeyPress={handleKeypress}
         ></input>
         <button className="search__btn" onClick={() => handleSearch()}>
           Search
@@ -45,12 +54,14 @@ const SearchUser = () => {
             <div className="search_result">
               <img
                 className="profilepicture"
-                source={i.ProfilePictureURL}
+                src={i.ProfilePictureURL}
                 alt={i.Name}
               ></img>
-              <span className="name">{i.Name} </span>
-              <br />
+              <a href={URL + "/user/" + i.TL_ID} className="name">
+                {i.Name}{" "}
+              </a>
               <span className="grade">Grade: {i.Grade} </span>
+              <button className="follow_btn"> + </button>
               <br />
               <br />
             </div>
