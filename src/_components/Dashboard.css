@@ -30,3 +30,19 @@
   width: 80vw;
   max-width: 700px;
 }
+.leaderboard > a {
+  color: purple;
+  padding-right: 1.5em;
+}
+.profilepicture_lb {
+  height: 65px;
+  border-radius: 50%;
+  padding-right: 1.5em;
+}
+.welcome_user {
+  padding-bottom: 2em;
+}
+.title {
+  text-align: center;
+  padding-bottom: 1em;
+}
