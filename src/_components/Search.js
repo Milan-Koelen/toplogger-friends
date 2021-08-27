@@ -57,7 +57,7 @@ const SearchUser = () => {
                 src={i.ProfilePictureURL}
                 alt={i.Name}
               ></img>
-              <a href={URL + "/user/" + i.TL_ID} className="name">
+              <a href={URL + "/user?TL_ID=" + i.TL_ID} className="name">
                 {i.Name}{" "}
               </a>
               <span className="grade">Grade: {i.Grade} </span>
