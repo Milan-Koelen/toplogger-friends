@@ -1,0 +1,12 @@
+.header {
+  width: 100vw;
+  height: 80px;
+  background-color: rgb(155, 18, 155);
+  text-align: center;
+}
+
+.header h3 {
+  color: black;
+}
+
+/* create react app styling scss sas */

@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  font-family: "Inter";
+}
+.search__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.search__form > h1 {
+  font-size: 35px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  letter-spacing: -1px;
+  font-weight: 600;
+}
+
+.search__form > input {
+  min-width: 380px;
+  padding: 20px 0;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  font-family: "Inter";
+  border-radius: 2px;
+  font-size: 15px;
+}
+.search__btn {
+  padding: 17px 30px;
+  margin-top: 10px;
+  background: black;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-family: "Inter";
+  border-radius: 3px;
+}
+.search_result_container {
+  flex-direction: column;
+  grid-column: auto;
+  font-family: "Inter";
+}
+.search_result > .name {
+  /* font-family: "Inter"; */
+  text-align: left;
+  color: purple;
+}
+.search_result > .grade {
+  text-align: right;
+}

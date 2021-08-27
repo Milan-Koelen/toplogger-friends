@@ -3,21 +3,26 @@ import Login from "./_components/Login";
 import Dashboard from "./_components/Dashboard";
 import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./_components/PrivateRoute";
+import Search from "./_components/Search";
+import Layout from "./_components/Layout";
 
 function App() {
   return (
     <div className="App">
+      <Layout>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <PrivateRoute path="/" exact>
+            <Dashboard />
+          </PrivateRoute>
+          <PrivateRoute path="/search">
+            <Search />
+          </PrivateRoute>
+        </Switch>
+      </Layout>
       {/* <div>{!!user.token ? <Logout /> : <Login />}</div> */}
-
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <PrivateRoute path="/" exact>
-          <Dashboard />
-        </PrivateRoute>
-        <PrivateRoute path="/search">zoek pagina</PrivateRoute>
-      </Switch>
     </div>
   );
 
