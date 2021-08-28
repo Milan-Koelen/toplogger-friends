@@ -4,6 +4,7 @@ import { logout, selectUser } from "../features/userSlice";
 // import { fetchFriends, selectFriends } from "../features/followingSlice";
 import { fetchFollowing } from "../features/followingSlice";
 import "./Dashboard.css";
+import { Link } from "react-router-dom";
 import no_img from "/Users/Milan/Desktop/programeren/toplogger-friends/src/img/no_img.gif";
 
 // import { VictoryBar, VictoryChart } from "victory";
@@ -75,9 +76,9 @@ const Dashboard = () => {
                   ></img>
                 </td>
                 <td>
-                  <a href={URL + "/user?TL_ID=" + i.TL_ID} className="name">
-                    {i.Name}{" "}
-                  </a>
+                  <Link to={"/user/" + i.TL_ID} className="name">
+                    {i.Name}
+                  </Link>
                 </td>
                 <td>
                   <span className="grade">{i.Grade} </span>
@@ -99,9 +100,9 @@ const Dashboard = () => {
             {data.map((i, idx) => (
               <tr>
                 <td>
-                  <a href={URL + "/user?TL_ID=" + i.TL_ID} className="name">
-                    {i.Name}{" "}
-                  </a>
+                  <Link to={"/user/" + i.TL_ID} className="name">
+                    {i.Name}
+                  </Link>
                 </td>
                 <td>
                   <span className="grade">{i.Grade} </span>
@@ -123,9 +124,9 @@ const Dashboard = () => {
             {data.map((i, idx) => (
               <tr>
                 <td>
-                  <a href={URL + "/user?TL_ID=" + i.TL_ID} className="name">
-                    {i.Name}{" "}
-                  </a>
+                  <Link to={"/user/" + i.TL_ID} className="name">
+                    {i.Name}
+                  </Link>
                 </td>
                 <td>
                   <span className="grade">{i.Grade} </span>
