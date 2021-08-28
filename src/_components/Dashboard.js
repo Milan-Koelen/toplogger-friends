@@ -2,41 +2,51 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../features/userSlice";
 // import { fetchFriends, selectFriends } from "../features/followingSlice";
-import { fetchFollowing } from "../features/followingSlice";
+import {
+  fetchFollowing,
+  followingSlice,
+  selectFollowing,
+} from "../features/followingSlice";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
 import no_img from "/Users/Milan/Desktop/programeren/toplogger-friends/src/img/no_img.gif";
 
 // import { VictoryBar, VictoryChart } from "victory";
 
-const data = [
-  {
-    Name: "Nick Remijn",
-    TL_ID: 27026,
-    Grade: 5000,
-    ProfilePictureURL:
-      "https://lh3.googleusercontent.com/a/AATXAJzvXVrgZMmzRwLWiMzMXk4mbqb2Xp1FRWdPM25N=s50-mo",
-  },
-  {
-    Name: "Willem Kluskens",
-    TL_ID: 14345,
-    Grade: 3000,
-    ProfilePictureURL:
-      "https://upload.toplogger.nu/avatars/744008245460804119811370344438458001.png",
-  },
-  {
-    Name: "Stijn van Lierop",
-    TL_ID: 130188,
-    Grade: 1200,
-    ProfilePictureURL:
-      "https://lh3.googleusercontent.com/a-/AOh14GgGmqMlVYVbW6iACP4sxWJbVKN30ln21kJI2aHx=s50",
-  },
-];
+// [
+//   {
+//     Name: "Nick Remijn",
+//     TL_ID: 27026,
+//     Grade: 5000,
+//     ProfilePictureURL:
+//       "https://lh3.googleusercontent.com/a/AATXAJzvXVrgZMmzRwLWiMzMXk4mbqb2Xp1FRWdPM25N=s50-mo",
+//   },
+//   {
+//     Name: "Willem Kluskens",
+//     TL_ID: 14345,
+//     Grade: 3000,
+//     ProfilePictureURL:
+//       "https://upload.toplogger.nu/avatars/744008245460804119811370344438458001.png",
+//   },
+//   {
+//     Name: "Stijn van Lierop",
+//     TL_ID: 130188,
+//     Grade: 1200,
+//     ProfilePictureURL:
+//       "https://lh3.googleusercontent.com/a-/AOh14GgGmqMlVYVbW6iACP4sxWJbVKN30ln21kJI2aHx=s50",
+//   },
+// ];
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  // const friends = useSelector(selectFriends);
+  const data = useSelector(selectFollowing);
+  console.log(data);
+  data.forEach(element => {
+    console.log(element);
+  });
+
+  data.map((i, idx) => console.log(i._id));
 
   const handleLogout = e => {
     e.preventDefault();
@@ -71,7 +81,7 @@ const Dashboard = () => {
                 <td>
                   <img
                     className="profilepicture_lb"
-                    src={i.ProfilePictureURL}
+                    src={i._id}
                     alt={no_img}
                   ></img>
                 </td>

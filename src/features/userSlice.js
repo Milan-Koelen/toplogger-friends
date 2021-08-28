@@ -43,6 +43,7 @@ export const login = ({ email, password }) => {
           token: data.token,
           name: data.name,
           TL_Grade: data.TL_Grade,
+          Accendhistory: data.Accendhistory,
         })
       );
     } catch (e) {
@@ -75,6 +76,7 @@ export const signup = ({ email, password }) => {
           token: data.token,
           name: data.name,
           TL_Grade: data.TL_Grade,
+          Accendhistory: data.Accendhistory,
         })
       );
     } catch (e) {

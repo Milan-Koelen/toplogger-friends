@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser } from "../features/userSlice";
+import { selectUser } from "../features/userSlice";
 // import { fetchFriends, selectFriends } from "../features/followingSlice";
 import { fetchFollowing } from "../features/followingSlice";
 import "./Dashboard.css";
 
-import { VictoryBar, VictoryChart } from "victory";
+// import { VictoryBar, VictoryChart } from "victory";
 
 const data = [
   {
@@ -34,15 +34,17 @@ const data = [
   },
 ];
 
+// action, selector, redux zetten
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   // const friends = useSelector(selectFriends);
 
-  const handleLogout = e => {
-    e.preventDefault();
-    dispatch(logout(e));
-  };
+  // const handleLogout = e => {
+  //   e.preventDefault();
+  //   dispatch(logout(e));
+  // };
 
   useEffect(() => {
     dispatch(fetchFollowing());
@@ -50,9 +52,9 @@ const Dashboard = () => {
   return (
     <div className="logout">
       <div className="chart">
-        <VictoryChart>
+        {/* <VictoryChart>
           <VictoryBar data={data} x="quarter" y="earnings" />
-        </VictoryChart>
+        </VictoryChart> */}
       </div>
       <h1 className="welcome_user">
         <span className="user__name">{user.name}</span>
@@ -89,9 +91,40 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
-      <button className="logout__btn" onClick={e => handleLogout(e)}>
-        Logout
-      </button>
+      <div>
+        <h2 className="title">All time best</h2>
+        <table className="leaderboard">
+          <tr>
+            <th>Name</th>
+            <th>Gym</th>
+            <th>grade</th>
+          </tr>
+          <tbody>
+            {data.map((i, idx) => (
+              <tr>
+                <td>
+                  <a href={URL + "/user?TL_ID=" + i.TL_ID} className="name">
+                    {i.Name}{" "}
+                  </a>
+                </td>
+                <td>
+                  <a href={URL + "/user?TL_ID=" + i.TL_ID} className="gym">
+                    {i.Gym}{" "}
+                  </a>
+                </td>
+                <td>
+                  <span className="grade">{i.Grade} </span>
+                </td>
+                <br />
+                <br />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {/* <button className="logout__btn" onClick={e => handleLogout(e)}> */}
+      {/* Logout */}
+      {/* </button> */}
     </div>
   );
 };
