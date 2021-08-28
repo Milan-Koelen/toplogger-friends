@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { URL } from "../config";
 // import { useDispatch, useSelector } from "react-redux";
 import "./Search.css";
+// import no_img from "../img/no_img.gif";
+import { Link } from "react-router-dom";
 
 const SearchUser = () => {
   const [search, setSearch] = useState("");
@@ -55,11 +57,15 @@ const SearchUser = () => {
               <img
                 className="profilepicture"
                 src={i.ProfilePictureURL}
-                alt={i.Name}
-              ></img>
-              <a href={URL + "/user?TL_ID=" + i.TL_ID} className="name">
-                {i.Name}{" "}
-              </a>
+                onError={e => {
+                  e.target.onerror = null;
+                  e.target.src = "image_path_here";
+                }}
+                alt={"no_img"}
+              />
+              <Link to={"/user/" + i.TL_ID} className="name">
+                {i.Name}
+              </Link>
               <span className="grade">Grade: {i.Grade} </span>
               <button className="follow_btn"> + </button>
               <br />

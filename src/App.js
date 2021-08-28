@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./_components/PrivateRoute";
 import Search from "./_components/Search";
 import Layout from "./_components/Layout";
-import User from "./_components/User";
+import UserPage from "./_components/UserPage";
 
 function App() {
   return (
@@ -22,15 +22,16 @@ function App() {
             <Search />
           </PrivateRoute>
           <PrivateRoute path="/user">
-            <User />
+            <UserPage />
+          </PrivateRoute>
+          <PrivateRoute path="/user/:TL_ID">
+            <UserPage />
           </PrivateRoute>
         </Switch>
       </Layout>
       {/* <div>{!!user.token ? <Logout /> : <Login />}</div> */}
     </div>
   );
-
-  //
 
   // const svgUrl =
   //   "https://cdn1.toplogger.nu/images/gyms/monk_eindhoven/floorplan.svg?5";
