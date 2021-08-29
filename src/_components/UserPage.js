@@ -16,6 +16,7 @@ export default function UserPage() {
     console.log(TL_ID);
     fetch(URL + `/user/${TL_ID}`).then(setData);
   };
+
   // .then(response => {
   //   if (response.ok) {
   //     console.log(response);
@@ -39,8 +40,8 @@ export default function UserPage() {
   return (
     <div>
       <div>
-        <h1>USER_ID: {TL_ID}</h1>
-        <p>DATA:{data}</p>
+        <h1>USER_ID: {data.TL_ID}</h1>
+        <p>DATA:</p>
         <h2 className="title">All time best</h2>
         {/* <table className="leaderboard">
           <tbody>

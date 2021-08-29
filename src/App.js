@@ -21,9 +21,9 @@ function App() {
           <PrivateRoute path="/search">
             <Search />
           </PrivateRoute>
-          <PrivateRoute path="/user">
+          {/* <PrivateRoute path="/user">
             <UserPage />
-          </PrivateRoute>
+          </PrivateRoute> */}
           <PrivateRoute path="/user/:TL_ID">
             <UserPage />
           </PrivateRoute>
