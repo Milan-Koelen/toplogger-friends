@@ -9,8 +9,7 @@ export default function UserPage() {
   const [data, setData] = useState([]);
   // const [TL_ID, setTL_ID] = useState(14345);
   const { TL_ID } = useParams();
-  console.log(TL_ID);
-  // ID = 14345;
+  console.log(data);
 
   const FetchUser = () => {
     console.log(TL_ID);
@@ -40,7 +39,7 @@ export default function UserPage() {
   return (
     <div>
       <div>
-        <h1>USER_ID: {data.TL_ID}</h1>
+        <h1>USER_ID: {data.Name}</h1>
         <p>DATA:</p>
         <h2 className="title">All time best</h2>
         {/* <table className="leaderboard">
