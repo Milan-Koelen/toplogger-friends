@@ -2,19 +2,26 @@ import React, { useEffect, useState } from "react";
 import { URL } from "../config";
 import { useParams } from "react-router-dom";
 
-// const TL_ID = 14345;
-
 export default function UserPage() {
   // const [Loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  // const [TL_ID, setTL_ID] = useState(14345);
   const { TL_ID } = useParams();
 
-  const FetchUser = () => {
+  const FetchUser = async () => {
+    const response = await fetch(URL + `/user/${TL_ID}`);
+    const jsonData = await response.json();
+    setData(jsonData);
     console.log(TL_ID);
-    fetch(URL + `/user/${TL_ID}`).then(setData);
+    console.log(jsonData);
+
+    // await fetch(URL + `/user/${TL_ID}`).then(setData);
   };
-  console.log(data.selectedUser);
+
+  // const getGitHubUserWithFetch = async () => {
+  //   const response = await fetch(gitHubUrl);
+  //   const jsonData = await response.json();
+  //   setUserData(jsonData);
+  // };
 
   useEffect(() => {
     FetchUser();
