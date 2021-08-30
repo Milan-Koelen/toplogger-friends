@@ -7,8 +7,10 @@ export default function Layout({ children }) {
   return (
     <div>
       <div className="header">
-        <Link to={HOME_URL}></Link>
-        <h3> TopLogger Friends</h3>
+        <Link to="/">
+          <h3> TopLogger Friends</h3>
+        </Link>
+
         <Link to="/search"> Search</Link>
       </div>
       {children}
