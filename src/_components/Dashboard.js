@@ -55,17 +55,17 @@ const Dashboard = () => {
                 <td>
                   <img
                     className="profilepicture_lb"
-                    src={followingSlice.ProfilePictureURL}
+                    src={i.ProfilePictureURL}
                     alt={no_img}
                   ></img>
                 </td>
                 <td>
                   <Link to={"/user/" + i.TL_ID} className="name">
-                    {followingSlice.Name}
+                    {i.Name}
                   </Link>
                 </td>
                 <td>
-                  <span className="grade">{followingSlice.Grade} </span>
+                  <span className="grade">{i.Grade} </span>
                 </td>
               </tr>
             ))}
