@@ -29,8 +29,9 @@ export default function UserPage() {
   return (
     <div>
       <div>
-        <h1>USER_ID: {data.Name}</h1>
-        <p>DATA:</p>
+        <img src={data.ProfilePictureURL} alt=""></img>
+        <h1>{data.Name}</h1>
+        <p>{data.Grade}</p>
         <h2 className="title">All time best</h2>
         {/* <table className="leaderboard">
           <tbody>
