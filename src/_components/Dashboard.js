@@ -42,28 +42,30 @@ const Dashboard = () => {
       <div>
         <h2 className="title">Leaderboard</h2>
         <table className="leaderboard">
-          <tr>
-            <th>Picture</th>
-            <th>name</th>
-            <th>grade</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>Picture</th>
+              <th>name</th>
+              <th>grade</th>
+            </tr>
+          </thead>
           <tbody>
             {data.map((i, idx) => (
               <tr>
                 <td>
                   <img
                     className="profilepicture_lb"
-                    src={i.ProfilePictureURL}
+                    src={followingSlice.ProfilePictureURL}
                     alt={no_img}
                   ></img>
                 </td>
                 <td>
                   <Link to={"/user/" + i.TL_ID} className="name">
-                    {i.Name}
+                    {followingSlice.Name}
                   </Link>
                 </td>
                 <td>
-                  <span className="grade">{i.Grade} </span>
+                  <span className="grade">{followingSlice.Grade} </span>
                 </td>
               </tr>
             ))}
@@ -74,10 +76,13 @@ const Dashboard = () => {
       <div>
         <h2 className="title">Recent Boulders</h2>
         <table className="leaderboard">
-          <tr>
-            <th>name</th>
-            <th>grade</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>Picture</th>
+              <th>name</th>
+              <th>grade</th>
+            </tr>
+          </thead>
           <tbody>
             {data.map((i, idx) => (
               <tr>
@@ -98,10 +103,13 @@ const Dashboard = () => {
       <div>
         <h2 className="title">All time best Boulders</h2>
         <table className="leaderboard">
-          <tr>
-            <th>name</th>
-            <th>grade</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>Picture</th>
+              <th>name</th>
+              <th>grade</th>
+            </tr>
+          </thead>
           <tbody>
             {data.map((i, idx) => (
               <tr>

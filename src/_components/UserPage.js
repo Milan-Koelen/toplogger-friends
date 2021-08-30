@@ -9,30 +9,13 @@ export default function UserPage() {
   const [data, setData] = useState([]);
   // const [TL_ID, setTL_ID] = useState(14345);
   const { TL_ID } = useParams();
-  console.log(data);
 
   const FetchUser = () => {
     console.log(TL_ID);
     fetch(URL + `/user/${TL_ID}`).then(setData);
   };
+  console.log(data.selectedUser);
 
-  // .then(response => {
-  //   if (response.ok) {
-  //     console.log(response);
-  //     return response.json();
-  //   }
-  //   throw response;
-  // })
-  // .then(data => {
-  //   setData(data);
-  // })
-  // .catch(error => {
-  //   console.error("error fetching data: ", error);
-  // })
-  // .finally(() => {
-  //   // setLoading(false);
-  // });
-  // };
   useEffect(() => {
     FetchUser();
   }, []);
