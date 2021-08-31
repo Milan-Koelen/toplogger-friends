@@ -74,7 +74,9 @@ const SearchUser = () => {
                 {i.Name}
               </Link>
               <span className="grade">Grade: {i.Grade} </span>
-              <button className="follow_btn"> + </button>
+              <Button onClick="" variant="contained" color="primary">
+                +
+              </Button>
               <br />
               <br />
             </div>
