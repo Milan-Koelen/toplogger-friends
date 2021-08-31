@@ -59,10 +59,12 @@ export default function MenuAppBar({ children }) {
   const routeChangeDashboard = route => {
     let path = `/`;
     history.push(path);
+    handleClose();
   };
   const routeChangeSearch = route => {
     let path = `/search`;
     history.push(path);
+    handleClose();
   };
   return (
     <div className={classes.root}>
