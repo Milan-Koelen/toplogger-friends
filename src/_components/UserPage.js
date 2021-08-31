@@ -15,15 +15,9 @@ export default function UserPage() {
     console.log(TL_ID);
     console.log(jsonData);
 
-    // await fetch(URL + `/user/${TL_ID}`).then(setData);
+    const accends = await data.Accends;
+    console.log(accends);
   };
-
-  // const getGitHubUserWithFetch = async () => {
-  //   const response = await fetch(gitHubUrl);
-  //   const jsonData = await response.json();
-  //   setUserData(jsonData);
-  // };
-
   useEffect(() => {
     FetchUser();
   }, []);
@@ -37,13 +31,19 @@ export default function UserPage() {
         ></img>
         <h1 className="user__name">{data.Name}</h1>
         <p>{data.Grade}</p>
+        <p>Total Accends: {data.Accends.length}</p>
         <h2 className="title">All time best</h2>
         <table className="bestBoulders">
-          <tbody>
+          <thead>
             <tr>
               <th>Name</th>
               <th>Gym</th>
               <th>grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
             </tr>
           </tbody>
         </table>
