@@ -1,0 +1,14 @@
+.profilePicture {
+  align-items: center;
+  border-radius: 50%;
+  width: 250px;
+  align-self: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 75px;
+  margin-bottom: 25px;
+}
+.user__name {
+  text-align: center;
+}

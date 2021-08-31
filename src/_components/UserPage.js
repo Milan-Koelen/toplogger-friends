@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { URL } from "../config";
 import { useParams } from "react-router-dom";
+import "./UserPage.css";
 
 export default function UserPage() {
   // const [Loading, setLoading] = useState(false);
@@ -29,11 +30,15 @@ export default function UserPage() {
   return (
     <div>
       <div>
-        <img src={data.ProfilePictureURL} alt=""></img>
-        <h1>{data.Name}</h1>
+        <img
+          className="profilePicture"
+          src={data.ProfilePictureURL}
+          alt=""
+        ></img>
+        <h1 className="user__name">{data.Name}</h1>
         <p>{data.Grade}</p>
         <h2 className="title">All time best</h2>
-        {/* <table className="leaderboard">
+        <table className="bestBoulders">
           <tbody>
             <tr>
               <th>Name</th>
@@ -41,7 +46,7 @@ export default function UserPage() {
               <th>grade</th>
             </tr>
           </tbody>
-        </table> */}
+        </table>
       </div>
     </div>
   );
