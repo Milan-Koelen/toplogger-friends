@@ -27,15 +27,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function MenuAppBar({ children }) {
-  // const dispatch = useDispatch();
-
-  // const handleLogout = e => {
-  //   e.preventDefault();
-  //   dispatch(logout(e));
-  // };
-
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -80,10 +74,11 @@ export default function MenuAppBar({ children }) {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
+            // onClick={handleNav}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" align="center" className={classes.title}>
             Toplogger Friends
           </Typography>
           {auth && (
@@ -122,16 +117,4 @@ export default function MenuAppBar({ children }) {
       {children}
     </div>
   );
-
-  // <div>
-  //   <div className="header">
-  //     <Link to="/">
-  //       <h3> TopLogger Friends</h3>
-  //     </Link>
-
-  //     <Link to="/search"> Search</Link>
-  //   </div>
-  //   {children}
-  // </div>
-  //   );
 }

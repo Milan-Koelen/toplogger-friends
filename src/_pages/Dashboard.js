@@ -20,10 +20,18 @@ const Dashboard = () => {
   const data = useSelector(selectFollowing);
 
   console.log(data);
+  console.log(user);
 
   useEffect(() => {
     dispatch(fetchFollowing());
-  }, [dispatch, user.token, user.name, user.TL_Grade, user.following]);
+  }, [
+    dispatch,
+    user.token,
+    user.name,
+    user.TL_Grade,
+    user.following,
+    user.TL_ID,
+  ]);
   return (
     <div className="logout">
       {/* <div className="chart">

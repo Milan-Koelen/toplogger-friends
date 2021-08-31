@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 import { useHistory } from "react-router";
+import { TextField } from "@material-ui/core";
 
 const Login = () => {
   // const [name, setName] = useState("");
@@ -65,8 +66,27 @@ const Login = () => {
           value={name}
           onChange={e => setName(e.target.value)}
         ></input> */}
+      <br></br>
       <div className="login__form">
-        <input
+        <TextField
+          id="-basic"
+          // variant="outlined"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <br></br>
+        <TextField
+          id="outlined-basic"
+          // variant="outlined"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+        <br></br>
+        {/* <input
           type="email"
           placeholder="Email"
           value={email}
@@ -77,7 +97,7 @@ const Login = () => {
           placeholder="Password"
           value={password}
           onChange={e => setPassword(e.target.value)}
-        ></input>
+        ></input> */}
         <Button variant="contained" color="primary" onClick={handleSignin}>
           Login
         </Button>
