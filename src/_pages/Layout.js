@@ -13,6 +13,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../features/userSlice";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -52,6 +53,16 @@ export default function MenuAppBar({ children }) {
     e.preventDefault();
     dispatch(logout(e));
     handleClose();
+  };
+  const history = useHistory();
+
+  const routeChangeDashboard = route => {
+    let path = `/`;
+    history.push(path);
+  };
+  const routeChangeSearch = route => {
+    let path = `/search`;
+    history.push(path);
   };
   return (
     <div className={classes.root}>
@@ -107,7 +118,8 @@ export default function MenuAppBar({ children }) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={routeChangeDashboard}>Dashboard</MenuItem>
+                <MenuItem onClick={routeChangeSearch}>Search</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>

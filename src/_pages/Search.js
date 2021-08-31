@@ -4,7 +4,7 @@ import { URL } from "../config";
 import "./Search.css";
 // import no_img from "../img/no_img.gif";
 import { Link } from "react-router-dom";
-import { Avatar } from "@material-ui/core";
+import { Avatar, Button, TextField } from "@material-ui/core";
 
 const SearchUser = () => {
   const [search, setSearch] = useState("");
@@ -43,15 +43,21 @@ const SearchUser = () => {
     <div className="search">
       <h1>Search</h1>
       <div className="search__form">
-        <input
-          placeholder="Search"
-          value={search}
+        <br></br>
+        <TextField
+          id="searchField"
+          // label="Helper text"
           onChange={e => setSearch(e.target.value)}
-          onKeyPress={handleKeypress}
-        ></input>
-        <button className="search__btn" onClick={() => handleSearch()}>
+          defaultValue="Search"
+        />
+        <br></br>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleSearch()}
+        >
           Search
-        </button>
+        </Button>
         <div className="search_results_container">
           {data.map((i, idx) => (
             <div className="search_result">

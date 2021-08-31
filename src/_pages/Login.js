@@ -86,18 +86,7 @@ const Login = () => {
           onChange={e => setPassword(e.target.value)}
         />
         <br></br>
-        {/* <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        ></input>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        ></input> */}
+
         <Button variant="contained" color="primary" onClick={handleSignin}>
           Login
         </Button>
