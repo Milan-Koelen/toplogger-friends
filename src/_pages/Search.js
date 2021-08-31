@@ -48,7 +48,7 @@ const SearchUser = () => {
           id="searchField"
           // label="Helper text"
           onChange={e => setSearch(e.target.value)}
-          defaultValue="Search"
+          placeholder="Search"
         />
         <br></br>
         <Button
