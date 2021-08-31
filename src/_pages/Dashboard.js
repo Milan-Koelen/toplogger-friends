@@ -11,6 +11,8 @@ import "./Dashboard.css";
 import { Link } from "react-router-dom";
 import no_img from "../img/no_img.gif";
 import { Avatar } from "@material-ui/core";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 
 // import { VictoryBar, VictoryChart } from "victory";
 
@@ -64,7 +66,7 @@ const Dashboard = () => {
                       e.target.onerror = null;
                       e.target.src = "image_path_here";
                     }}
-                    alt={"no_img"}
+                    alt={""}
                   />
                 </td>
                 <td>
