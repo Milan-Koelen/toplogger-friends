@@ -1,11 +1,11 @@
 import "./App.css";
-import Login from "./_components/Login";
-import Dashboard from "./_components/Dashboard";
+import Login from "./_pages/Login";
+import Dashboard from "./_pages/Dashboard";
 import { Route, Switch } from "react-router-dom";
-import PrivateRoute from "./_components/PrivateRoute";
-import Search from "./_components/Search";
-import Layout from "./_components/Layout";
-import UserPage from "./_components/UserPage";
+import PrivateRoute from "./_pages/PrivateRoute";
+import Search from "./_pages/Search";
+import Layout from "./_pages/Layout";
+import UserPage from "./_pages/UserPage";
 
 function App() {
   return (
