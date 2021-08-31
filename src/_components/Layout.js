@@ -1,5 +1,4 @@
 import React from "react";
-import { HOME_URL } from "../config";
 import "./Layout.css";
 import { Link } from "react-router-dom";
 

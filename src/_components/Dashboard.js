@@ -9,7 +9,7 @@ import {
 } from "../features/followingSlice";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
-import no_img from "/Users/Milan/Desktop/programeren/toplogger-friends/src/img/no_img.gif";
+import no_img from "../img/no_img.gif";
 
 // import { VictoryBar, VictoryChart } from "victory";
 
