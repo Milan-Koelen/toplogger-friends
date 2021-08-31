@@ -69,11 +69,6 @@
   text-align: right;
   font-size: 0.8em;
 }
-.search_result > .profilepicture {
-  width: 65px;
-  grid-row: auto;
-  border-radius: 50%;
-}
 .follow_btn {
   background-color: purple;
   border-radius: 25%;

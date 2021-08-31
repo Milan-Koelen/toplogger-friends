@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Login.css";
 
+import { Button } from "@material-ui/core";
+
 import { login, signup } from "../features/userSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -76,12 +78,13 @@ const Login = () => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         ></input>
-        <button className="submit__btn" onClick={handleSignin}>
-          Log In
-        </button>
-        <button className="register__btn" onClick={handleSignup}>
+        <Button variant="contained" color="primary" onClick={handleSignin}>
+          Login
+        </Button>
+        <br></br>
+        <Button variant="contained" color="default" onClick={handleSignup}>
           Register
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -31,7 +31,9 @@ export default function UserPage() {
         ></img>
         <h1 className="user__name">{data.Name}</h1>
         <p>{data.Grade}</p>
-        <p>Total Accends: {data.Accends.length}</p>
+
+        {/* total accends not working on load */}
+        {/* <p>Total Accends: {data.Accends.length}</p> */}
         <h2 className="title">All time best</h2>
         <table className="bestBoulders">
           <thead>

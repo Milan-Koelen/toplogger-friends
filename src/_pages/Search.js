@@ -4,6 +4,7 @@ import { URL } from "../config";
 import "./Search.css";
 // import no_img from "../img/no_img.gif";
 import { Link } from "react-router-dom";
+import { Avatar } from "@material-ui/core";
 
 const SearchUser = () => {
   const [search, setSearch] = useState("");
@@ -54,7 +55,7 @@ const SearchUser = () => {
         <div className="search_results_container">
           {data.map((i, idx) => (
             <div className="search_result">
-              <img
+              <Avatar
                 className="profilepicture"
                 src={i.ProfilePictureURL}
                 onError={e => {

@@ -10,6 +10,7 @@ import {
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
 import no_img from "../img/no_img.gif";
+import { Avatar } from "@material-ui/core";
 
 // import { VictoryBar, VictoryChart } from "victory";
 
@@ -19,11 +20,6 @@ const Dashboard = () => {
   const data = useSelector(selectFollowing);
 
   console.log(data);
-
-  const handleLogout = e => {
-    e.preventDefault();
-    dispatch(logout(e));
-  };
 
   useEffect(() => {
     dispatch(fetchFollowing());
@@ -53,11 +49,15 @@ const Dashboard = () => {
             {data.map((i, idx) => (
               <tr>
                 <td>
-                  <img
-                    className="profilepicture_lb"
+                  <Avatar
+                    className="profilepicture"
                     src={i.ProfilePictureURL}
-                    alt={no_img}
-                  ></img>
+                    onError={e => {
+                      e.target.onerror = null;
+                      e.target.src = "image_path_here";
+                    }}
+                    alt={"no_img"}
+                  />
                 </td>
                 <td>
                   <Link to={"/user/" + i.TL_ID} className="name">
@@ -126,9 +126,6 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
-      <button className="logout__btn" onClick={e => handleLogout(e)}>
-        Logout
-      </button>
     </div>
   );
 };
