@@ -89,7 +89,7 @@ const SearchUser = () => {
           {" "}
           Search user
         </Typography>
-        <Paper style={{ maxHeight: "73vh", overflow: "auto" }}>
+        <Paper style={{ maxHeight: "83vh", overflow: "auto" }}>
           <TextField
             className={classes.searchBar}
             id="searchField"
