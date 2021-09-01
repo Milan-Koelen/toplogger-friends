@@ -13,8 +13,7 @@ import { Link } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import { makeStyles } from "@material-ui/core/styles";
-
+import { makeStyles } from "@material-ui/core";
 import RestoreIcon from "@material-ui/icons/Restore";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -83,7 +82,7 @@ const Dashboard = () => {
                       e.target.onerror = null;
                       e.target.src = "image_path_here";
                     }}
-                    alt={"no_img"}
+                    alt={""}
                   />
                 </td>
                 <td>

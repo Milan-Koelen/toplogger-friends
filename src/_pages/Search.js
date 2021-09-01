@@ -24,10 +24,14 @@ import {
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/PersonAdd";
 import { SearchIcon } from "@material-ui/icons/Search";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
 
 const SearchUser = () => {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
+
+  const user = useSelector(selectUser);
 
   // const dispatch = useDispatch();
 
@@ -54,6 +58,7 @@ const SearchUser = () => {
       marginTop: "3%",
     },
   }));
+  const classes = useStyles();
 
   const handleSearch = async () => {
     // search function to api
@@ -81,7 +86,20 @@ const SearchUser = () => {
   //     console.log("enter pressed");
   //   }
   // };
-  const classes = useStyles();
+
+  const handleFollow = e => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: user.token,
+      },
+      body: JSON.stringify({ follow: e.currentTarget.value }),
+    };
+    fetch(URL + "/follow", requestOptions)
+      .then(response => response.json())
+      .then(console.log);
+  };
   return (
     <Container style={{ paddingTop: "50px" }}>
       <Grid item xs={12} md={6}>
@@ -124,7 +142,12 @@ const SearchUser = () => {
                   secondary={"Grade: " + i.Grade}
                 />
                 <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="delete">
+                  <IconButton
+                    edge="end"
+                    aria-label="follow"
+                    value={i._id}
+                    onClick={handleFollow}
+                  >
                     <AddIcon />
                   </IconButton>
                 </ListItemSecondaryAction>
