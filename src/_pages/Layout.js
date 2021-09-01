@@ -27,8 +27,14 @@ export default function MenuAppBar({ children }) {
   const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
+      // bottom: 1,
       width: "100%",
       position: "fixed",
+    },
+    stickToBottom: {
+      width: "100%",
+      position: "fixed",
+      flexGrow: 0,
       bottom: 0,
     },
     menuButton: {
@@ -102,7 +108,7 @@ export default function MenuAppBar({ children }) {
         // label={auth ? "Logout" : "Login"}
         />
       </FormGroup> */}
-      <AppBar position="fixed">
+      <AppBar position="fixed" className={classes.root}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -157,7 +163,7 @@ export default function MenuAppBar({ children }) {
           setValue(newValue);
         }}
         showLabels
-        className={classes.root}
+        className={classes.stickToBottom}
       >
         <BottomNavigationAction
           label="Leaderboard"
