@@ -1,7 +1,6 @@
 import {
   Avatar,
   Container,
-  Grid,
   IconButton,
   List,
   ListItem,
@@ -30,8 +29,10 @@ const SearchUser = () => {
 
   const useStyles = makeStyles(theme => ({
     root: {
-      flexGrow: 1,
-      maxWidth: "100%",
+      display: "flex",
+      flexDirection: "column",
+      maxWidth: "500px",
+      height: "100%",
     },
     demo: {
       backgroundColor: theme.palette.background.paper,
@@ -49,6 +50,11 @@ const SearchUser = () => {
       marginRight: theme.spacing(4),
     },
     searchButton: {},
+    paper: {
+      display: "flex",
+      flexDirection: "column",
+      flexGrow: 1,
+    },
   }));
   const classes = useStyles();
 
@@ -87,65 +93,63 @@ const SearchUser = () => {
       .then(console.log);
   };
   return (
-    <Container style={{ paddingTop: "50px" }}>
-      <Grid item xs={12} md={6}>
-        <Typography variant="h6" className={classes.title}>
-          Search user
-        </Typography>
-        <Paper>
-          <div className={classes.searchContainer}>
-            <TextField
-              className={classes.searchBar}
-              id="searchField"
-              onChange={e => setSearch(e.target.value)}
-              placeholder="Search"
-              onKeyPress={ev => {
-                console.log(`Pressed keyCode ${ev.key}`);
-                if (ev.key === "Enter") {
-                  ev.preventDefault();
-                  handleSearch();
-                }
-              }}
-            />
-            <IconButton
-              className={classes.searchButton}
-              edge="end"
-              aria-label="follow"
-              onClick={handleSearch}
-            >
-              <SearchIcon />
-            </IconButton>
-          </div>
+    <Container className={classes.root}>
+      <Typography variant="h6" className={classes.title}>
+        Search user
+      </Typography>
+      <Paper className={classes.paper}>
+        <div className={classes.searchContainer}>
+          <TextField
+            className={classes.searchBar}
+            id="searchField"
+            onChange={e => setSearch(e.target.value)}
+            placeholder="Search"
+            onKeyPress={ev => {
+              console.log(`Pressed keyCode ${ev.key}`);
+              if (ev.key === "Enter") {
+                ev.preventDefault();
+                handleSearch();
+              }
+            }}
+          />
+          <IconButton
+            className={classes.searchButton}
+            edge="end"
+            aria-label="follow"
+            onClick={handleSearch}
+          >
+            <SearchIcon />
+          </IconButton>
+        </div>
 
-          <List style={{ maxHeight: "600px", overflow: "auto" }}>
-            {data.map((i, idx) => (
-              <ListItem component={Link} to={"/user/" + i.TL_ID}>
-                <ListItemAvatar>
-                  <Avatar
-                    className="profilepicture"
-                    src={i.ProfilePictureURL}
-                    alt={"no_img"}
-                  />
-                </ListItemAvatar>
-                <ListItemText
-                  primary={i.Name}
-                  secondary={"Grade: " + convertGrade(i.Grade)}
+        <List style={{ flexGrow: 1, overflow: "auto" }}>
+          {data.map((i, idx) => (
+            <ListItem component={Link} to={"/user/" + i.TL_ID}>
+              <ListItemAvatar>
+                <Avatar
+                  className="profilepicture"
+                  src={i.ProfilePictureURL}
+                  alt={"no_img"}
                 />
-                <ListItemSecondaryAction>
-                  <IconButton
-                    edge="end"
-                    aria-label="follow"
-                    value={i._id}
-                    onClick={handleFollow}
-                  >
-                    <AddIcon />
-                  </IconButton>
-                </ListItemSecondaryAction>
-              </ListItem>
-            ))}
-          </List>
-        </Paper>
-      </Grid>
+              </ListItemAvatar>
+              <ListItemText
+                primary={i.Name}
+                secondary={"Grade: " + convertGrade(i.Grade)}
+              />
+              <ListItemSecondaryAction>
+                <IconButton
+                  edge="end"
+                  aria-label="follow"
+                  value={i._id}
+                  onClick={handleFollow}
+                >
+                  <AddIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
     </Container>
   );
 };

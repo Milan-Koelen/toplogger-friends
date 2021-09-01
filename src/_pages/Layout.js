@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     // bottom: 1,
     width: "100%",
+    height: "100vh",
     position: "fixed",
   },
   stickToBottom: {
@@ -38,6 +39,14 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
+  },
+  pageContainer: {
+    overflowY: "auto",
+    height: "100%",
+    paddingTop: 75,
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingBottom: 60,
   },
 }));
 
@@ -116,7 +125,7 @@ export default function MenuAppBar({ children }) {
         // label={auth ? "Logout" : "Login"}
         />
       </FormGroup> */}
-      <AppBar position="fixed" className={classes.root}>
+      <AppBar position="fixed" className={"asdf"}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -164,7 +173,7 @@ export default function MenuAppBar({ children }) {
           )}
         </Toolbar>
       </AppBar>
-      {children}
+      <div className={classes.pageContainer}>{children}</div>
       <BottomNavigation
         value={tabValue}
         onChange={(_e, tabIdx) => {
