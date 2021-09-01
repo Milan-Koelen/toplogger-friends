@@ -14,20 +14,30 @@ import Menu from "@material-ui/core/Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../features/userSlice";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+
+import RestoreIcon from "@material-ui/icons/Restore";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 
 export default function MenuAppBar({ children }) {
+  const useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1,
+      width: "100%",
+      position: "fixed",
+      bottom: 0,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+  }));
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
 
@@ -66,6 +76,18 @@ export default function MenuAppBar({ children }) {
     history.push(path);
     handleClose();
   };
+
+  // const useStyles = makeStyles({
+  //   root: {
+  //     width: "100%",
+  //     position: "fixed",
+  //     bottom: 0,
+  //   },
+  // });
+
+  // const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
   return (
     <div className={classes.root}>
       {/* <FormGroup>
@@ -129,6 +151,23 @@ export default function MenuAppBar({ children }) {
         </Toolbar>
       </AppBar>
       {children}
+      <BottomNavigation
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        showLabels
+        className={classes.root}
+      >
+        <BottomNavigationAction
+          label="Leaderboard"
+          icon={<FavoriteIcon />}
+          component={Link}
+          to="/leaderboard"
+        />
+        <BottomNavigationAction label="Recent Tops" icon={<RestoreIcon />} />
+        <BottomNavigationAction label="Best Tops" icon={<LocationOnIcon />} />
+      </BottomNavigation>
     </div>
   );
 }

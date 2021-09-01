@@ -18,6 +18,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import RestoreIcon from "@material-ui/icons/Restore";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import Leaderboard from "./Leaderboard";
 // import { VictoryBar, VictoryChart } from "victory";
 
 const Dashboard = () => {
@@ -160,7 +161,12 @@ const Dashboard = () => {
         showLabels
         className={classes.root}
       >
-        <BottomNavigationAction label="Leaderboard" icon={<FavoriteIcon />} />
+        <BottomNavigationAction
+          label="Leaderboard"
+          icon={<FavoriteIcon />}
+          component={Link}
+          to="/leaderboard"
+        />
         <BottomNavigationAction label="Recent Tops" icon={<RestoreIcon />} />
         <BottomNavigationAction label="Best Tops" icon={<LocationOnIcon />} />
       </BottomNavigation>
