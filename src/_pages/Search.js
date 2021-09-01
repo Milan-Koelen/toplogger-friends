@@ -31,13 +31,13 @@ const SearchUser = () => {
     }
   };
 
-  const handleKeypress = e => {
-    //it triggers by pressing the enter key
-    if (e.keyCode === 13) {
-      handleSearch();
-      console.log("enter pressed");
-    }
-  };
+  // const handleKeypress = e => {
+  //   //it triggers by pressing the enter key
+  //   if (e.keyCode === 13) {
+  //     handleSearch();
+  //     console.log("enter pressed");
+  //   }
+  // };
 
   return (
     <div className="search">

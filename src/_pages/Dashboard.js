@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser } from "../features/userSlice";
+import { selectUser } from "../features/userSlice";
 // import { fetchFriends, selectFriends } from "../features/followingSlice";
 import {
   fetchFollowing,
-  followingSlice,
+  // followingSlice,
   selectFollowing,
 } from "../features/followingSlice";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
-import no_img from "../img/no_img.gif";
+// import no_img from "../img/no_img.gif";
 import { Avatar } from "@material-ui/core";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -18,7 +18,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import RestoreIcon from "@material-ui/icons/Restore";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import Leaderboard from "./Leaderboard";
+// import Leaderboard from "./Leaderboard";
 // import { VictoryBar, VictoryChart } from "victory";
 
 const Dashboard = () => {

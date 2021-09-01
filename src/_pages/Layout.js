@@ -11,8 +11,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 // import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser } from "../features/userSlice";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/userSlice";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -39,7 +39,7 @@ export default function MenuAppBar({ children }) {
     },
   }));
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  const [auth] = React.useState(true);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

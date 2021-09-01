@@ -16,10 +16,10 @@ export default function UserPage() {
     console.log(jsonData);
 
     const accends = await data.Accends;
-    const totalAccends = await Array.from(data.Accends).length;
+    // const totalAccends = await Array.from(data.Accends).length;
     console.log(accends);
 
-    console.log(totalAccends);
+    // console.log(totalAccends);
   };
   useEffect(() => {
     FetchUser();
