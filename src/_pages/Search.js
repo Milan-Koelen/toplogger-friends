@@ -1,30 +1,25 @@
-import React, { useState } from "react";
-import { URL } from "../config";
-// import { useDispatch, useSelector } from "react-redux";
-// import "./Search.css";
-// import no_img from "../img/no_img.gif";
-import { Link } from "react-router-dom";
 import {
   Avatar,
-  Button,
-  TextField,
+  Container,
   Grid,
-  Typography,
+  IconButton,
   List,
   ListItem,
   ListItemAvatar,
-  ListItemText,
-  IconButton,
-  makeStyles,
-  alpha,
   ListItemSecondaryAction,
-  Container,
+  ListItemText,
+  makeStyles,
   Paper,
-  InputBase,
+  TextField,
+  Typography,
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/PersonAdd";
-import { SearchIcon } from "@material-ui/icons/Search";
+import SearchIcon from "@material-ui/icons/Search";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { URL } from "../config";
+import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
 
 const SearchUser = () => {
@@ -32,8 +27,6 @@ const SearchUser = () => {
   const [data, setData] = useState([]);
 
   const user = useSelector(selectUser);
-
-  // const dispatch = useDispatch();
 
   const useStyles = makeStyles(theme => ({
     root: {
@@ -46,22 +39,23 @@ const SearchUser = () => {
     title: {
       margin: theme.spacing(4, 0, 2),
     },
+    searchContainer: {
+      display: "flex",
+      flexDirection: "row",
+      padding: theme.spacing(4),
+    },
     searchBar: {
-      width: "75vw",
-      paddingRight: "2vw",
-      paddingLeft: "5vw",
-      paddingBottom: "3vh",
-      marginTop: "6%",
+      flexGrow: 1,
+      marginRight: theme.spacing(4),
     },
-    searchButton: {
-      padding: "3%",
-      marginTop: "3%",
-    },
+    searchButton: {},
   }));
   const classes = useStyles();
 
   const handleSearch = async () => {
     // search function to api
+
+    if (search.length < 2) return;
 
     try {
       const result = await fetch(URL + "/search?name=" + search);
@@ -78,14 +72,6 @@ const SearchUser = () => {
       console.error(e);
     }
   };
-
-  // const handleKeypress = e => {
-  //   //it triggers by pressing the enter key
-  //   if (e.keyCode === 13) {
-  //     handleSearch();
-  //     console.log("enter pressed");
-  //   }
-  // };
 
   const handleFollow = e => {
     const requestOptions = {
@@ -104,42 +90,46 @@ const SearchUser = () => {
     <Container style={{ paddingTop: "50px" }}>
       <Grid item xs={12} md={6}>
         <Typography variant="h6" className={classes.title}>
-          {" "}
           Search user
         </Typography>
-        <Paper style={{ maxHeight: "83vh", overflow: "auto" }}>
-          <TextField
-            className={classes.searchBar}
-            id="searchField"
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Search"
-          />
-          <Button
-            className={classes.searchButton}
-            variant="contained"
-            color="primary"
-            onClick={() => handleSearch()}
-          >
-            Search
-          </Button>
+        <Paper>
+          <div className={classes.searchContainer}>
+            <TextField
+              className={classes.searchBar}
+              id="searchField"
+              onChange={e => setSearch(e.target.value)}
+              placeholder="Search"
+              onKeyPress={ev => {
+                console.log(`Pressed keyCode ${ev.key}`);
+                if (ev.key === "Enter") {
+                  ev.preventDefault();
+                  handleSearch();
+                }
+              }}
+            />
+            <IconButton
+              className={classes.searchButton}
+              edge="end"
+              aria-label="follow"
+              onClick={handleSearch}
+            >
+              <SearchIcon />
+            </IconButton>
+          </div>
 
-          <List>
+          <List style={{ maxHeight: "600px", overflow: "auto" }}>
             {data.map((i, idx) => (
               <ListItem component={Link} to={"/user/" + i.TL_ID}>
                 <ListItemAvatar>
                   <Avatar
                     className="profilepicture"
                     src={i.ProfilePictureURL}
-                    onError={e => {
-                      e.target.onerror = null;
-                      e.target.src = "image_path_here";
-                    }}
                     alt={"no_img"}
                   />
                 </ListItemAvatar>
                 <ListItemText
                   primary={i.Name}
-                  secondary={"Grade: " + i.Grade}
+                  secondary={"Grade: " + convertGrade(i.Grade)}
                 />
                 <ListItemSecondaryAction>
                   <IconButton

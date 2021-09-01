@@ -1,22 +1,22 @@
+// import no_img from "../img/no_img.gif";
+import { Avatar, makeStyles } from "@material-ui/core";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import RestoreIcon from "@material-ui/icons/Restore";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../features/userSlice";
+import { Link } from "react-router-dom";
 // import { fetchFriends, selectFriends } from "../features/followingSlice";
 import {
   fetchFollowing,
   // followingSlice,
   selectFollowing,
 } from "../features/followingSlice";
+import convertGrade from "../features/gradeConversion";
+import { selectUser } from "../features/userSlice";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
-// import no_img from "../img/no_img.gif";
-import { Avatar } from "@material-ui/core";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import { makeStyles } from "@material-ui/core";
-import RestoreIcon from "@material-ui/icons/Restore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
 // import Leaderboard from "./Leaderboard";
 // import { VictoryBar, VictoryChart } from "victory";
 
@@ -45,6 +45,7 @@ const Dashboard = () => {
       position: "fixed",
       bottom: 0,
     },
+    name: {},
   });
 
   const classes = useStyles();
@@ -63,6 +64,7 @@ const Dashboard = () => {
 
       <div className="logout">
         <h2 className="title">Leaderboard</h2>
+
         <table className="leaderboard">
           <thead>
             <tr>
@@ -78,11 +80,6 @@ const Dashboard = () => {
                   <Avatar
                     className="profilepicture"
                     src={i.ProfilePictureURL}
-                    onError={e => {
-                      e.target.onerror = null;
-                      e.target.src = "image_path_here";
-                    }}
-                    alt={""}
                   />
                 </td>
                 <td>
@@ -91,7 +88,7 @@ const Dashboard = () => {
                   </Link>
                 </td>
                 <td>
-                  <span className="grade">{i.Grade} </span>
+                  <span className="grade">{convertGrade(i.Grade)} </span>
                 </td>
               </tr>
             ))}

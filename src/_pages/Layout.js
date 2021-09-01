@@ -1,53 +1,52 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import Menu from "@material-ui/core/Menu";
 // import Switch from "@material-ui/core/Switch";
 // import FormControlLabel from "@material-ui/core/FormControlLabel";
 // import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import { useDispatch } from "react-redux";
-import { logout } from "../features/userSlice";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
-
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-
-import RestoreIcon from "@material-ui/icons/Restore";
+import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import MenuIcon from "@material-ui/icons/Menu";
+import RestoreIcon from "@material-ui/icons/Restore";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
+import { logout } from "../features/userSlice";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    // bottom: 1,
+    width: "100%",
+    position: "fixed",
+  },
+  stickToBottom: {
+    width: "100%",
+    position: "fixed",
+    flexGrow: 0,
+    bottom: 0,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
 
 export default function MenuAppBar({ children }) {
-  const useStyles = makeStyles(theme => ({
-    root: {
-      flexGrow: 1,
-      // bottom: 1,
-      width: "100%",
-      position: "fixed",
-    },
-    stickToBottom: {
-      width: "100%",
-      position: "fixed",
-      flexGrow: 0,
-      bottom: 0,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-  }));
   const classes = useStyles();
-  const [auth] = React.useState(true);
+  const [auth] = useState(true);
+  const history = useHistory();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   // const handleChange = event => {
@@ -70,7 +69,6 @@ export default function MenuAppBar({ children }) {
     dispatch(logout(e));
     handleClose();
   };
-  const history = useHistory();
 
   const routeChangeDashboard = route => {
     let path = `/`;
@@ -92,7 +90,17 @@ export default function MenuAppBar({ children }) {
   // });
 
   // const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const location = useLocation();
+
+  const tabRoutes = ["/", "/leaderboard", "/search"];
+
+  let tabValue = 0;
+
+  tabRoutes.forEach((route, idx) => {
+    if (location.pathname.includes(route)) {
+      tabValue = idx;
+    }
+  });
 
   return (
     <div className={classes.root}>
@@ -158,19 +166,14 @@ export default function MenuAppBar({ children }) {
       </AppBar>
       {children}
       <BottomNavigation
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
+        value={tabValue}
+        onChange={(_e, tabIdx) => {
+          history.push(tabRoutes[tabIdx]);
         }}
         showLabels
         className={classes.stickToBottom}
       >
-        <BottomNavigationAction
-          label="Leaderboard"
-          icon={<FavoriteIcon />}
-          component={Link}
-          to="/leaderboard"
-        />
+        <BottomNavigationAction label="Leaderboard" icon={<FavoriteIcon />} />
         <BottomNavigationAction label="Recent Tops" icon={<RestoreIcon />} />
         <BottomNavigationAction label="Best Tops" icon={<LocationOnIcon />} />
       </BottomNavigation>

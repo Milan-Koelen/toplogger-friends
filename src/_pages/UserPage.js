@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { URL } from "../config";
 import { useParams } from "react-router-dom";
+import { URL } from "../config";
+import convertGrade from "../features/gradeConversion";
 import "./UserPage.css";
 
 export default function UserPage() {
   // const [Loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const { TL_ID } = useParams();
+  const [data, setData] = useState({});
+  const params = useParams();
+  const TL_ID = params.TL_ID;
 
-  const FetchUser = async () => {
-    const response = await fetch(URL + `/user/${TL_ID}`);
-    const jsonData = await response.json();
-    setData(jsonData);
-    console.log(TL_ID);
-    console.log(jsonData);
-
-    const accends = await data.Accends;
-    // const totalAccends = await Array.from(data.Accends).length;
-    console.log(accends);
-
-    // console.log(totalAccends);
-  };
   useEffect(() => {
+    const FetchUser = async () => {
+      const response = await fetch(URL + `/user/${TL_ID}`);
+      const jsonData = await response.json();
+      setData(jsonData);
+      console.log(TL_ID);
+      console.log(jsonData);
+      // const totalAccends = await Array.from(data.Accends).length;
+      console.log(jsonData.Asccends);
+    };
+
     FetchUser();
-  }, []);
+  }, [TL_ID]);
   return (
     <div>
       <div>
@@ -33,7 +32,8 @@ export default function UserPage() {
           alt=""
         ></img>
         <h1 className="user__name">{data.Name}</h1>
-        <p>{data.Grade}</p>
+
+        <p>{convertGrade(data.Grade)}</p>
 
         {/* total accends not working on load */}
         {/* <p>Total Accends: {Array.from(data.Accends).length}</p> */}

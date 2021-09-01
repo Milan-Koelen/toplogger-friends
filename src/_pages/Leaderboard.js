@@ -1,7 +1,7 @@
+import { Avatar, Link } from "@material-ui/core";
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Avatar, Link } from "@material-ui/core";
-import { selectFollowing, fetchFollowing } from "../features/followingSlice";
+import { fetchFollowing, selectFollowing } from "../features/followingSlice";
 import { selectUser } from "../features/userSlice";
 
 const Leaderboard = () => {
@@ -33,7 +33,7 @@ const Leaderboard = () => {
         </thead>
         <tbody>
           {data.map((i, idx) => (
-            <tr>
+            <tr key={`key-${i.TL_ID}`}>
               <td>
                 <Avatar
                   className="profilepicture"
