@@ -14,14 +14,6 @@ import { Avatar } from "@material-ui/core";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 
-<<<<<<< Updated upstream
-=======
-import RestoreIcon from "@material-ui/icons/Restore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import Leaderboard from "./Leaderboard";
-// import Leaderboard from "./Leaderboard";
->>>>>>> Stashed changes
 // import { VictoryBar, VictoryChart } from "victory";
 
 const Dashboard = () => {
@@ -53,7 +45,6 @@ const Dashboard = () => {
         Welcome <span className="user__name">{user.name}</span>
       </h1>
 
-<<<<<<< Updated upstream
       <div>
         <h2 className="title">Leaderboard</h2>
         <table className="leaderboard">
@@ -91,9 +82,6 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
-=======
-      <Leaderboard />
->>>>>>> Stashed changes
 
       <div>
         <h2 className="title">Recent Boulders</h2>

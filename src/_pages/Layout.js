@@ -128,29 +128,7 @@ export default function MenuAppBar({ children }) {
           )}
         </Toolbar>
       </AppBar>
-      <Toolbar></Toolbar>
       {children}
-<<<<<<< Updated upstream
-=======
-
-      <BottomNavigation
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-        showLabels
-        className={classes.stickToBottom}
-      >
-        <BottomNavigationAction
-          label="Leaderboard"
-          icon={<FavoriteIcon />}
-          component={Link}
-          to="/leaderboard"
-        />
-        <BottomNavigationAction label="Recent Tops" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Best Tops" icon={<LocationOnIcon />} />
-      </BottomNavigation>
->>>>>>> Stashed changes
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
-import followingReducer from "../features/followingSlice";
+import followingSlice from "../features/followingSlice";
 import userReducer from "../features/userSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
@@ -12,7 +12,7 @@ const persistConfig = {
 
 const reducers = combineReducers({
   user: userReducer,
-  following: followingReducer,
+  following: followingSlice,
 });
 
 export default configureStore({

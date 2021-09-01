@@ -37,11 +37,9 @@ export const login = ({ email, password }) => {
       console.log(data);
       console.log(data.name);
       console.log(data.TL_Grade);
-      // console.log(data._id);
 
       dispatch(
         userSlice.actions.setUser({
-          // _id: data._id,
           token: data.token,
           name: data.name,
           TL_Grade: data.TL_Grade,
