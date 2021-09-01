@@ -16,7 +16,10 @@ export default function UserPage() {
     console.log(jsonData);
 
     const accends = await data.Accends;
+    // const totalAccends = await Array.from(data.Accends).length;
     console.log(accends);
+
+    // console.log(totalAccends);
   };
   useEffect(() => {
     FetchUser();
@@ -33,7 +36,7 @@ export default function UserPage() {
         <p>{data.Grade}</p>
 
         {/* total accends not working on load */}
-        {/* <p>Total Accends: {data.Accends.length}</p> */}
+        {/* <p>Total Accends: {Array.from(data.Accends).length}</p> */}
         <h2 className="title">All time best</h2>
         <table className="bestBoulders">
           <thead>

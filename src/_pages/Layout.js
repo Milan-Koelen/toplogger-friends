@@ -11,25 +11,41 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 // import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser } from "../features/userSlice";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/userSlice";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+
+import RestoreIcon from "@material-ui/icons/Restore";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 
 export default function MenuAppBar({ children }) {
+  const useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1,
+      // bottom: 1,
+      width: "100%",
+      position: "fixed",
+    },
+    stickToBottom: {
+      width: "100%",
+      position: "fixed",
+      flexGrow: 0,
+      bottom: 0,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+  }));
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  const [auth] = React.useState(true);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -66,6 +82,18 @@ export default function MenuAppBar({ children }) {
     history.push(path);
     handleClose();
   };
+
+  // const useStyles = makeStyles({
+  //   root: {
+  //     width: "100%",
+  //     position: "fixed",
+  //     bottom: 0,
+  //   },
+  // });
+
+  // const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
   return (
     <div className={classes.root}>
       {/* <FormGroup>
@@ -80,7 +108,7 @@ export default function MenuAppBar({ children }) {
         // label={auth ? "Logout" : "Login"}
         />
       </FormGroup> */}
-      <AppBar position="fixed">
+      <AppBar position="fixed" className={classes.root}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -129,6 +157,23 @@ export default function MenuAppBar({ children }) {
         </Toolbar>
       </AppBar>
       {children}
+      <BottomNavigation
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        showLabels
+        className={classes.stickToBottom}
+      >
+        <BottomNavigationAction
+          label="Leaderboard"
+          icon={<FavoriteIcon />}
+          component={Link}
+          to="/leaderboard"
+        />
+        <BottomNavigationAction label="Recent Tops" icon={<RestoreIcon />} />
+        <BottomNavigationAction label="Best Tops" icon={<LocationOnIcon />} />
+      </BottomNavigation>
     </div>
   );
 }

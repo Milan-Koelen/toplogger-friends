@@ -60,12 +60,6 @@ const Login = () => {
   return (
     <div className="login">
       <h1>Login</h1>
-      {/* <input
-          type="name"
-          placeholder="Name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        ></input> */}
       <br></br>
       <div className="login__form">
         <TextField
