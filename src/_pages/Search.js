@@ -47,7 +47,7 @@ const SearchUser = () => {
       paddingRight: "2vw",
       paddingLeft: "5vw",
       paddingBottom: "3vh",
-      paddingTop: "2vh",
+      marginTop: "6%",
     },
     searchButton: {
       padding: "3%",
