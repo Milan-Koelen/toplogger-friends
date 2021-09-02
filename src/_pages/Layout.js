@@ -90,15 +90,6 @@ export default function MenuAppBar({ children }) {
     handleClose();
   };
 
-  // const useStyles = makeStyles({
-  //   root: {
-  //     width: "100%",
-  //     position: "fixed",
-  //     bottom: 0,
-  //   },
-  // });
-
-  // const classes = useStyles();
   const location = useLocation();
 
   const tabRoutes = ["/", "/leaderboard", "/search"];
