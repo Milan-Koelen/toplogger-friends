@@ -10,11 +10,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import { Dashboard } from "@material-ui/icons";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
 import MenuIcon from "@material-ui/icons/Menu";
 import RestoreIcon from "@material-ui/icons/Restore";
+import Search from "@material-ui/icons/Search";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
@@ -182,9 +182,9 @@ export default function MenuAppBar({ children }) {
         showLabels
         className={classes.stickToBottom}
       >
-        <BottomNavigationAction label="Leaderboard" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Recent Tops" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Best Tops" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="Dashboard" icon={<Dashboard />} />
+        <BottomNavigationAction label="Leaderboard" icon={<RestoreIcon />} />
+        <BottomNavigationAction label="Search" icon={<Search />} />
       </BottomNavigation>
     </div>
   );
