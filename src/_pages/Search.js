@@ -38,7 +38,7 @@ const SearchUser = () => {
       backgroundColor: theme.palette.background.paper,
     },
     title: {
-      margin: theme.spacing(4, 0, 2),
+      margin: theme.spacing(4, "auto", 2),
     },
     searchContainer: {
       display: "flex",
