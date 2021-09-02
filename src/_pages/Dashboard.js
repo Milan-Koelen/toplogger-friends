@@ -1,5 +1,5 @@
 // import no_img from "../img/no_img.gif";
-import { Avatar, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -14,9 +14,11 @@ import {
   // followingSlice,
   selectFollowing,
 } from "../features/followingSlice";
-import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
 import "./Dashboard.css";
+import Leaderboard from "./Leaderboard";
+import RecentBoulders from "./RecentBoulders";
+import TopBoulders from "./TopBoulders";
 // import Leaderboard from "./Leaderboard";
 // import { VictoryBar, VictoryChart } from "victory";
 
@@ -61,93 +63,14 @@ const Dashboard = () => {
       <h1 className="welcome_user">
         Welcome <span className="user__name">{user.name}</span>
       </h1>
-
-      <div className="logout">
-        <h2 className="title">Leaderboard</h2>
-
-        <table className="leaderboard">
-          <thead>
-            <tr>
-              <th>Picture</th>
-              <th>name</th>
-              <th>grade</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((i, idx) => (
-              <tr>
-                <td>
-                  <Avatar
-                    className="profilepicture"
-                    src={i.ProfilePictureURL}
-                  />
-                </td>
-                <td>
-                  <Link to={"/user/" + i.TL_ID} className="name">
-                    {i.Name}
-                  </Link>
-                </td>
-                <td>
-                  <span className="grade">{convertGrade(i.Grade)} </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div>
+        <Leaderboard />
       </div>
-
-      <div className="logout">
-        <h2 className="title">Recent Boulders</h2>
-        <table className="leaderboard">
-          <thead>
-            <tr>
-              <th>Picture</th>
-              <th>name</th>
-              <th>grade</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((i, idx) => (
-              <tr>
-                <td>
-                  <Link to={"/user/" + i.TL_ID} className="name">
-                    {i.Name}
-                  </Link>
-                </td>
-                <td>
-                  <span className="grade">{i.Grade} </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div>
+        <RecentBoulders />
       </div>
-
-      <div className="logout">
-        <h2 className="title">All time best Boulders</h2>
-        <table className="leaderboard">
-          <thead>
-            <tr>
-              <th>Picture</th>
-              <th>name</th>
-              <th>grade</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((i, idx) => (
-              <tr>
-                <td>
-                  <Link to={"/user/" + i.TL_ID} className="name">
-                    {i.Name}
-                  </Link>
-                </td>
-                <td>
-                  <span className="grade">{i.Grade} </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div>
+        <TopBoulders />
       </div>
       <BottomNavigation
         value={value}

@@ -165,8 +165,7 @@ export default function MenuAppBar({ children }) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={routeChangeDashboard}>Dashboard</MenuItem>
-                <MenuItem onClick={routeChangeSearch}>Search</MenuItem>
+                <MenuItem onClick={routeChangeDashboard}>Profile</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
