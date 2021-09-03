@@ -3,8 +3,9 @@ import {
   IconButton,
   makeStyles,
   Paper,
+  Table,
   TableCell,
-  TableHead,
+  TableContainer,
   TableRow,
   Typography,
 } from "@material-ui/core";
@@ -21,6 +22,7 @@ const Leaderboard = () => {
   const user = useSelector(selectUser);
   const data = useSelector(selectFollowing);
   console.log(data);
+  const sortableData = data.map(x => x);
 
   useEffect(() => {
     dispatch(fetchFollowing());
@@ -73,7 +75,6 @@ const Leaderboard = () => {
     fetch(URL + "/unfollow", requestOptions)
       .then(response => response.json())
       .then(console.log);
-    return;
   };
 
   const classes = useStyles();
@@ -83,29 +84,33 @@ const Leaderboard = () => {
         <Typography variant="h5" className={classes.title}>
           Leaderboard
         </Typography>
-        <TableHead className={classes.table}>
-          {data.map((i, idx) => (
-            <TableRow>
-              <>
-                <TableCell>
-                  <Avatar src={i.ProfilePictureURL}></Avatar>
-                </TableCell>
-                <TableCell key={i.Name}>{i.Name}</TableCell>
-                <TableCell key={i.Grade}>{convertGrade(i.Grade)}</TableCell>
-                <TableCell key={i.TL_ID}>
-                  <IconButton
-                    edge="end"
-                    aria-label="follow"
-                    value={i._id}
-                    onClick={handleUnfollow}
-                  >
-                    <BackspaceIcon />
-                  </IconButton>
-                </TableCell>
-              </>
-            </TableRow>
-          ))}
-        </TableHead>
+        <Table className={classes.table}>
+          <TableContainer>
+            {sortableData
+              .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))
+              .map((i, idx) => (
+                <TableRow>
+                  <>
+                    <TableCell>
+                      <Avatar src={i.ProfilePictureURL}></Avatar>
+                    </TableCell>
+                    <TableCell key={i.Name}>{i.Name}</TableCell>
+                    <TableCell key={i.Grade}>{convertGrade(i.Grade)}</TableCell>
+                    <TableCell key={i.TL_ID}>
+                      <IconButton
+                        edge="end"
+                        aria-label="follow"
+                        value={i._id}
+                        onClick={handleUnfollow}
+                      >
+                        <BackspaceIcon />
+                      </IconButton>
+                    </TableCell>
+                  </>
+                </TableRow>
+              ))}
+          </TableContainer>
+        </Table>
         {/* <List
           className={classes.list}
           style={{ flexGrow: 1, overflow: "auto" }}
