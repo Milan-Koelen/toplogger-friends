@@ -42,7 +42,7 @@ const Leaderboard = () => {
       flexDirection: "column",
       marginBottom: "5vh",
       flexGrow: 1,
-      marginLeft: "15vw",
+      marginLeft: "1vw",
     },
     paper: {
       marginTop: "10vh",
