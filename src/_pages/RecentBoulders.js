@@ -52,9 +52,6 @@ const RecentBoulders = () => {
       marginLeft: "6vw",
       marginRight: "5vw",
     },
-    profilepicture: {
-      marginRight: "5vw",
-    },
     title: {
       display: "flex",
       margin: theme.spacing(4, "auto", 2),
