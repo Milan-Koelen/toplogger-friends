@@ -1,4 +1,5 @@
 import {
+  Link,
   List,
   ListItem,
   ListItemText,
@@ -72,7 +73,7 @@ const RecentBoulders = () => {
           style={{ flexGrow: 1, overflow: "auto" }}
         >
           {data.map((i, idx) => (
-            <ListItem to={"/user/" + i.TL_ID}>
+            <ListItem component={Link} to={"/user/" + i.TL_ID} key={i.TL_ID}>
               <ListItemText
                 primary={i.Name}
                 secondary={"Grade: " + convertGrade(i.Grade)}
