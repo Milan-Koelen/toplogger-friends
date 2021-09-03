@@ -44,12 +44,13 @@ const TopBoulders = () => {
       marginLeft: "15vw",
     },
     paper: {
-      marginTop: "20vh",
+      marginTop: "10vh",
       display: "flex",
       flexDirection: "column",
       flexGrow: 1,
-      width: "80vw",
-      marginLeft: "10vw",
+      width: "85vw",
+      marginLeft: "6vw",
+      marginRight: "5vw",
     },
     profilepicture: {
       marginRight: "5vw",

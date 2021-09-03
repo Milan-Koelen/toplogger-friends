@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     // bottom: 1,
-    width: "100%",
+    // width: "100vw",
     height: "100vh",
     position: "fixed",
   },
@@ -34,9 +34,9 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 0,
     bottom: 0,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+  // menuButton: {
+  //   marginRight: theme.spacing(2),
+  // },
   title: {
     flexGrow: 1,
   },
@@ -45,8 +45,9 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     paddingTop: 75,
     paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
+    paddingRight: 0,
     paddingBottom: 60,
+    // width: "100vw",
   },
 }));
 
@@ -163,7 +164,9 @@ export default function MenuAppBar({ children }) {
           )}
         </Toolbar>
       </AppBar>
+
       <div className={classes.pageContainer}>{children}</div>
+
       <BottomNavigation
         value={tabValue}
         onChange={(_e, tabIdx) => {

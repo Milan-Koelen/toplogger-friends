@@ -34,11 +34,6 @@ const Leaderboard = () => {
   ]);
 
   const useStyles = makeStyles(theme => ({
-    root: {
-      position: "fixed",
-      bottom: 0,
-    },
-
     table: {
       Width: "100%",
       display: "flex,",
@@ -52,8 +47,9 @@ const Leaderboard = () => {
       display: "flex",
       flexDirection: "column",
       flexGrow: 1,
-      width: "80vw",
-      marginLeft: "10vw",
+      width: "85vw",
+      marginLeft: "6vw",
+      marginRight: "5vw",
     },
     profilepicture: {
       marginRight: "5vw",
@@ -77,11 +73,12 @@ const Leaderboard = () => {
     fetch(URL + "/unfollow", requestOptions)
       .then(response => response.json())
       .then(console.log);
+    return;
   };
 
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.root}>
       <Paper className={classes.paper}>
         <Typography variant="h5" className={classes.title}>
           Leaderboard

@@ -35,11 +35,11 @@ const Dashboard = () => {
   ]);
 
   const useStyles = makeStyles(theme => ({
-    root: {
-      width: "100%",
-      position: "fixed",
-      bottom: 0,
-    },
+    // root: {
+    //   width: "90vw",
+    //   position: "middle",
+    //   bottom: 0,
+    // },
     name: {},
     title: { textAlign: "center", margin: theme.spacing(4) },
   }));
@@ -48,7 +48,7 @@ const Dashboard = () => {
   // const [value, setValue] = React.useState(0);
 
   return (
-    <div>
+    <div className={classes.root}>
       {/* <div className="chart">
         <VictoryChart>
           <VictoryBar data={data} x="quarter" y="earnings" />
