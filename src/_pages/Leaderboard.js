@@ -1,18 +1,17 @@
 import {
   Avatar,
-  Link,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
   makeStyles,
   Paper,
+  TableCell,
+  TableHead,
+  TableRow,
   Typography,
 } from "@material-ui/core";
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { URL } from "../config.js";
 import { fetchFollowing, selectFollowing } from "../features/followingSlice";
-import convertGrade from "../features/gradeConversion";
+import convertGrade from "../features/gradeConversion.js";
 import { selectUser } from "../features/userSlice";
 
 const Leaderboard = () => {
@@ -38,15 +37,17 @@ const Leaderboard = () => {
       position: "fixed",
       bottom: 0,
     },
-    list: {
-      width: "80vw",
+
+    table: {
+      Width: "100%",
+      display: "flex,",
       flexDirection: "column",
-      display: "flex",
+      marginBottom: "5vh",
       flexGrow: 1,
       marginLeft: "15vw",
     },
     paper: {
-      marginTop: "20vh",
+      marginTop: "10vh",
       display: "flex",
       flexDirection: "column",
       flexGrow: 1,
@@ -62,6 +63,21 @@ const Leaderboard = () => {
     },
   }));
 
+  const handleUnfollow = e => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: user.token,
+      },
+      body: JSON.stringify({ unfollow: e.currentTarget.value }),
+    };
+    console.log(requestOptions);
+    fetch(URL + "/unfollow", requestOptions)
+      .then(response => response.json())
+      .then(console.log);
+  };
+
   const classes = useStyles();
   return (
     <div>
@@ -69,8 +85,20 @@ const Leaderboard = () => {
         <Typography variant="h5" className={classes.title}>
           Leaderboard
         </Typography>
-
-        <List
+        <TableHead className={classes.table}>
+          {data.map((i, idx) => (
+            <TableRow>
+              <>
+                <TableCell>
+                  <Avatar src={i.ProfilePictureURL}></Avatar>
+                </TableCell>
+                <TableCell key={i.Name}>{i.Name}</TableCell>
+                <TableCell key={i.Grade}>{convertGrade(i.Grade)}</TableCell>
+              </>
+            </TableRow>
+          ))}
+        </TableHead>
+        {/* <List
           className={classes.list}
           style={{ flexGrow: 1, overflow: "auto" }}
         >
@@ -78,8 +106,8 @@ const Leaderboard = () => {
             <ListItem component={Link} to={"/user/" + i.TL_ID}>
               <ListItemAvatar>
                 <Avatar
-                  className={classes.profilepicture}
                   src={i.ProfilePictureURL}
+                  className={classes.profilepicture}
                   alt={"no_img"}
                 />
               </ListItemAvatar>
@@ -87,19 +115,19 @@ const Leaderboard = () => {
                 primary={i.Name}
                 secondary={"Grade: " + convertGrade(i.Grade)}
               />
-              {/* <ListItemSecondaryAction>
+              <ListItemSecondaryAction>
                 <IconButton
                   edge="end"
                   aria-label="follow"
                   value={i._id}
-                  onClick={handleFollow}
+                  onClick={handleUnfollow}
                 >
-                  <AddIcon />
+                  <DeleteIcon />
                 </IconButton>
-              </ListItemSecondaryAction> */}
+              </ListItemSecondaryAction>
             </ListItem>
           ))}
-        </List>
+        </List> */}
       </Paper>
     </div>
   );
