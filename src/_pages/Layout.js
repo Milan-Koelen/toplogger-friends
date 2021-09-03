@@ -12,8 +12,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { Dashboard } from "@material-ui/icons";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import LeaderboardIcon from "@material-ui/icons/Equalizer";
 import MenuIcon from "@material-ui/icons/Menu";
-import RestoreIcon from "@material-ui/icons/Restore";
 import Search from "@material-ui/icons/Search";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -173,7 +173,10 @@ export default function MenuAppBar({ children }) {
         className={classes.stickToBottom}
       >
         <BottomNavigationAction label="Dashboard" icon={<Dashboard />} />
-        <BottomNavigationAction label="Leaderboard" icon={<RestoreIcon />} />
+        <BottomNavigationAction
+          label="Leaderboard"
+          icon={<LeaderboardIcon />}
+        />
         <BottomNavigationAction label="Search" icon={<Search />} />
       </BottomNavigation>
     </div>
