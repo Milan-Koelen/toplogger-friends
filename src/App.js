@@ -1,16 +1,15 @@
-import "./App.css";
-import Login from "./_pages/Login";
-import Dashboard from "./_pages/Dashboard";
+import { createTheme, ThemeProvider } from "@material-ui/core";
 import { Route, Switch } from "react-router-dom";
+import "./App.css";
+import Dashboard from "./_pages/Dashboard";
+import Layout from "./_pages/Layout";
+import Leaderboard from "./_pages/Leaderboard";
+import Login from "./_pages/Login";
 import PrivateRoute from "./_pages/PrivateRoute";
 import Search from "./_pages/Search";
-import Layout from "./_pages/Layout";
 import UserPage from "./_pages/UserPage";
-import Leaderboard from "./_pages/Leaderboard";
 
-import { createMuiTheme, ThemeProvider } from "@material-ui/core";
-
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: "#2F184B",
