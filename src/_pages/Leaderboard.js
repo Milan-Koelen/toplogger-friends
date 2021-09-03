@@ -37,12 +37,12 @@ const Leaderboard = () => {
 
   const useStyles = makeStyles(theme => ({
     table: {
-      Width: "100%",
-      display: "flex,",
-      flexDirection: "column",
-      marginBottom: "5vh",
-      flexGrow: 1,
+      width: "100%",
+      // display: "flex,",
+      // flexDirection: "column",
+      // flexGrow: 1,
       marginLeft: "1vw",
+      marginRight: "auto",
     },
     paper: {
       marginTop: "10vh",
