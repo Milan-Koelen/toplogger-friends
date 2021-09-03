@@ -71,10 +71,11 @@ const Leaderboard = () => {
       },
       body: JSON.stringify({ unfollow: e.currentTarget.value }),
     };
-    console.log(requestOptions);
+    // this.forceUpdate();
+    // console.log(requestOptions);
     fetch(URL + "/unfollow", requestOptions)
       .then(response => response.json())
-      .then(console.log);
+      .then(console.log("user deleted"));
   };
 
   const classes = useStyles();
