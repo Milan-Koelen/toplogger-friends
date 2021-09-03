@@ -1,5 +1,5 @@
 // import no_img from "../img/no_img.gif";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { fetchFriends, selectFriends } from "../features/followingSlice";
@@ -34,16 +34,17 @@ const Dashboard = () => {
     user.TL_ID,
   ]);
 
-  const useStyles = makeStyles({
+  const useStyles = makeStyles(theme => ({
     root: {
       width: "100%",
       position: "fixed",
       bottom: 0,
     },
     name: {},
-  });
+    title: { textAlign: "center", margin: theme.spacing(4) },
+  }));
 
-  // const classes = useStyles();
+  const classes = useStyles();
   // const [value, setValue] = React.useState(0);
 
   return (
@@ -53,9 +54,12 @@ const Dashboard = () => {
           <VictoryBar data={data} x="quarter" y="earnings" />
         </VictoryChart>
       </div> */}
-      <h1 className="welcome_user">
-        Welcome <span className="user__name">{user.name}</span>
-      </h1>
+      <Typography className={classes.title} variant="h3" component="h3">
+        Welcome
+      </Typography>
+      <Typography className={classes.title} variant="h3" component="h3">
+        <span className="user__name">{user.name}</span>
+      </Typography>
       <div>
         <Leaderboard />
       </div>

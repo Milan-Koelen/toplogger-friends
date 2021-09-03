@@ -1,5 +1,6 @@
 import {
   Avatar,
+  IconButton,
   makeStyles,
   Paper,
   TableCell,
@@ -7,13 +8,14 @@ import {
   TableRow,
   Typography,
 } from "@material-ui/core";
+// import { PersonRemoveIcon } from "@material-ui/icons/";
+import BackspaceIcon from "@material-ui/icons/Backspace";
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { URL } from "../config.js";
 import { fetchFollowing, selectFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion.js";
 import { selectUser } from "../features/userSlice";
-
 const Leaderboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -33,7 +35,6 @@ const Leaderboard = () => {
 
   const useStyles = makeStyles(theme => ({
     root: {
-      width: "100%",
       position: "fixed",
       bottom: 0,
     },
@@ -94,6 +95,16 @@ const Leaderboard = () => {
                 </TableCell>
                 <TableCell key={i.Name}>{i.Name}</TableCell>
                 <TableCell key={i.Grade}>{convertGrade(i.Grade)}</TableCell>
+                <TableCell key={i.TL_ID}>
+                  <IconButton
+                    edge="end"
+                    aria-label="follow"
+                    value={i._id}
+                    onClick={handleUnfollow}
+                  >
+                    <BackspaceIcon />
+                  </IconButton>
+                </TableCell>
               </>
             </TableRow>
           ))}
