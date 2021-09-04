@@ -6,6 +6,7 @@ import Layout from "./_pages/Layout";
 import Leaderboard from "./_pages/Leaderboard";
 import Login from "./_pages/Login";
 import PrivateRoute from "./_pages/PrivateRoute";
+import Profile from "./_pages/Profile";
 import Search from "./_pages/Search";
 import UserPage from "./_pages/UserPage";
 
@@ -37,6 +38,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/user/:TL_ID">
               <UserPage />
+            </PrivateRoute>
+            <PrivateRoute path="/profile">
+              <Profile />
             </PrivateRoute>
           </Switch>
         </Layout>
