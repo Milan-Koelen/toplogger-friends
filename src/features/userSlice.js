@@ -36,14 +36,16 @@ export const login = ({ email, password }) => {
       const data = await result.json();
       console.log(data);
       console.log(data.name);
-      console.log(data.TL_Grade);
+      console.log(data.grade);
+      console.log(data.TotalTops);
 
       dispatch(
         userSlice.actions.setUser({
           token: data.token,
           name: data.name,
-          TL_Grade: data.TL_Grade,
-          Accendhistory: data.Accendhistory,
+          TL_Grade: data.grade,
+          AccendHistory: data.AccendHistory,
+          TotalTops: data.TotalTops,
         })
       );
     } catch (e) {
@@ -77,6 +79,7 @@ export const signup = ({ email, password }) => {
           name: data.name,
           TL_Grade: data.TL_Grade,
           Accendhistory: data.Accendhistory,
+          TotalTops: data.TotalTops,
         })
       );
     } catch (e) {
