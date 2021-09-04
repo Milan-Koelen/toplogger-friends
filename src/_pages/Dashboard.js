@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { fetchFriends, selectFriends } from "../features/followingSlice";
 import { fetchFollowing } from "../features/followingSlice";
+import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
 import "./Dashboard.css";
 import Leaderboard from "./Leaderboard";
