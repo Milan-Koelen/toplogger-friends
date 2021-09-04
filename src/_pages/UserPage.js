@@ -1,11 +1,13 @@
+import { makeStyles, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { URL } from "../config";
 import convertGrade from "../features/gradeConversion";
+import RecentBoulders from "./RecentBoulders";
+import TopBoulders from "./TopBoulders";
 import "./UserPage.css";
 
 export default function UserPage() {
-  // const [Loading, setLoading] = useState(false);
   const [data, setData] = useState({});
   const params = useParams();
   const TL_ID = params.TL_ID;
@@ -23,36 +25,34 @@ export default function UserPage() {
 
     FetchUser();
   }, [TL_ID]);
+  const useStyles = makeStyles(theme => ({
+    // root: {
+    //   width: "90vw",
+    //   position: "middle",
+    //   bottom: 0,
+    // },
+    name: {},
+    title: { textAlign: "center", margin: theme.spacing(4) },
+  }));
+  const classes = useStyles();
+
   return (
     <div>
-      <div>
-        <img
-          className="profilePicture"
-          src={data.ProfilePictureURL}
-          alt=""
-        ></img>
-        <h1 className="user__name">{data.Name}</h1>
+      <img className="profilePicture" src={data.ProfilePictureURL} alt=""></img>
+      <Typography className={classes.title} variant="h3" component="h3">
+        <span className="user__name">{data.Name}</span>
+      </Typography>
+      <Typography className={classes.title} variant="h5" component="h5">
+        Grade: {convertGrade(data.Grade)}
+      </Typography>
+      <Typography className={classes.title} variant="h5" component="h5">
+        Boulders Logged: {data.TotalLogged}
+      </Typography>
 
-        <p>{convertGrade(data.Grade)}</p>
-
-        {/* total accends not working on load */}
-        {/* <p>Total Accends: {Array.from(data.Accends).length}</p> */}
-        <h2 className="title">All time best</h2>
-        <table className="bestBoulders">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Gym</th>
-              <th>grade</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {/* total accends not working on load */}
+      {/* <p>Total Accends: {Array.from(data.Accends).length}</p> */}
+      <TopBoulders />
+      <RecentBoulders />
     </div>
   );
 }

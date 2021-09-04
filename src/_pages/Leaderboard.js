@@ -92,6 +92,9 @@ const Leaderboard = () => {
               .map((i, idx) => (
                 <TableRow>
                   <>
+                    <TableCell key={i.idx}>
+                      {Number.parseInt(idx) + 1}
+                    </TableCell>
                     <TableCell>
                       <Avatar src={i.ProfilePictureURL}></Avatar>
                     </TableCell>
