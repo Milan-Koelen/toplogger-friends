@@ -80,13 +80,8 @@ export default function MenuAppBar({ children }) {
     handleClose();
   };
 
-  const routeChangeDashboard = route => {
-    let path = `/`;
-    history.push(path);
-    handleClose();
-  };
-  const routeChangeSearch = route => {
-    let path = `/search`;
+  const routChangeProfile = route => {
+    let path = `/profile`;
     history.push(path);
     handleClose();
   };
@@ -157,7 +152,7 @@ export default function MenuAppBar({ children }) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={routeChangeDashboard}>Profile</MenuItem>
+                <MenuItem onClick={routChangeProfile}>Profile</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>

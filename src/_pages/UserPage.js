@@ -43,14 +43,15 @@ export default function UserPage() {
         <span className="user__name">{data.Name}</span>
       </Typography>
       <Typography className={classes.title} variant="h5" component="h5">
-        Grade: {convertGrade(data.Grade)}
+        Grade: <strong>{convertGrade(data.Grade)}</strong>
       </Typography>
       <Typography className={classes.title} variant="h5" component="h5">
         Boulders Logged: {data.TotalLogged}
       </Typography>
-
+      <Typography className={classes.title} variant="h5" component="h5">
+        Best Boulder:
+      </Typography>
       {/* total accends not working on load */}
-      {/* <p>Total Accends: {Array.from(data.Accends).length}</p> */}
       <TopBoulders />
       <RecentBoulders />
     </div>
