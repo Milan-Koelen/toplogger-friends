@@ -9,15 +9,14 @@ import {
 } from "@material-ui/core";
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFollowing, selectFollowing } from "../features/followingSlice";
+import { fetchFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
 
-const RecentBoulders = () => {
+const Boulders = props => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const data = useSelector(selectFollowing);
-
+  const data = props.data;
   useEffect(() => {
     dispatch(fetchFollowing());
   }, [
@@ -28,7 +27,6 @@ const RecentBoulders = () => {
     user.following,
     user.TL_ID,
   ]);
-
   const useStyles = makeStyles(theme => ({
     root: {
       width: "100%",
@@ -55,23 +53,27 @@ const RecentBoulders = () => {
       display: "flex",
       margin: theme.spacing(4, "auto", 2),
     },
-  }));
+  })); // const data = this.props.dataRecentBoulders;
 
   const classes = useStyles();
   return (
     <div>
       <Paper className={classes.paper}>
         <Typography variant="h5" className={classes.title}>
-          Recent Boulders
+          {props.title}
         </Typography>
 
         <List
           className={classes.list}
-          style={{ flexGrow: 1, overflow: "auto" }}
+          style={{
+            flexGrow: 1,
+            overflow: "auto",
+          }}
         >
           {data.map((i, idx) => (
             <ListItem component={Link} to={"/user/" + i.TL_ID} key={i.TL_ID}>
               <ListItemText
+                key={i.Name}
                 primary={i.Name}
                 secondary={"Grade: " + convertGrade(i.Grade)}
               />
@@ -82,4 +84,5 @@ const RecentBoulders = () => {
     </div>
   );
 };
-export default RecentBoulders;
+
+export default Boulders;
