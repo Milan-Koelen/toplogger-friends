@@ -56,9 +56,9 @@ const Dashboard = () => {
         <span className="user__name">{user.name}</span>
       </Typography>
 
-      {/* <Typography className={classes.title} variant="h5" component="h5">
+      <Typography className={classes.title} variant="h5" component="h5">
         Grade: <strong>{convertGrade(user.TL_Grade)}</strong>
-      </Typography> */}
+      </Typography>
 
       {/* <Typography className={classes.title} variant="h5" component="h5">
         Boulders Logged: {user.TotalTops}
