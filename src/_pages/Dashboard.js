@@ -45,7 +45,6 @@ const Dashboard = () => {
   }));
 
   const classes = useStyles();
-  // const [value, setValue] = React.useState(0);
 
   return (
     <div className={classes.root}>
