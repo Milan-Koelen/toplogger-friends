@@ -22,7 +22,8 @@ import { logout, selectUser } from "../features/userSlice";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    // bottom: 1,
+    marginBottom: "6vh",
+    bottom: 1,
     width: "100vw",
     height: "100vh",
     position: "fixed",

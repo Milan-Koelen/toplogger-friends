@@ -6,16 +6,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
+import Boulders from "./Boulders";
 import "./Dashboard.css";
 import Leaderboard from "./Leaderboard";
-import RecentBoulders from "./RecentBoulders";
-import TopBoulders from "./TopBoulders";
 
 // import { VictoryBar, VictoryChart } from "victory";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const dataRecentBoulders = [
+    { Name: "Los Gigantos", grade: 4.8524 },
+    { Name: "Giantito", grade: 5.3324 },
+    { Name: "Palidans", grade: 7.42243 },
+  ];
+  // const dataRecentBoulders = user.Accends;
+  const dataTopBoulders = [
+    { Name: "BigBoy", grade: 3.22452 },
+    { Name: "Goway", grade: 8.34444 },
+  ];
+  // const dataTopBoulders = user.Accends;
+
   // const data = useSelector(selectFollowing);
 
   // console.log(data);
@@ -27,6 +38,7 @@ const Dashboard = () => {
     dispatch,
     user.token,
     user.name,
+    user.Accends,
     user.TL_Grade,
     user.following,
     user.TL_ID,
@@ -62,6 +74,9 @@ const Dashboard = () => {
       </Typography>
 
       {/* <Typography className={classes.title} variant="h5" component="h5">
+        Grade: <strong>{convertGrade(user.TL_Grade)}</strong>
+      </Typography>
+      <Typography className={classes.title} variant="h5" component="h5">
         Boulders Logged: {user.TotalTops}
       </Typography>
       <Typography className={classes.title} variant="h5" component="h5">
@@ -71,10 +86,10 @@ const Dashboard = () => {
         <Leaderboard />
       </div>
       <div>
-        <RecentBoulders />
+        <Boulders data={dataRecentBoulders} title="Recent Boulders" />
       </div>
       <div>
-        <TopBoulders />
+        <Boulders data={dataTopBoulders} title="Top Boulders" />
       </div>
     </div>
   );
