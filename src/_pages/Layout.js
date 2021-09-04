@@ -1,7 +1,8 @@
+import { Avatar } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 // import Switch from "@material-ui/core/Switch";
 // import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -11,14 +12,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { Dashboard } from "@material-ui/icons";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import LeaderboardIcon from "@material-ui/icons/Equalizer";
-import MenuIcon from "@material-ui/icons/Menu";
 import Search from "@material-ui/icons/Search";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import { logout } from "../features/userSlice";
+import { logout, selectUser } from "../features/userSlice";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,6 +54,7 @@ export default function MenuAppBar({ children }) {
   const classes = useStyles();
   const [auth] = useState(true);
   const history = useHistory();
+  const user = useSelector(selectUser);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -114,7 +114,7 @@ export default function MenuAppBar({ children }) {
       </FormGroup> */}
       <AppBar position="fixed" className={"asdf"}>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
@@ -122,21 +122,21 @@ export default function MenuAppBar({ children }) {
             // onClick={handleNav}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography variant="h6" align="center" className={classes.title}>
             Toplogger Friends
           </Typography>
           {auth && (
             <div>
-              <IconButton
+              <Button
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
-              </IconButton>
+                <Avatar src={user.profilePicture}></Avatar>
+              </Button>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
