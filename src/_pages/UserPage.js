@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { URL } from "../config";
 import convertGrade from "../features/gradeConversion";
-import RecentBoulders from "./RecentBoulders";
-import TopBoulders from "./TopBoulders";
+import Boulders from "./Boulders";
 import "./UserPage.css";
 
 export default function UserPage() {
@@ -36,6 +35,16 @@ export default function UserPage() {
   }));
   const classes = useStyles();
 
+  const dataRecentBoulders = [
+    { Name: "Giantito", grade: 5.3324 },
+    { Name: "Palidans", grade: 7.42243 },
+  ];
+  // const dataRecentBoulders = user.Accends;
+  const dataTopBoulders = [
+    { Name: "BigBoy", grade: 3.22452 },
+    { Name: "Goway", grade: 8.34444 },
+  ];
+
   return (
     <div>
       <img className="profilePicture" src={data.ProfilePictureURL} alt=""></img>
@@ -45,15 +54,15 @@ export default function UserPage() {
       <Typography className={classes.title} variant="h5" component="h5">
         Grade: <strong>{convertGrade(data.Grade)}</strong>
       </Typography>
-      <Typography className={classes.title} variant="h5" component="h5">
+      {/* <Typography className={classes.title} variant="h5" component="h5">
         Boulders Logged: {data.TotalLogged}
       </Typography>
       <Typography className={classes.title} variant="h5" component="h5">
         Best Boulder:
-      </Typography>
+      </Typography> */}
       {/* total accends not working on load */}
-      <TopBoulders />
-      <RecentBoulders />
+      <Boulders data={dataRecentBoulders} title="Recent Boulders" />
+      <Boulders data={dataTopBoulders} title="Top Boulders" />
     </div>
   );
 }

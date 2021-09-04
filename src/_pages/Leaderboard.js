@@ -79,39 +79,39 @@ const Leaderboard = () => {
 
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <Typography variant="h5" className={classes.title}>
-          Leaderboard
-        </Typography>
-        <Table className={classes.table}>
-          <TableContainer>
-            {sortableData
-              .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))
-              .map((i, idx) => (
-                <TableRow>
-                  <TableCell key={i.idx}>{Number.parseInt(idx) + 1}</TableCell>
-                  <TableCell>
-                    <Avatar src={i.ProfilePictureURL}></Avatar>
-                  </TableCell>
-                  <TableCell key={i.Name}>{i.Name}</TableCell>
-                  <TableCell key={i.Grade}>{convertGrade(i.Grade)}</TableCell>
-                  <TableCell key={i.TL_ID}>
-                    <IconButton
-                      edge="end"
-                      aria-label="follow"
-                      value={i._id}
-                      onClick={handleUnfollow}
-                    >
-                      <BackspaceIcon />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-          </TableContainer>
-        </Table>
-      </Paper>
-    </div>
+    // <div className={classes.root}>
+    <Paper className={classes.paper}>
+      <Typography variant="h5" className={classes.title}>
+        Leaderboard
+      </Typography>
+      <Table className={classes.table}>
+        <TableContainer>
+          {sortableData
+            .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))
+            .map((i, idx) => (
+              <TableRow>
+                <TableCell key={i.idx}>{Number.parseInt(idx) + 1}</TableCell>
+                <TableCell key={i.ProfilePictureURL}>
+                  <Avatar src={i.ProfilePictureURL}></Avatar>
+                </TableCell>
+                <TableCell key={i.Name}>{i.Name}</TableCell>
+                <TableCell key={i.Grade}>{convertGrade(i.Grade)}</TableCell>
+                <TableCell key={i.TL_ID}>
+                  <IconButton
+                    edge="end"
+                    aria-label="follow"
+                    value={i._id}
+                    onClick={handleUnfollow}
+                  >
+                    <BackspaceIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            ))}
+        </TableContainer>
+      </Table>
+    </Paper>
+    // {/* </div> */}
   );
 };
 export default Leaderboard;
