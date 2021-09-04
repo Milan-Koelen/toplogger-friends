@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { fetchFriends, selectFriends } from "../features/followingSlice";
 import { fetchFollowing } from "../features/followingSlice";
-import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
 import "./Dashboard.css";
 import Leaderboard from "./Leaderboard";
@@ -56,10 +55,10 @@ const Dashboard = () => {
       <Typography className={classes.title} variant="h3" component="h3">
         <span className="user__name">{user.name}</span>
       </Typography>
-      <Typography className={classes.title} variant="h5" component="h5">
+      {/* <Typography className={classes.title} variant="h5" component="h5">
         Grade: <strong>{convertGrade(user.TL_Grade)}</strong>
       </Typography>
-      {/* <Typography className={classes.title} variant="h5" component="h5">
+      <Typography className={classes.title} variant="h5" component="h5">
         Boulders Logged: {user.TotalTops}
       </Typography>
       <Typography className={classes.title} variant="h5" component="h5">
