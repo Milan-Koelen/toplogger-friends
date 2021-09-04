@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Button,
   Container,
   IconButton,
   List,
@@ -12,7 +13,6 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/PersonAdd";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -145,14 +145,15 @@ const SearchUser = () => {
                 secondary={"Grade: " + convertGrade(i.Grade)}
               />
               <ListItemSecondaryAction>
-                <IconButton
+                <Button
+                  variant="contained"
                   edge="end"
                   aria-label="follow"
                   value={i._id}
                   onClick={handleClaim}
                 >
-                  <AddIcon />
-                </IconButton>
+                  Connect
+                </Button>
               </ListItemSecondaryAction>
             </ListItem>
           ))}
