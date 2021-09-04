@@ -17,7 +17,6 @@ const RecentBoulders = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const data = useSelector(selectFollowing);
-  console.log(data);
 
   useEffect(() => {
     dispatch(fetchFollowing());

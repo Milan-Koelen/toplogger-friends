@@ -21,7 +21,6 @@ const Leaderboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const data = useSelector(selectFollowing);
-  console.log(data);
   const sortableData = data.map(x => x);
 
   useEffect(() => {
@@ -91,60 +90,26 @@ const Leaderboard = () => {
               .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))
               .map((i, idx) => (
                 <TableRow>
-                  <>
-                    <TableCell key={i.idx}>
-                      {Number.parseInt(idx) + 1}
-                    </TableCell>
-                    <TableCell>
-                      <Avatar src={i.ProfilePictureURL}></Avatar>
-                    </TableCell>
-                    <TableCell key={i.Name}>{i.Name}</TableCell>
-                    <TableCell key={i.Grade}>{convertGrade(i.Grade)}</TableCell>
-                    <TableCell key={i.TL_ID}>
-                      <IconButton
-                        edge="end"
-                        aria-label="follow"
-                        value={i._id}
-                        onClick={handleUnfollow}
-                      >
-                        <BackspaceIcon />
-                      </IconButton>
-                    </TableCell>
-                  </>
+                  <TableCell key={i.idx}>{Number.parseInt(idx) + 1}</TableCell>
+                  <TableCell>
+                    <Avatar src={i.ProfilePictureURL}></Avatar>
+                  </TableCell>
+                  <TableCell key={i.Name}>{i.Name}</TableCell>
+                  <TableCell key={i.Grade}>{convertGrade(i.Grade)}</TableCell>
+                  <TableCell key={i.TL_ID}>
+                    <IconButton
+                      edge="end"
+                      aria-label="follow"
+                      value={i._id}
+                      onClick={handleUnfollow}
+                    >
+                      <BackspaceIcon />
+                    </IconButton>
+                  </TableCell>
                 </TableRow>
               ))}
           </TableContainer>
         </Table>
-        {/* <List
-          className={classes.list}
-          style={{ flexGrow: 1, overflow: "auto" }}
-        >
-          {data.map((i, idx) => (
-            <ListItem component={Link} to={"/user/" + i.TL_ID}>
-              <ListItemAvatar>
-                <Avatar
-                  src={i.ProfilePictureURL}
-                  className={classes.profilepicture}
-                  alt={"no_img"}
-                />
-              </ListItemAvatar>
-              <ListItemText
-                primary={i.Name}
-                secondary={"Grade: " + convertGrade(i.Grade)}
-              />
-              <ListItemSecondaryAction>
-                <IconButton
-                  edge="end"
-                  aria-label="follow"
-                  value={i._id}
-                  onClick={handleUnfollow}
-                >
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          ))}
-        </List> */}
       </Paper>
     </div>
   );
