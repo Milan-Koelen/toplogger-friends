@@ -12,6 +12,23 @@ import Leaderboard from "./Leaderboard";
 
 // import { VictoryBar, VictoryChart } from "victory";
 
+const useStyles = makeStyles(theme => ({
+  name: {},
+  title: { textAlign: "center", margin: theme.spacing(4) },
+  profilePicture: { borderRadius: "50%", margin: "auto" },
+  paperList: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%",
+
+    "&>div": {
+      width: "80%",
+      marginBottom: theme.spacing(4),
+    },
+  },
+}));
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -34,21 +51,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(fetchFollowing());
-  }, [
-    dispatch,
-    user.token,
-    user.name,
-    user.Accends,
-    user.TL_Grade,
-    user.following,
-    user.TL_ID,
-    user.TotalTops,
-  ]);
-
-  const useStyles = makeStyles(theme => ({
-    name: {},
-    title: { textAlign: "center", margin: theme.spacing(4) },
-  }));
+  }, [dispatch]);
 
   const classes = useStyles();
   console.log(user.name);
@@ -73,19 +76,13 @@ const Dashboard = () => {
         Grade: <strong>{convertGrade(user.TL_Grade)}</strong>
       </Typography>
 
-      {/* <Typography className={classes.title} variant="h5" component="h5">
+      <Typography className={classes.title} variant="h5" component="h5">
         Boulders Logged: {user.TotalTops}
       </Typography>
-      <Typography className={classes.title} variant="h5" component="h5">
-        Best Boulder:
-      </Typography>  */}
-      <div>
+
+      <div className={classes.paperList}>
         <Leaderboard />
-      </div>
-      <div>
         <Boulders data={dataRecentBoulders} title="Recent Boulders" />
-      </div>
-      <div>
         <Boulders data={dataTopBoulders} title="Top Boulders" />
       </div>
     </div>
