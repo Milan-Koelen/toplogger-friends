@@ -15,47 +15,48 @@ import {
 import AddIcon from "@material-ui/icons/PersonAdd";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { URL } from "../config";
+import { followUser } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
-import { selectUser } from "../features/userSlice";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "500px",
+    height: "100%",
+  },
+  demo: {
+    backgroundColor: theme.palette.background.paper,
+  },
+  title: {
+    margin: theme.spacing(4, "auto", 2),
+  },
+  searchContainer: {
+    display: "flex",
+    flexDirection: "row",
+    padding: theme.spacing(4),
+  },
+  searchBar: {
+    flexGrow: 1,
+    marginRight: theme.spacing(4),
+  },
+  searchButton: {},
+  paper: {
+    display: "flex",
+    flexDirection: "column",
+    flexGrow: 1,
+  },
+}));
 
 const SearchUser = () => {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
 
-  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
-  const useStyles = makeStyles(theme => ({
-    root: {
-      display: "flex",
-      flexDirection: "column",
-      maxWidth: "500px",
-      height: "100%",
-    },
-    demo: {
-      backgroundColor: theme.palette.background.paper,
-    },
-    title: {
-      margin: theme.spacing(4, "auto", 2),
-    },
-    searchContainer: {
-      display: "flex",
-      flexDirection: "row",
-      padding: theme.spacing(4),
-    },
-    searchBar: {
-      flexGrow: 1,
-      marginRight: theme.spacing(4),
-    },
-    searchButton: {},
-    paper: {
-      display: "flex",
-      flexDirection: "column",
-      flexGrow: 1,
-    },
-  }));
   const classes = useStyles();
 
   const handleSearch = async () => {
@@ -79,18 +80,20 @@ const SearchUser = () => {
     }
   };
 
-  const handleFollow = e => {
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: user.token,
-      },
-      body: JSON.stringify({ follow: e.currentTarget.value }),
-    };
-    fetch(URL + "/follow", requestOptions)
-      .then(response => response.json())
-      .then(console.log);
+  const handleFollow = id => {
+    dispatch(followUser(id));
+
+    // const requestOptions = {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     authorization: user.token,
+    //   },
+    //   body: JSON.stringify({ follow: e.currentTarget.value }),
+    // };
+    // fetch(URL + "/follow", requestOptions)
+    //   .then(response => response.json())
+    //   .then(console.log);
   };
   return (
     <Container className={classes.root}>
@@ -140,8 +143,7 @@ const SearchUser = () => {
                 <IconButton
                   edge="end"
                   aria-label="follow"
-                  value={i._id}
-                  onClick={handleFollow}
+                  onClick={() => handleFollow(i._id)}
                 >
                   <AddIcon />
                 </IconButton>
