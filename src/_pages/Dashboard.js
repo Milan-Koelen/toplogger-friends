@@ -48,10 +48,12 @@ const Dashboard = () => {
   const useStyles = makeStyles(theme => ({
     name: {},
     title: { textAlign: "center", margin: theme.spacing(4) },
+    profilePicture: { borderRadius: "50%", margin: "auto" },
   }));
 
   const classes = useStyles();
   console.log(user.name);
+  // console.log(user.TotalTops);
   console.log(user);
   console.log("+++++=====+++++=====");
 
@@ -65,6 +67,12 @@ const Dashboard = () => {
       <Typography className={classes.title} variant="h3" component="h3">
         Welcome
       </Typography>
+      <img
+        className={classes.profilePicture}
+        src={user.ProfilePictureURL}
+        alt=""
+      ></img>
+
       <Typography className={classes.title} variant="h3" component="h3">
         <span className="user__name">{user.name}</span>
       </Typography>
