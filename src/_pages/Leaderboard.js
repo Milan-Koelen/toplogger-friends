@@ -22,9 +22,6 @@ import { selectUser } from "../features/userSlice";
 const useStyles = makeStyles(theme => ({
   table: {
     width: "100%",
-    // display: "flex,",
-    // flexDirection: "column",
-    // flexGrow: 1,
     marginLeft: "1vw",
     marginRight: "auto",
   },
@@ -56,8 +53,6 @@ const Leaderboard = () => {
       },
       body: JSON.stringify({ unfollow: e.currentTarget.value }),
     };
-    // this.forceUpdate();
-    // console.log(requestOptions);
     fetch(URL + "/unfollow", requestOptions)
       .then(response => response.json())
       .then(console.log("user deleted"));
@@ -65,7 +60,6 @@ const Leaderboard = () => {
 
   const classes = useStyles();
   return (
-    // <div className={classes.root}>
     <Paper className={classes.paper}>
       <Typography variant="h5" className={classes.title}>
         Leaderboard
@@ -99,7 +93,6 @@ const Leaderboard = () => {
         </Table>
       </TableContainer>
     </Paper>
-    // {/* </div> */}
   );
 };
 export default Leaderboard;

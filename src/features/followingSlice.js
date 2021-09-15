@@ -24,7 +24,7 @@ export const fetchFollowing = () => {
           authorization: jwt,
         },
       });
-      console.log(result);
+
       if (result.status !== 200) {
         console.error(await result.text(), result.status);
         return;

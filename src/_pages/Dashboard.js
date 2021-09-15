@@ -7,13 +7,12 @@ import { fetchFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
 import Boulders from "./Boulders";
-import "./Dashboard.css";
 import Leaderboard from "./Leaderboard";
 
 // import { VictoryBar, VictoryChart } from "victory";
 
 const useStyles = makeStyles(theme => ({
-  name: {},
+  userName: { color: "Purple" },
   title: { textAlign: "center", margin: theme.spacing(4) },
   profilePicture: { borderRadius: "50%", margin: "auto" },
   paperList: {
@@ -42,7 +41,6 @@ const Dashboard = () => {
     { Name: "BigBoy", grade: 3.22452 },
     { Name: "Goway", grade: 8.34444 },
   ];
-  // const dataTopBoulders = user.Accends;
 
   // const data = useSelector(selectFollowing);
 
@@ -56,6 +54,7 @@ const Dashboard = () => {
   const classes = useStyles();
   console.log(user.name);
   console.log(user);
+  console.log(user.TotalTops);
   console.log("+++++=====+++++=====");
 
   return (
@@ -69,7 +68,7 @@ const Dashboard = () => {
         Welcome
       </Typography>
       <Typography className={classes.title} variant="h3" component="h3">
-        <span className="user__name">{user.name}</span>
+        <span className={classes.userName}>{user.name}</span>
       </Typography>
 
       <Typography className={classes.title} variant="h5" component="h5">

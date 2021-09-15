@@ -48,7 +48,6 @@ export const login = ({ email, password }) => {
           AccendHistory: data.AccendHistory,
           TotalTops: data.TotalTops,
           ProfilePictureUrl: data.ProfilePictureUrl,
-          following: data.following,
         })
       );
     } catch (e) {
@@ -80,10 +79,6 @@ export const signup = ({ email, password }) => {
         userSlice.actions.setUser({
           token: data.token,
           name: data.name,
-          // TL_Grade: data.TL_Grade,
-          // Accendhistory: data.Accendhistory,
-          // TotalTops: data.TotalTops,
-          // ProfilePictureUrl: data.ProfilePictureUrl,
         })
       );
     } catch (e) {
