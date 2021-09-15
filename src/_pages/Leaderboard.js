@@ -21,9 +21,9 @@ import { selectUser } from "../features/userSlice";
 
 const useStyles = makeStyles(theme => ({
   table: {
-    width: "100%",
-    marginLeft: "1vw",
-    marginRight: "auto",
+    width: "90%",
+    marginLeft: "5%",
+    marginRight: "5%",
   },
   paper: {
     display: "flex",

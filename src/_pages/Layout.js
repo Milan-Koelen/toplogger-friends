@@ -43,12 +43,13 @@ const useStyles = makeStyles(theme => ({
   },
   pageContainer: {
     overflowY: "auto",
+    overflowX: "hidden",
     height: "100%",
     paddingTop: 75,
     paddingLeft: theme.spacing(1),
     paddingRight: 0,
     paddingBottom: 60,
-    // width: "100vw",
+    maxWidth: "100%",
   },
 }));
 
