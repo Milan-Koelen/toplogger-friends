@@ -69,7 +69,7 @@ const Leaderboard = () => {
             {sortableData
               .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))
               .map((i, idx) => (
-                <TableRow key={i.idx}>
+                <TableRow key={i.idx} component="a" href={"/user/" + i.TL_ID}>
                   <TableCell>{Number.parseInt(idx) + 1}</TableCell>
                   <TableCell>
                     <Avatar src={i.ProfilePictureURL}></Avatar>

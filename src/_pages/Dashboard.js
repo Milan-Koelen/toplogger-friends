@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
 
     "&>div": {
-      width: "80%",
+      width: "90%",
       marginBottom: theme.spacing(4),
     },
   },
