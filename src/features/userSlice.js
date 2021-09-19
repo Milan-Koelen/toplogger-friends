@@ -36,7 +36,7 @@ export const login = ({ email, password }) => {
       const data = await result.json();
       console.log(data);
       console.log(data.name);
-      console.log(data.grade);
+      // console.log(data.grade);
       // console.log(data.TL_ID.TotalTops);
       console.log(data.following);
 

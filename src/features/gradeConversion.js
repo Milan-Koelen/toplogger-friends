@@ -11,35 +11,35 @@ const data = {
     },
     {
       value: 3,
-      name: "3a",
+      name: "3",
     },
     {
       value: 3.33,
-      name: "3b",
+      name: "3+",
     },
     {
       value: 3.67,
-      name: "3c",
+      name: "4-",
     },
     {
       value: 4,
-      name: "4a",
+      name: "4",
     },
     {
       value: 4.33,
-      name: "4b",
+      name: "4+",
     },
     {
       value: 4.67,
-      name: "4c",
+      name: "5-",
     },
     {
       value: 5,
-      name: "5a",
+      name: "5",
     },
     {
-      value: 5.17,
-      name: "5a+",
+      value: 5.5,
+      name: "5+",
     },
     {
       value: 5.33,
@@ -48,14 +48,6 @@ const data = {
     {
       value: 5.5,
       name: "5b+",
-    },
-    {
-      value: 5.67,
-      name: "5c",
-    },
-    {
-      value: 5.83,
-      name: "5c+",
     },
     {
       value: 6,
@@ -151,7 +143,16 @@ const data = {
 const convertGrade = gradeValue => {
   for (let i = 0; i < data.data.length; i++) {
     if (data.data.length <= i + 1 || data.data[i + 1].value >= gradeValue) {
-      return data.data[i].name;
+      const grade = data.data[i].name;
+      // const gradeValueRound = data.data[i].value;
+      // const percentage =
+      //   Math.round(
+      //     ((gradeValue - gradeValueRound) /
+      //       (data.data[i].value - gradeValueRound)) *
+      //       100
+      //   ) + "%";
+      // console.log("percentage: " + percentage);
+      return [grade];
     }
   }
 };
