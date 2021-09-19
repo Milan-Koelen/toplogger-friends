@@ -10,7 +10,6 @@ import {
   TableRow,
   Typography,
 } from "@material-ui/core";
-// import { PersonRemoveIcon } from "@material-ui/icons/";
 import BackspaceIcon from "@material-ui/icons/Backspace";
 import { React } from "react";
 import { useSelector } from "react-redux";
@@ -65,7 +64,7 @@ const Leaderboard = () => {
         Leaderboard
       </Typography>
       <TableContainer>
-        <Table className={classes.table}>
+        <Table className={classes.table} size="small">
           <TableBody>
             {sortableData
               .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))

@@ -44,6 +44,7 @@ export const login = ({ email, password }) => {
         userSlice.actions.setUser({
           token: data.token,
           name: data.name,
+          following: data.following,
           TL_Grade: data.grade,
           AccendHistory: data.AccendHistory,
           TotalTops: data.TotalTops,
