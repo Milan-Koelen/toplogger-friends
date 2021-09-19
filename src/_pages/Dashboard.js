@@ -7,10 +7,26 @@ import { fetchFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
 import Boulders from "./Boulders";
-import "./Dashboard.css";
 import Leaderboard from "./Leaderboard";
 
 // import { VictoryBar, VictoryChart } from "victory";
+
+const useStyles = makeStyles(theme => ({
+  userName: { color: "Purple" },
+  title: { textAlign: "center", margin: theme.spacing(4) },
+  profilePicture: { borderRadius: "50%", margin: "auto" },
+  paperList: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%",
+
+    "&>div": {
+      width: "90%",
+      marginBottom: theme.spacing(4),
+    },
+  },
+}));
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -25,7 +41,6 @@ const Dashboard = () => {
     { Name: "BigBoy", grade: 3.22452 },
     { Name: "Goway", grade: 8.34444 },
   ];
-  // const dataTopBoulders = user.Accends;
 
   // const data = useSelector(selectFollowing);
 
@@ -34,27 +49,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(fetchFollowing());
-  }, [
-    dispatch,
-    user.token,
-    user.name,
-    user.Accends,
-    user.TL_Grade,
-    user.following,
-    user.TL_ID,
-    user.TotalTops,
-  ]);
-
-  const useStyles = makeStyles(theme => ({
-    name: {},
-    title: { textAlign: "center", margin: theme.spacing(4) },
-    profilePicture: { borderRadius: "50%", margin: "auto" },
-  }));
+  }, [dispatch]);
 
   const classes = useStyles();
   console.log(user.name);
-  // console.log(user.TotalTops);
   console.log(user);
+  console.log(user.TotalTops);
   console.log("+++++=====+++++=====");
 
   return (
@@ -67,36 +67,21 @@ const Dashboard = () => {
       <Typography className={classes.title} variant="h3" component="h3">
         Welcome
       </Typography>
-      <img
-        className={classes.profilePicture}
-        src={user.ProfilePictureURL}
-        alt=""
-      ></img>
-
       <Typography className={classes.title} variant="h3" component="h3">
-        <span className="user__name">{user.name}</span>
+        <span className={classes.userName}>{user.name}</span>
       </Typography>
 
       <Typography className={classes.title} variant="h5" component="h5">
         Grade: <strong>{convertGrade(user.TL_Grade)}</strong>
       </Typography>
-
-      {/* <Typography className={classes.title} variant="h5" component="h5">
-        Grade: <strong>{convertGrade(user.TL_Grade)}</strong>
-      </Typography>
+      {/* 
       <Typography className={classes.title} variant="h5" component="h5">
         Boulders Logged: {user.TotalTops}
-      </Typography>
-      <Typography className={classes.title} variant="h5" component="h5">
-        Best Boulder:
       </Typography> */}
-      <div>
+
+      <div className={classes.paperList}>
         <Leaderboard />
-      </div>
-      <div>
         <Boulders data={dataRecentBoulders} title="Recent Boulders" />
-      </div>
-      <div>
         <Boulders data={dataTopBoulders} title="Top Boulders" />
       </div>
     </div>
