@@ -74,10 +74,10 @@ const Dashboard = () => {
       <Typography className={classes.title} variant="h5" component="h5">
         Grade: <strong>{convertGrade(user.TL_Grade)}</strong>
       </Typography>
-
+      {/* 
       <Typography className={classes.title} variant="h5" component="h5">
         Boulders Logged: {user.TotalTops}
-      </Typography>
+      </Typography> */}
 
       <div className={classes.paperList}>
         <Leaderboard />
