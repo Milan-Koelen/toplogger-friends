@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: "5%",
   },
   paper: {
+    marginTop: theme.spacing(4),
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
@@ -35,6 +36,9 @@ const useStyles = makeStyles(theme => ({
   title: {
     display: "flex",
     margin: theme.spacing(4, "auto", 2),
+  },
+  link: {
+    textDecorationLine: "none",
   },
 }));
 
@@ -69,14 +73,21 @@ const Leaderboard = () => {
             {sortableData
               .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))
               .map((i, idx) => (
-                <TableRow key={i.idx} component="a" href={"/user/" + i.TL_ID}>
-                  <TableCell>{Number.parseInt(idx) + 1}</TableCell>
+                <TableRow
+                  key={i.idx}
+                  component="a"
+                  href={"/user/" + i.TL_ID}
+                  className={classes.link}
+                >
+                  <TableCell padding="none">
+                    {Number.parseInt(idx) + 1}
+                  </TableCell>
                   <TableCell>
                     <Avatar src={i.ProfilePictureURL}></Avatar>
                   </TableCell>
                   <TableCell>{i.Name}</TableCell>
-                  <TableCell>{convertGrade(i.Grade)}</TableCell>
-                  <TableCell>
+                  <TableCell padding="none">{convertGrade(i.Grade)}</TableCell>
+                  <TableCell padding="none">
                     <IconButton
                       edge="end"
                       aria-label="follow"
