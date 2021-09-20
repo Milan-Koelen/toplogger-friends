@@ -13,9 +13,14 @@ import Leaderboard from "./Leaderboard";
 
 const useStyles = makeStyles(theme => ({
   userName: { color: "Purple" },
-  title: { textAlign: "center", margin: theme.spacing(4) },
+  title: {
+    textAlign: "center",
+    margin: theme.spacing(2),
+    marginTop: theme.spacing(10),
+  },
   profilePicture: { borderRadius: "50%", margin: "auto" },
   paperList: {
+    marginTop: theme.spacing(4),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
