@@ -1,6 +1,5 @@
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
 import Dashboard from "./_pages/Dashboard";
 import Layout from "./_pages/Layout";
 import Leaderboard from "./_pages/Leaderboard";
