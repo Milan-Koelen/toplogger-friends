@@ -37,6 +37,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     margin: theme.spacing(4, "auto", 2),
   },
+  link: {
+    textDecorationLine: "none",
+  },
 }));
 
 const Leaderboard = () => {
@@ -70,7 +73,12 @@ const Leaderboard = () => {
             {sortableData
               .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))
               .map((i, idx) => (
-                <TableRow key={i.idx} component="a" href={"/user/" + i.TL_ID}>
+                <TableRow
+                  key={i.idx}
+                  component="a"
+                  href={"/user/" + i.TL_ID}
+                  className={classes.link}
+                >
                   <TableCell padding="none">
                     {Number.parseInt(idx) + 1}
                   </TableCell>
