@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { URL } from "../config";
 import convertGrade from "../features/gradeConversion";
 import Boulders from "./Boulders";
-import "./UserPage.css";
 
 export default function UserPage() {
   const [data, setData] = useState({});
@@ -30,8 +29,18 @@ export default function UserPage() {
     //   position: "middle",
     //   bottom: 0,
     // },
-    name: {},
+    name: { color: "purple" },
     title: { textAlign: "center", margin: theme.spacing(4) },
+    profilePicture: {
+      borderRadius: "50%",
+      alignSelf: "center",
+      marginLeft: "auto",
+      marginRight: "auto",
+      display: "block",
+      marginTop: "75px",
+      marginBottom: "25px",
+      width: "45%",
+    },
   }));
   const classes = useStyles();
 
@@ -47,9 +56,18 @@ export default function UserPage() {
 
   return (
     <div>
-      <img className="profilePicture" src={data.ProfilePictureURL} alt=""></img>
+      {/* <Avatar
+        className={classes.profilePicture}
+        src={data.ProfilePictureURL}
+        alt={"no_img"}
+      /> */}
+      <img
+        className={classes.profilePicture}
+        src={data.ProfilePictureURL}
+        alt=""
+      ></img>
       <Typography className={classes.title} variant="h3" component="h3">
-        <span className="user__name">{data.Name}</span>
+        <span className={classes.name}>{data.Name}</span>
       </Typography>
       <Typography className={classes.title} variant="h5" component="h5">
         Grade: <strong>{convertGrade(data.Grade)}</strong>
