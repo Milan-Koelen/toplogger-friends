@@ -1,4 +1,5 @@
 import { createTheme, ThemeProvider } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { Route, Switch } from "react-router-dom";
 import Dashboard from "./_pages/Dashboard";
 import Layout from "./_pages/Layout";
@@ -14,12 +15,17 @@ const theme = createTheme({
     primary: {
       main: "#2F184B",
     },
+    background: {
+      default: "#cccccc",
+      paper: "#e3e3e3",
+    },
   },
 });
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <div className="App">
         <Layout>
           <Switch>

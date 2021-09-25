@@ -4,9 +4,6 @@ import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
-// import Switch from "@material-ui/core/Switch";
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
-// import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -35,9 +32,6 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 0,
     bottom: 0,
   },
-  // menuButton: {
-  //   marginRight: theme.spacing(2),
-  // },
   title: {
     flexGrow: 1,
   },
@@ -46,7 +40,6 @@ const useStyles = makeStyles(theme => ({
     overflowX: "hidden",
     height: "100%",
     paddingTop: 75,
-    paddingLeft: theme.spacing(1),
     paddingRight: 0,
     paddingBottom: 60,
     maxWidth: "100%",
@@ -61,10 +54,6 @@ export default function MenuAppBar({ children }) {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
-  // const handleChange = event => {
-  //   setAuth(event.target.checked);
-  // };
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -103,29 +92,8 @@ export default function MenuAppBar({ children }) {
 
   return (
     <div className={classes.root}>
-      {/* <FormGroup>
-        <FormControlLabel
-        // control={
-        //   <Switch
-        //     checked={auth}
-        //     onChange={handleChange}
-        //     aria-label="login switch"
-        //   />
-        // }
-        // label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup> */}
       <AppBar position="fixed" className={"asdf"}>
         <Toolbar>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            // onClick={handleNav}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <Typography variant="h6" align="center" className={classes.title}>
             Toplogger Friends
           </Typography>
