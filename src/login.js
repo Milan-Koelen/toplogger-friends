@@ -1,3 +1,4 @@
+import { Paper } from "@material-ui/core";
 import React, { useState } from "react";
 
 function Login(props) {
@@ -12,7 +13,7 @@ function Login(props) {
   };
 
   return (
-    <div>
+    <Paper>
       Login
       <br />
       <br />
@@ -40,7 +41,7 @@ function Login(props) {
         disabled={loading}
       />
       <br />
-    </div>
+    </Paper>
   );
 }
 
