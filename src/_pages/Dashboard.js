@@ -37,9 +37,9 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const dataRecentBoulders = [
-    { Name: "Los Gigantos", grade: 4.8524 },
-    { Name: "Giantito", grade: 5.3324 },
-    { Name: "Palidans", grade: 7.42243 },
+    { Name: "Los Gigantos", grade: 4.85254 },
+    { Name: "Giantito", grade: 5.33245 },
+    { Name: "Palidans", grade: 7.432243 },
   ];
   // const dataRecentBoulders = user.Accends;
   const dataTopBoulders = [
