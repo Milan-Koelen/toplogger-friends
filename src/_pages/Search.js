@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 import { URL } from "../config";
 import { followUser } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
+import Background from "./background";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -152,6 +153,7 @@ const SearchUser = () => {
           ))}
         </List>
       </Paper>
+      <Background></Background>
     </Container>
   );
 };
