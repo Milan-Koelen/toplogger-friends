@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { URL } from "../config";
 import convertGrade from "../features/gradeConversion";
+import Background from "./background";
 import Boulders from "./Boulders";
 
 export default function UserPage() {
@@ -31,6 +32,19 @@ export default function UserPage() {
     // },
     name: { color: "purple" },
     title: { textAlign: "center", margin: theme.spacing(4) },
+    paperList: {
+      marginTop: theme.spacing(4),
+      display: "flex",
+      opacity: "85%",
+      flexDirection: "column",
+      alignItems: "center",
+      width: "100%",
+
+      "&>div": {
+        width: "90%",
+        marginBottom: theme.spacing(4),
+      },
+    },
     profilePicture: {
       borderRadius: "50%",
       alignSelf: "center",
@@ -79,8 +93,11 @@ export default function UserPage() {
         Best Boulder:
       </Typography> */}
       {/* total accends not working on load */}
-      <Boulders data={dataRecentBoulders} title="Recent Boulders" />
-      <Boulders data={dataTopBoulders} title="Top Boulders" />
+      <div className={classes.paperList}>
+        <Boulders data={dataRecentBoulders} title="Recent Boulders" />
+        <Boulders data={dataTopBoulders} title="Top Boulders" />
+      </div>
+      <Background></Background>
     </div>
   );
 }
