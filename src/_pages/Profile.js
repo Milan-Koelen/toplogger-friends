@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 import { URL } from "../config";
 import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
+import Background from "./background";
 
 const SearchUser = () => {
   const [search, setSearch] = useState("");
@@ -159,6 +160,7 @@ const SearchUser = () => {
           ))}
         </List>
       </Paper>
+      <Background></Background>
     </Container>
   );
 };
