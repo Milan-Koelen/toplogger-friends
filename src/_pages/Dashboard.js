@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme => ({
   paperList: {
     marginTop: theme.spacing(4),
     display: "flex",
-    opacity: "85%",
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
