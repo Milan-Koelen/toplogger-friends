@@ -13,6 +13,10 @@ import Leaderboard from "./Leaderboard";
 // import { VictoryBar, VictoryChart } from "victory";
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    maxWidth: "750px",
+    margin: "auto",
+  },
   userName: { color: "Purple", fontWeight: "400" },
   title: {
     textAlign: "center",
