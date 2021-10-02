@@ -25,11 +25,10 @@ export default function UserPage() {
     FetchUser();
   }, [TL_ID, data]);
   const useStyles = makeStyles(theme => ({
-    // root: {
-    //   width: "90vw",
-    //   position: "middle",
-    //   bottom: 0,
-    // },
+    root: {
+      maxWidth: "750px",
+      margin: "auto",
+    },
     name: { color: "purple" },
     title: { textAlign: "center", margin: theme.spacing(4) },
     paperList: {
@@ -51,9 +50,11 @@ export default function UserPage() {
       marginLeft: "auto",
       marginRight: "auto",
       display: "block",
+
       marginTop: "75px",
       marginBottom: "25px",
       width: "45%",
+      maxWidth: "30vh",
     },
   }));
   const classes = useStyles();
