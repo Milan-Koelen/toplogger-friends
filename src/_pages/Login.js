@@ -8,7 +8,6 @@ import {
   TextField,
 } from "@material-ui/core";
 import React, { useState } from "react";
-import Background from "../components/background.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { login, selectUser, signup } from "../features/userSlice";
@@ -131,7 +130,7 @@ const Login = () => {
         </Paper>
       </Grid>
     </div>
-<Background></Background>
+
   );
 };
 export default Login;
