@@ -5,6 +5,7 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Background from "../components/background.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -148,6 +149,7 @@ export default function MenuAppBar({ children }) {
         />
         <BottomNavigationAction label="Search" icon={<Search />} />
       </BottomNavigation>
+<Background></Background>
     </div>
   );
 }
