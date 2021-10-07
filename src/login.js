@@ -13,7 +13,7 @@ function Login(props) {
   };
 
   return (
-    <Paper>
+    <Paper className={clas}>
       Login
       <br />
       <br />
