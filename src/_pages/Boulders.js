@@ -56,7 +56,12 @@ const Boulders = props => {
           }}
         >
           {data.map((i, idx) => (
-            <ListItem component={Link} to={"/user/" + i.TL_ID} key={i.TL_ID}>
+            <ListItem
+              dense={true}
+              component={Link}
+              to={"/user/" + i.TL_ID}
+              key={i.TL_ID}
+            >
               <ListItemText
                 primary={i.Name}
                 secondary={"Grade: " + convertGrade(i.grade)}
