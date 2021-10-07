@@ -142,35 +142,28 @@ const data = {
 
 const convertGrade = gradeValue => {
   for (let i = 0; i < data.data.length; i++) {
-    if (data.data.length <= i + 1 || data.data[i + 1].value >= gradeValue) {
-      if (data.data.length > i) {
-        let x = i + 1;
-        const nextGradeValue = data.data[x].value;
+    if (data.data.length >= i + 1 || data.data[i + 1].value >= gradeValue) {
+      if (i === 42) {
         const grade = data.data[i].name;
-        const restValue = gradeValue - data.data[i].value;
-        const difNextGrade = nextGradeValue - data.data[i].value;
-        const percentage = (restValue / difNextGrade) * 10 + " %";
+        const percentage = "100%";
         return [grade, percentage];
-      } else if (data.data.length === i) {
-        const x = i;
-        const nextGradeValue = data.data[x].value;
-        const grade = data.data[i].name;
-        const restValue = gradeValue - data.data[i].value;
-        const difNextGrade = nextGradeValue - data.data[i].value;
+      }
+      if (gradeValue < data.data[i].value && i !== 0) {
+        console.log(gradeValue);
+        const nextGradeValue = data.data[i].value;
+        const grade = data.data[i - 1].name + " / ";
+        const restValue = gradeValue - data.data[i - 1].value;
+        const difNextGrade = nextGradeValue - data.data[i - 1].value;
+        const percentage = Math.round((restValue / difNextGrade) * 10) + " %";
 
-        console.log("Rest: " + restValue);
-        console.log("To next grade: " + difNextGrade);
-
-        const percentage = (restValue / difNextGrade) * 10 + " %";
-
-        // const gradeValueRound = data.data[i].value;
-        // const percentage =
-        //   Math.round(
-        //     ((gradeValue - gradeValueRound) /
-        //       (data.data[i].value - gradeValueRound)) *
-        //       100
-        //   ) + "%";
-        // console.log("percentage: " + percentage);
+        console.log({
+          TL_grade: gradeValue,
+          Grade: grade,
+          i: i,
+          Next: nextGradeValue,
+          Rest: restValue,
+          Dif: difNextGrade,
+        });
         return [grade, percentage];
       }
     }

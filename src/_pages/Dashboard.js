@@ -43,7 +43,7 @@ const Dashboard = () => {
   const dataRecentBoulders = [
     { Name: "Los Gigantos", grade: 4.85 },
     { Name: "Giantito", grade: 5.33 },
-    { Name: "Palidans", grade: 7.43 },
+    { Name: "Palidans", grade: 7 },
   ];
   // const dataRecentBoulders = user.Accends;
   const dataTopBoulders = [
