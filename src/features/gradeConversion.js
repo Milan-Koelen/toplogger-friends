@@ -143,16 +143,36 @@ const data = {
 const convertGrade = gradeValue => {
   for (let i = 0; i < data.data.length; i++) {
     if (data.data.length <= i + 1 || data.data[i + 1].value >= gradeValue) {
-      const grade = data.data[i].name;
-      // const gradeValueRound = data.data[i].value;
-      // const percentage =
-      //   Math.round(
-      //     ((gradeValue - gradeValueRound) /
-      //       (data.data[i].value - gradeValueRound)) *
-      //       100
-      //   ) + "%";
-      // console.log("percentage: " + percentage);
-      return [grade];
+      if (data.data.length > i) {
+        let x = i + 1;
+        const nextGradeValue = data.data[x].value;
+        const grade = data.data[i].name;
+        const restValue = gradeValue - data.data[i].value;
+        const difNextGrade = nextGradeValue - data.data[i].value;
+        const percentage = (restValue / difNextGrade) * 10 + " %";
+        return [grade, percentage];
+      } else if (data.data.length === i) {
+        const x = i;
+        const nextGradeValue = data.data[x].value;
+        const grade = data.data[i].name;
+        const restValue = gradeValue - data.data[i].value;
+        const difNextGrade = nextGradeValue - data.data[i].value;
+
+        console.log("Rest: " + restValue);
+        console.log("To next grade: " + difNextGrade);
+
+        const percentage = (restValue / difNextGrade) * 10 + " %";
+
+        // const gradeValueRound = data.data[i].value;
+        // const percentage =
+        //   Math.round(
+        //     ((gradeValue - gradeValueRound) /
+        //       (data.data[i].value - gradeValueRound)) *
+        //       100
+        //   ) + "%";
+        // console.log("percentage: " + percentage);
+        return [grade, percentage];
+      }
     }
   }
 };
