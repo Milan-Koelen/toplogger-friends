@@ -1,4 +1,4 @@
-import { Paper } from "@material-ui/core";
+import { Paper, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 
 function Login(props) {
@@ -14,7 +14,7 @@ function Login(props) {
 
   return (
     <Paper>
-      Login
+      <Typography type="h3">Login</Typography>
       <br />
       <br />
       <div>

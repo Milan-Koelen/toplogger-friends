@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
-import Background from "./background";
 import Boulders from "./Boulders";
 import Leaderboard from "./Leaderboard";
+
 
 // import { VictoryBar, VictoryChart } from "victory";
 
@@ -94,7 +94,6 @@ const Dashboard = () => {
         <Boulders data={dataRecentBoulders} title="Recent Boulders" />
         <Boulders data={dataTopBoulders} title="Top Boulders" />
       </div>
-      <Background></Background>
     </div>
   );
 };

@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
   loginPaper: {
     maxWidth: "75vw",
+    marginTop: "20vh",
   },
   button: {
     margin: theme.spacing(1),
@@ -130,7 +131,6 @@ const Login = () => {
         </Paper>
       </Grid>
     </div>
-
   );
 };
 export default Login;
