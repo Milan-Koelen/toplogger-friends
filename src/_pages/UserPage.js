@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { URL } from "../config";
 import convertGrade from "../features/gradeConversion";
-import Background from "./background";
 import Boulders from "./Boulders";
 
 export default function UserPage() {
@@ -98,7 +97,6 @@ export default function UserPage() {
         <Boulders data={dataRecentBoulders} title="Recent Boulders" />
         <Boulders data={dataTopBoulders} title="Top Boulders" />
       </div>
-      <Background></Background>
     </div>
   );
 }

@@ -39,18 +39,16 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     padding: theme.spacing(4),
-    // backgroundColor: "rgba(255,255,255,.5)",
   },
   searchBar: {
     flexGrow: 1,
     marginRight: theme.spacing(4),
-    // backgroundColor: "rgba(255,255,255,.5)",
   },
   paper: {
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    backgroundColor: "rgba(255,255,255,.5)",
+    backgroundColor: "rgba(255,255,255,.85)",
   },
 }));
 

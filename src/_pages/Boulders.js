@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    backgroundColor: "rgba(255,255,255,.5)",
+    backgroundColor: "rgba(255,255,255,.85)",
   },
   title: {
     display: "flex",

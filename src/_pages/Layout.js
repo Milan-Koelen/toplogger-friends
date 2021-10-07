@@ -15,6 +15,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { logout, selectUser } from "../features/userSlice";
+import Background from "../_pages/background.js";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -148,6 +149,7 @@ export default function MenuAppBar({ children }) {
         />
         <BottomNavigationAction label="Search" icon={<Search />} />
       </BottomNavigation>
+      <Background></Background>
     </div>
   );
 }
