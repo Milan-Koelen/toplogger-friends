@@ -9,7 +9,6 @@ import { selectUser } from "../features/userSlice";
 import Boulders from "./Boulders";
 import Leaderboard from "./Leaderboard";
 
-
 // import { VictoryBar, VictoryChart } from "victory";
 
 const useStyles = makeStyles(theme => ({
@@ -42,9 +41,9 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const dataRecentBoulders = [
-    { Name: "Los Gigantos", grade: 4.85254 },
-    { Name: "Giantito", grade: 5.33245 },
-    { Name: "Palidans", grade: 7.432243 },
+    { Name: "Los Gigantos", grade: 4.85 },
+    { Name: "Giantito", grade: 5.33 },
+    { Name: "Palidans", grade: 7.43 },
   ];
   // const dataRecentBoulders = user.Accends;
   const dataTopBoulders = [
@@ -62,10 +61,10 @@ const Dashboard = () => {
   }, [dispatch]);
 
   const classes = useStyles();
-  console.log(user.name);
-  console.log(user);
-  console.log(user.TotalTops);
-  console.log("+++++=====+++++=====");
+  // console.log(user.name);
+  // console.log(user);
+  // console.log(user.TotalTops);
+  // console.log("+++++=====+++++=====");
 
   return (
     <div className={classes.root}>
