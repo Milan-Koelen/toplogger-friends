@@ -8,7 +8,7 @@ const convertGrade = (gradeValue, system = "font") => {
     if (grades.data.length >= i + 1 || grades.data[i + 1].value >= gradeValue) {
       if (i === grades.data.length - 1) {
         const grade = grades.data[i].name;
-        return [grade, 100];
+        return [grade, 100, grades.data[i].name];
       }
       if (gradeValue < grades.data[i].value && i !== 0) {
         console.log(gradeValue);
@@ -34,7 +34,7 @@ const convertGrade = (gradeValue, system = "font") => {
           Rest: restValue,
           Dif: diffNextGrade,
         });
-        return [grade.name, percentage];
+        return [grade.name, percentage, grades.data[i].name];
       }
     }
   }

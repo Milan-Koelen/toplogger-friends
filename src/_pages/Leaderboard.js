@@ -18,7 +18,7 @@ import { selectFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion.js";
 import { selectUser } from "../features/userSlice";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   table: {
     width: "90%",
     marginLeft: "5%",
@@ -42,14 +42,20 @@ const useStyles = makeStyles(theme => ({
   link: {
     textDecorationLine: "none",
   },
+  percentage: {
+    fontSize: ".8em",
+    color: theme.palette.grey[70],
+    verticalAlign: "center",
+    marginLeft: ".5em",
+  },
 }));
 
 const Leaderboard = () => {
   const user = useSelector(selectUser);
   const data = useSelector(selectFollowing);
-  const sortableData = data.map(x => x);
+  const sortableData = data.map((x) => x);
 
-  const handleUnfollow = e => {
+  const handleUnfollow = (e) => {
     const requestOptions = {
       method: "POST",
       headers: {
@@ -59,7 +65,7 @@ const Leaderboard = () => {
       body: JSON.stringify({ unfollow: e.currentTarget.value }),
     };
     fetch(URL + "/unfollow", requestOptions)
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(console.log("user deleted"));
   };
 
@@ -74,33 +80,42 @@ const Leaderboard = () => {
           <TableBody>
             {sortableData
               .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))
-              .map((i, idx) => (
-                <TableRow
-                  key={i.idx}
-                  component="a"
-                  href={"/user/" + i.TL_ID}
-                  className={classes.link}
-                >
-                  <TableCell padding="none">
-                    {Number.parseInt(idx) + 1}
-                  </TableCell>
-                  <TableCell>
-                    <Avatar src={i.ProfilePictureURL}></Avatar>
-                  </TableCell>
-                  <TableCell>{i.Name}</TableCell>
-                  <TableCell padding="none">{convertGrade(i.Grade)}</TableCell>
-                  <TableCell padding="none">
-                    <IconButton
-                      edge="end"
-                      aria-label="follow"
-                      value={i._id}
-                      onClick={handleUnfollow}
-                    >
-                      <BackspaceIcon />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
+              .map((i, idx) => {
+                const grade = convertGrade(i.Grade);
+
+                return (
+                  <TableRow
+                    key={i.idx}
+                    component="a"
+                    href={"/user/" + i.TL_ID}
+                    className={classes.link}
+                  >
+                    <TableCell padding="none">
+                      {Number.parseInt(idx) + 1}
+                    </TableCell>
+                    <TableCell>
+                      <Avatar src={i.ProfilePictureURL}></Avatar>
+                    </TableCell>
+                    <TableCell>{i.Name}</TableCell>
+                    <TableCell padding="none">
+                      {grade[0]}
+                      {grade[1] !== 0 && (
+                        <span className={classes.percentage}>{grade[1]}%</span>
+                      )}
+                    </TableCell>
+                    <TableCell padding="none">
+                      <IconButton
+                        edge="end"
+                        aria-label="follow"
+                        value={i._id}
+                        onClick={handleUnfollow}
+                      >
+                        <BackspaceIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>
