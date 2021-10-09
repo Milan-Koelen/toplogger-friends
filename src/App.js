@@ -1,14 +1,14 @@
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Route, Switch } from "react-router-dom";
-import Dashboard from "./_pages/Dashboard";
-import Layout from "./_pages/Layout";
-import Leaderboard from "./_pages/Leaderboard";
-import Login from "./_pages/Login";
-import PrivateRoute from "./_pages/PrivateRoute";
-import Profile from "./_pages/Profile";
-import Search from "./_pages/Search";
-import UserPage from "./_pages/UserPage";
+import Dashboard from "./pages/Dashboard";
+import Layout from "./Layout";
+import Leaderboard from "./pages/Leaderboard";
+import Login from "./pages/Login";
+import PrivateRoute from "./components/PrivateRoute";
+import Profile from "./pages/Profile";
+import Search from "./pages/Search";
+import UserPage from "./pages/UserPage";
 
 const theme = createTheme({
   palette: {

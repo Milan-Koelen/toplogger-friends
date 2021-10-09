@@ -20,9 +20,9 @@ import { Link } from "react-router-dom";
 import { URL } from "../config";
 import { followUser } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
-import Background from "./background";
+import Background from "../components/Background";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
@@ -81,7 +81,7 @@ const SearchUser = () => {
     }
   };
 
-  const handleFollow = id => {
+  const handleFollow = (id) => {
     dispatch(followUser(id));
 
     // const requestOptions = {
@@ -106,9 +106,9 @@ const SearchUser = () => {
           <TextField
             className={classes.searchBar}
             id="searchField"
-            onChange={e => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Search"
-            onKeyPress={ev => {
+            onKeyPress={(ev) => {
               console.log(`Pressed keyCode ${ev.key}`);
               if (ev.key === "Enter") {
                 ev.preventDefault();
@@ -138,7 +138,7 @@ const SearchUser = () => {
               </ListItemAvatar>
               <ListItemText
                 primary={i.Name}
-                secondary={"Grade: " + convertGrade(i.Grade)}
+                secondary={"Grade: " + convertGrade(i.Grade)[0]}
               />
               <ListItemSecondaryAction>
                 <IconButton

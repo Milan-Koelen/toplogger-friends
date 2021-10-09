@@ -83,7 +83,7 @@ export default function UserPage() {
         <span className={classes.name}>{data.Name}</span>
       </Typography>
       <Typography className={classes.title} variant="h5" component="h5">
-        Grade: <strong>{convertGrade(data.Grade)}</strong>
+        Grade: <strong>{convertGrade(data.Grade)[0]}</strong>
       </Typography>
       {/* <Typography className={classes.title} variant="h5" component="h5">
         Boulders Logged: {data.TotalLogged}

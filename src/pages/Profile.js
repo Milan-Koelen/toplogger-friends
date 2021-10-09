@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 import { URL } from "../config";
 import convertGrade from "../features/gradeConversion";
 import { selectUser } from "../features/userSlice";
-import Background from "./background";
+import Background from "../components/Background";
 
 const SearchUser = () => {
   const [search, setSearch] = useState("");
@@ -28,7 +28,7 @@ const SearchUser = () => {
 
   const user = useSelector(selectUser);
 
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
       flexDirection: "column",
@@ -83,7 +83,7 @@ const SearchUser = () => {
     }
   };
 
-  const handleClaim = e => {
+  const handleClaim = (e) => {
     const requestOptions = {
       method: "POST",
       headers: {
@@ -93,7 +93,7 @@ const SearchUser = () => {
       body: JSON.stringify({ TL_ID: e.currentTarget.value }),
     };
     fetch(URL + "/claim", requestOptions)
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(console.log);
   };
   return (
@@ -111,9 +111,9 @@ const SearchUser = () => {
           <TextField
             className={classes.searchBar}
             id="searchField"
-            onChange={e => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Search"
-            onKeyPress={ev => {
+            onKeyPress={(ev) => {
               console.log(`Pressed keyCode ${ev.key}`);
               if (ev.key === "Enter") {
                 ev.preventDefault();
@@ -143,7 +143,7 @@ const SearchUser = () => {
               </ListItemAvatar>
               <ListItemText
                 primary={i.Name}
-                secondary={"Grade: " + convertGrade(i.Grade)}
+                secondary={"Grade: " + convertGrade(i.Grade)[0]}
               />
               <ListItemSecondaryAction>
                 <Button

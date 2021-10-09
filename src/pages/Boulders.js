@@ -10,7 +10,7 @@ import {
 import { React } from "react";
 import convertGrade from "../features/gradeConversion";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     position: "fixed",
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Boulders = props => {
+const Boulders = (props) => {
   const data = props.data;
 
   // const data = this.props.dataRecentBoulders;
@@ -64,7 +64,7 @@ const Boulders = props => {
             >
               <ListItemText
                 primary={i.Name}
-                secondary={"Grade: " + convertGrade(i.grade)}
+                secondary={"Grade: " + convertGrade(i.grade)[0]}
               />
             </ListItem>
           ))}
