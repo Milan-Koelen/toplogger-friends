@@ -1,5 +1,5 @@
 import { List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 import { React } from "react";
 import convertGrade from "../features/gradeConversion";
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    backgroundColor: "rgba(255,255,255,.85)",
+    // backgroundColor: "rgba(255,255,255,.85)",
   },
   title: {
     display: "flex",

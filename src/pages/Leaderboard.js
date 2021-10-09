@@ -9,7 +9,7 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 import BackspaceIcon from "@mui/icons-material/Backspace";
 import { React } from "react";
 import { useSelector } from "react-redux";
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    backgroundColor: "rgba(255,255,255,.85)",
+    // backgroundColor: "rgba(255,255,255,.85)",
   },
   profilepicture: {
     marginRight: "5vw",
@@ -110,7 +110,8 @@ const Leaderboard = () => {
                         aria-label="follow"
                         value={i._id}
                         onClick={handleUnfollow}
-                        size="large">
+                        size="large"
+                      >
                         <BackspaceIcon />
                       </IconButton>
                     </TableCell>

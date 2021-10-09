@@ -2,7 +2,6 @@ import {
   createTheme,
   ThemeProvider,
   StyledEngineProvider,
-  adaptV4Theme,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Route, Switch } from "react-router-dom";
@@ -15,20 +14,18 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import UserPage from "./pages/UserPage";
 
-const theme = createTheme(
-  adaptV4Theme({
-    palette: {
-      // mode: "dark",
-      primary: {
-        main: "#2F184B",
-      },
-      background: {
-        default: "#cccccc",
-        paper: "#e3e3e3",
-      },
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#8d3099",
     },
-  })
-);
+    // background: {
+    //   default: "#cccccc",
+    //   paper: "#e3e3e3",
+    // },
+  },
+});
 
 function App() {
   return (
