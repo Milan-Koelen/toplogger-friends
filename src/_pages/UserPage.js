@@ -16,14 +16,13 @@ export default function UserPage() {
       const jsonData = await response.json();
       setData(jsonData);
       console.log(TL_ID);
-      console.log(data);
       // const totalAccends = await Array.from(data.Accends).length;
       console.log(jsonData.Asccends);
     };
 
     FetchUser();
-  }, [TL_ID, data]);
-  const useStyles = makeStyles(theme => ({
+  }, [TL_ID]);
+  const useStyles = makeStyles((theme) => ({
     root: {
       maxWidth: "750px",
       margin: "auto",
