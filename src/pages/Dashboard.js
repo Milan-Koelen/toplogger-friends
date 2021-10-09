@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   bar: {
     width: "90%",
     height: 40,
-    border: "1px solid " + theme.palette.primary.main,
+    border: "3px solid " + theme.palette.primary.main,
     borderRadius: 10,
     overflow: "hidden",
   },
@@ -145,14 +145,16 @@ const Dashboard = () => {
       <animated.div
         className={classes.bar}
         style={{
-          borderColor: props.hue.to((h) => `hsl(${h * 360}, 80%, 39%)`),
+          borderColor: props.hue.to(
+            (h) => `hsl(${((h + 0.1) % 1) * 360}, 80%, 50%)`
+          ),
         }}
       >
         <animated.div
           className={classes.barElement}
           style={{
             width: grade[1] + "%",
-            backgroundColor: props.hue.to((h) => `hsl(${h * 360}, 80%, 39%)`),
+            backgroundColor: props.hue.to((h) => `hsl(${h * 360}, 80%, 50%)`),
           }}
         />
       </animated.div>
