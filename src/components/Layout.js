@@ -14,15 +14,13 @@ import Search from "@material-ui/icons/Search";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import { logout, selectUser } from "./features/userSlice";
-import Background from "./components/Background";
+import { logout, selectUser } from "../features/userSlice";
+import Background from "./Background";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginBottom: theme.spacing(2),
-    paddingTop: theme.spacing(2),
-    bottom: 1,
+    bottom: 0,
     width: "100vw",
     height: "100vh",
     position: "fixed",
@@ -45,11 +43,24 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 60,
     maxWidth: "100%",
   },
+  profileSection: {
+    position: "absolute",
+    right: 0,
+    display: "flex",
+    alignItems: "center",
+  },
+  userName: {
+    textTransform: "capitalize",
+    fontSize: "1.1rem",
+    marginLeft: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
 }));
 
 export default function MenuAppBar({ children }) {
   const classes = useStyles();
-  const [auth] = useState(true);
   const history = useHistory();
   const user = useSelector(selectUser);
 
@@ -98,8 +109,8 @@ export default function MenuAppBar({ children }) {
           <Typography variant="h6" align="center" className={classes.title}>
             Toplogger Friends
           </Typography>
-          {auth && (
-            <div>
+          {user.token && (
+            <div className={classes.profileSection}>
               <Button
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -108,12 +119,13 @@ export default function MenuAppBar({ children }) {
                 color="inherit"
               >
                 <Avatar src={user.profilePicture}></Avatar>
+                <span className={classes.userName}>{user.name}</span>
               </Button>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
-                  vertical: "top",
+                  vertical: "bottom",
                   horizontal: "right",
                 }}
                 keepMounted

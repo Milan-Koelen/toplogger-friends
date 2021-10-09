@@ -2,7 +2,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Route, Switch } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
-import Layout from "./Layout";
+import Layout from "./components/Layout";
 import Leaderboard from "./pages/Leaderboard";
 import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
@@ -12,6 +12,7 @@ import UserPage from "./pages/UserPage";
 
 const theme = createTheme({
   palette: {
+    mode: "dark",
     primary: {
       main: "#2F184B",
     },

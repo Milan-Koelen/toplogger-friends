@@ -13,6 +13,7 @@ import {
 import BackspaceIcon from "@material-ui/icons/Backspace";
 import { React } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { URL } from "../config.js";
 import { selectFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion.js";
@@ -37,10 +38,10 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     display: "flex",
-    margin: theme.spacing(4, "auto", 2),
+    margin: theme.spacing(3, "auto"),
   },
   link: {
-    textDecorationLine: "none",
+    cursor: "pointer",
   },
   percentage: {
     fontSize: ".8em",
@@ -53,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 const Leaderboard = () => {
   const user = useSelector(selectUser);
   const data = useSelector(selectFollowing);
+  const history = useHistory();
   const sortableData = data.map((x) => x);
 
   const handleUnfollow = (e) => {
@@ -86,9 +88,8 @@ const Leaderboard = () => {
                 return (
                   <TableRow
                     key={i.idx}
-                    component="a"
-                    href={"/user/" + i.TL_ID}
                     className={classes.link}
+                    onClick={() => history.push("/user/" + i.TL_ID)}
                   >
                     <TableCell padding="none">
                       {Number.parseInt(idx) + 1}
@@ -96,7 +97,7 @@ const Leaderboard = () => {
                     <TableCell>
                       <Avatar src={i.ProfilePictureURL}></Avatar>
                     </TableCell>
-                    <TableCell>{i.Name}</TableCell>
+                    <TableCell className={classes.name}>{i.Name}</TableCell>
                     <TableCell padding="none">
                       {grade[0]}
                       {grade[1] !== 0 && (
