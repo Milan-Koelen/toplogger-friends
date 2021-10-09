@@ -14,10 +14,10 @@ import Search from "@material-ui/icons/Search";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import { logout, selectUser } from "../features/userSlice";
-import Background from "../_pages/background.js";
+import { logout, selectUser } from "./features/userSlice";
+import Background from "./background.js.js";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     marginBottom: theme.spacing(2),
@@ -56,7 +56,7 @@ export default function MenuAppBar({ children }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const handleMenu = event => {
+  const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -67,13 +67,13 @@ export default function MenuAppBar({ children }) {
   const dispatch = useDispatch();
   // const user = useSelector(selectUser);
 
-  const handleLogout = e => {
+  const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout(e));
     handleClose();
   };
 
-  const routChangeProfile = route => {
+  const routChangeProfile = (route) => {
     let path = `/profile`;
     history.push(path);
     handleClose();
