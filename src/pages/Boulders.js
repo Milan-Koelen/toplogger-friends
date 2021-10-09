@@ -1,11 +1,5 @@
-import {
-  List,
-  ListItem,
-  ListItemText,
-  makeStyles,
-  Paper,
-  Typography,
-} from "@material-ui/core";
+import { List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import { React } from "react";
 import convertGrade from "../features/gradeConversion";
 

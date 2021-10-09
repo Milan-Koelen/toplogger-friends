@@ -1,7 +1,6 @@
 import {
   Avatar,
   IconButton,
-  makeStyles,
   Paper,
   Table,
   TableBody,
@@ -9,8 +8,9 @@ import {
   TableContainer,
   TableRow,
   Typography,
-} from "@material-ui/core";
-import BackspaceIcon from "@material-ui/icons/Backspace";
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import BackspaceIcon from "@mui/icons-material/Backspace";
 import { React } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -110,7 +110,7 @@ const Leaderboard = () => {
                         aria-label="follow"
                         value={i._id}
                         onClick={handleUnfollow}
-                      >
+                        size="large">
                         <BackspaceIcon />
                       </IconButton>
                     </TableCell>

@@ -1,4 +1,5 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { URL } from "../config";

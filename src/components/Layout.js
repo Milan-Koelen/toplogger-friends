@@ -1,16 +1,16 @@
-import { Avatar } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import { Dashboard } from "@material-ui/icons";
-import LeaderboardIcon from "@material-ui/icons/Equalizer";
-import Search from "@material-ui/icons/Search";
+import { Avatar } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import makeStyles from '@mui/styles/makeStyles';
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { Dashboard } from "@mui/icons-material";
+import LeaderboardIcon from "@mui/icons-material/Equalizer";
+import Search from "@mui/icons-material/Search";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "capitalize",
     fontSize: "1.1rem",
     marginLeft: "1rem",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       display: "none",
     },
   },

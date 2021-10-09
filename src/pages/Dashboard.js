@@ -1,5 +1,6 @@
 // import no_img from "../img/no_img.gif";
-import { makeStyles, Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { fetchFriends, selectFriends } from "../features/followingSlice";
@@ -18,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    // height: "500vh",
   },
   userName: { color: "Purple", fontWeight: "400" },
   title: {

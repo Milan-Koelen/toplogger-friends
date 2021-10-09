@@ -7,13 +7,13 @@ import {
   ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText,
-  makeStyles,
   Paper,
   TextField,
   Typography,
-} from "@material-ui/core";
-import AddIcon from "@material-ui/icons/PersonAdd";
-import SearchIcon from "@material-ui/icons/Search";
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import AddIcon from "@mui/icons-material/PersonAdd";
+import SearchIcon from "@mui/icons-material/Search";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -121,7 +121,7 @@ const SearchUser = () => {
             edge="end"
             aria-label="follow"
             onClick={handleSearch}
-          >
+            size="large">
             <SearchIcon />
           </IconButton>
         </div>
@@ -145,7 +145,7 @@ const SearchUser = () => {
                   edge="end"
                   aria-label="follow"
                   onClick={() => handleFollow(i._id)}
-                >
+                  size="large">
                   <AddIcon />
                 </IconButton>
               </ListItemSecondaryAction>

@@ -1,12 +1,5 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  makeStyles,
-  Paper,
-  TextField,
-} from "@material-ui/core";
+import { Box, Button, Container, Grid, Paper, TextField } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -87,7 +80,7 @@ const Login = () => {
   return (
     <div className="login">
       <br></br>
-      <Grid container justify="center">
+      <Grid container justifyContent="center">
         <Paper className={classes.loginPaper}>
           <Container className={classes.loginContainer}>
             <TextField
@@ -118,12 +111,7 @@ const Login = () => {
                 Login
               </Button>
               <br></br>
-              <Button
-                className={classes.button}
-                variant="contained"
-                color="default"
-                onClick={handleSignup}
-              >
+              <Button className={classes.button} variant="contained" onClick={handleSignup}>
                 Register
               </Button>
             </Box>
