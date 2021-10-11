@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Button,
   Container,
   IconButton,
   List,
@@ -8,58 +7,57 @@ import {
   ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText,
-  makeStyles,
   Paper,
   TextField,
   Typography,
-} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import AddIcon from "@mui/icons-material/PersonAdd";
+import SearchIcon from "@mui/icons-material/Search";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { URL } from "../config";
+import { followUser } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
-import { selectUser } from "../features/userSlice";
-import Background from "./background";
+import Background from "../components/Background";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "750px",
+    height: "100%",
+  },
+  demo: {
+    backgroundColor: theme.palette.background.paper,
+  },
+  title: {
+    margin: theme.spacing(4, "auto", 2),
+  },
+  searchContainer: {
+    display: "flex",
+    flexDirection: "row",
+    padding: theme.spacing(4),
+  },
+  searchBar: {
+    flexGrow: 1,
+    marginRight: theme.spacing(4),
+  },
+  paper: {
+    display: "flex",
+    flexDirection: "column",
+    flexGrow: 1,
+    backgroundColor: "rgba(255,255,255,.85)",
+  },
+}));
 
 const SearchUser = () => {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
 
-  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
-  const useStyles = makeStyles(theme => ({
-    root: {
-      display: "flex",
-      flexDirection: "column",
-      maxWidth: "500px",
-      height: "100%",
-    },
-    demo: {
-      backgroundColor: theme.palette.background.paper,
-    },
-    title: {
-      margin: theme.spacing(4, "auto", 2),
-    },
-    searchContainer: {
-      display: "flex",
-      flexDirection: "row",
-      padding: theme.spacing(4),
-    },
-    searchBar: {
-      flexGrow: 1,
-      marginRight: theme.spacing(4),
-    },
-    searchButton: {},
-    paper: {
-      display: "flex",
-      flexDirection: "column",
-      flexGrow: 1,
-    },
-    info: {
-      margin: theme.spacing(5),
-    },
-  }));
   const classes = useStyles();
 
   const handleSearch = async () => {
@@ -83,37 +81,34 @@ const SearchUser = () => {
     }
   };
 
-  const handleClaim = e => {
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: user.token,
-      },
-      body: JSON.stringify({ TL_ID: e.currentTarget.value }),
-    };
-    fetch(URL + "/claim", requestOptions)
-      .then(response => response.json())
-      .then(console.log);
+  const handleFollow = (id) => {
+    dispatch(followUser(id));
+
+    // const requestOptions = {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     authorization: user.token,
+    //   },
+    //   body: JSON.stringify({ follow: e.currentTarget.value }),
+    // };
+    // fetch(URL + "/follow", requestOptions)
+    //   .then(response => response.json())
+    //   .then(console.log);
   };
   return (
     <Container className={classes.root}>
       <Typography variant="h6" className={classes.title}>
-        Connect to toplogger account
-      </Typography>
-      <Typography variant="p" className={classes.info}>
-        Connect to your toplogger account by searching for your username. Once
-        an account is connected you can always come back and connect another
-        account. Only one account can be connected at the same time.
+        Search user
       </Typography>
       <Paper className={classes.paper}>
         <div className={classes.searchContainer}>
           <TextField
             className={classes.searchBar}
             id="searchField"
-            onChange={e => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Search"
-            onKeyPress={ev => {
+            onKeyPress={(ev) => {
               console.log(`Pressed keyCode ${ev.key}`);
               if (ev.key === "Enter") {
                 ev.preventDefault();
@@ -126,7 +121,7 @@ const SearchUser = () => {
             edge="end"
             aria-label="follow"
             onClick={handleSearch}
-          >
+            size="large">
             <SearchIcon />
           </IconButton>
         </div>
@@ -143,18 +138,16 @@ const SearchUser = () => {
               </ListItemAvatar>
               <ListItemText
                 primary={i.Name}
-                secondary={"Grade: " + convertGrade(i.Grade)}
+                secondary={"Grade: " + convertGrade(i.Grade)[0]}
               />
               <ListItemSecondaryAction>
-                <Button
-                  variant="contained"
+                <IconButton
                   edge="end"
                   aria-label="follow"
-                  value={i._id}
-                  onClick={handleClaim}
-                >
-                  Connect
-                </Button>
+                  onClick={() => handleFollow(i._id)}
+                  size="large">
+                  <AddIcon />
+                </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
           ))}

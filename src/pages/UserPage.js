@@ -1,4 +1,5 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { URL } from "../config";
@@ -16,14 +17,13 @@ export default function UserPage() {
       const jsonData = await response.json();
       setData(jsonData);
       console.log(TL_ID);
-      console.log(data);
       // const totalAccends = await Array.from(data.Accends).length;
       console.log(jsonData.Asccends);
     };
 
     FetchUser();
-  }, [TL_ID, data]);
-  const useStyles = makeStyles(theme => ({
+  }, [TL_ID]);
+  const useStyles = makeStyles((theme) => ({
     root: {
       maxWidth: "750px",
       margin: "auto",
@@ -84,7 +84,7 @@ export default function UserPage() {
         <span className={classes.name}>{data.Name}</span>
       </Typography>
       <Typography className={classes.title} variant="h5" component="h5">
-        Grade: <strong>{convertGrade(data.Grade)}</strong>
+        Grade: <strong>{convertGrade(data.Grade)[0]}</strong>
       </Typography>
       {/* <Typography className={classes.title} variant="h5" component="h5">
         Boulders Logged: {data.TotalLogged}

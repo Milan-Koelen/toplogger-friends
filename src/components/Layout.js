@@ -1,28 +1,26 @@
-import { Avatar } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import { Dashboard } from "@material-ui/icons";
-import LeaderboardIcon from "@material-ui/icons/Equalizer";
-import Search from "@material-ui/icons/Search";
+import { Avatar } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import makeStyles from '@mui/styles/makeStyles';
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { Dashboard } from "@mui/icons-material";
+import LeaderboardIcon from "@mui/icons-material/Equalizer";
+import Search from "@mui/icons-material/Search";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { logout, selectUser } from "../features/userSlice";
-import Background from "../_pages/background.js";
+import Background from "./Background";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginBottom: theme.spacing(2),
-    paddingTop: theme.spacing(2),
-    bottom: 1,
+    bottom: 0,
     width: "100vw",
     height: "100vh",
     position: "fixed",
@@ -45,18 +43,31 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: 60,
     maxWidth: "100%",
   },
+  profileSection: {
+    position: "absolute",
+    right: 0,
+    display: "flex",
+    alignItems: "center",
+  },
+  userName: {
+    textTransform: "capitalize",
+    fontSize: "1.1rem",
+    marginLeft: "1rem",
+    [theme.breakpoints.down('md')]: {
+      display: "none",
+    },
+  },
 }));
 
 export default function MenuAppBar({ children }) {
   const classes = useStyles();
-  const [auth] = useState(true);
   const history = useHistory();
   const user = useSelector(selectUser);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const handleMenu = event => {
+  const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -67,13 +78,13 @@ export default function MenuAppBar({ children }) {
   const dispatch = useDispatch();
   // const user = useSelector(selectUser);
 
-  const handleLogout = e => {
+  const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout(e));
     handleClose();
   };
 
-  const routChangeProfile = route => {
+  const routChangeProfile = (route) => {
     let path = `/profile`;
     history.push(path);
     handleClose();
@@ -98,8 +109,8 @@ export default function MenuAppBar({ children }) {
           <Typography variant="h6" align="center" className={classes.title}>
             Toplogger Friends
           </Typography>
-          {auth && (
-            <div>
+          {user.token && (
+            <div className={classes.profileSection}>
               <Button
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -108,12 +119,13 @@ export default function MenuAppBar({ children }) {
                 color="inherit"
               >
                 <Avatar src={user.profilePicture}></Avatar>
+                <span className={classes.userName}>{user.name}</span>
               </Button>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
-                  vertical: "top",
+                  vertical: "bottom",
                   horizontal: "right",
                 }}
                 keepMounted

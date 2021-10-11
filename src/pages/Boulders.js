@@ -1,16 +1,9 @@
-import {
-  Link,
-  List,
-  ListItem,
-  ListItemText,
-  makeStyles,
-  Paper,
-  Typography,
-} from "@material-ui/core";
+import { List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import { React } from "react";
 import convertGrade from "../features/gradeConversion";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     position: "fixed",
@@ -27,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    backgroundColor: "rgba(255,255,255,.85)",
+    // backgroundColor: "rgba(255,255,255,.85)",
   },
   title: {
     display: "flex",
@@ -35,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Boulders = props => {
+const Boulders = (props) => {
   const data = props.data;
 
   // const data = this.props.dataRecentBoulders;
@@ -56,10 +49,10 @@ const Boulders = props => {
           }}
         >
           {data.map((i, idx) => (
-            <ListItem component={Link} to={"/user/" + i.TL_ID} key={i.TL_ID}>
+            <ListItem dense={true} key={i.TL_ID}>
               <ListItemText
                 primary={i.Name}
-                secondary={"Grade: " + convertGrade(i.Grade)}
+                secondary={"Grade: " + convertGrade(i.grade)[0]}
               />
             </ListItem>
           ))}
