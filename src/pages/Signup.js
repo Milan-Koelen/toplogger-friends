@@ -1,9 +1,17 @@
-import { Box, Button, Container, Grid, Paper, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Link,
+  Paper,
+  TextField,
+} from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { login, selectUser, signup } from "../features/userSlice";
+import { selectUser, signup } from "../features/userSlice";
 
 const useStyles = makeStyles(theme => ({
   loginContainer: {
@@ -36,6 +44,15 @@ const useStyles = makeStyles(theme => ({
   passwordField: {
     margin: theme.spacing(1),
   },
+  loginText: {
+    fontSize: ".8em",
+    color: "grey",
+    textDecoration: "none",
+    marginTop: theme.spacing(1),
+    "$:hover": {
+      cursor: "pointer",
+    },
+  },
 }));
 
 const Signup = () => {
@@ -54,22 +71,6 @@ const Signup = () => {
     history.push("/");
     return <></>;
   }
-
-  const handleSignin = e => {
-    e.preventDefault();
-
-    dispatch(
-      login({
-        // name: name,
-        email: email,
-        password: password,
-        loggedIn: true,
-      })
-    );
-
-    setEmail("");
-    setPassword("");
-  };
 
   const handleSignup = e => {
     e.preventDefault();
@@ -123,6 +124,9 @@ const Signup = () => {
                 Register
               </Button>
             </Box>
+            <Link to="/login" className={classes.loginText}>
+              I already have an account.
+            </Link>
           </Container>
         </Paper>
       </Grid>
