@@ -1,3 +1,5 @@
+import AddIcon from "@mui/icons-material/PersonAdd";
+import SearchIcon from "@mui/icons-material/Search";
 import {
   Avatar,
   Container,
@@ -11,18 +13,16 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
-import AddIcon from "@mui/icons-material/PersonAdd";
-import SearchIcon from "@mui/icons-material/Search";
+import makeStyles from "@mui/styles/makeStyles";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Background from "../components/Background";
 import { URL } from "../config";
 import { followUser } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
-import Background from "../components/Background";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexDirection: "column",
@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    backgroundColor: "rgba(255,255,255,.85)",
   },
 }));
 
@@ -81,7 +80,7 @@ const SearchUser = () => {
     }
   };
 
-  const handleFollow = (id) => {
+  const handleFollow = id => {
     dispatch(followUser(id));
 
     // const requestOptions = {
@@ -106,9 +105,9 @@ const SearchUser = () => {
           <TextField
             className={classes.searchBar}
             id="searchField"
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={e => setSearch(e.target.value)}
             placeholder="Search"
-            onKeyPress={(ev) => {
+            onKeyPress={ev => {
               console.log(`Pressed keyCode ${ev.key}`);
               if (ev.key === "Enter") {
                 ev.preventDefault();
@@ -121,7 +120,8 @@ const SearchUser = () => {
             edge="end"
             aria-label="follow"
             onClick={handleSearch}
-            size="large">
+            size="large"
+          >
             <SearchIcon />
           </IconButton>
         </div>
@@ -145,7 +145,8 @@ const SearchUser = () => {
                   edge="end"
                   aria-label="follow"
                   onClick={() => handleFollow(i._id)}
-                  size="large">
+                  size="large"
+                >
                   <AddIcon />
                 </IconButton>
               </ListItemSecondaryAction>
