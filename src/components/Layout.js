@@ -53,6 +53,7 @@ const useStyles = makeStyles(theme => ({
     textTransform: "capitalize",
     fontSize: "1.1rem",
     marginLeft: "1rem",
+    marginRight: "1rem",
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
