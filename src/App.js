@@ -1,17 +1,19 @@
 import {
   createTheme,
-  ThemeProvider,
   StyledEngineProvider,
+  ThemeProvider,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Route, Switch } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
+import PrivateRoute from "./components/PrivateRoute";
+import Dashboard from "./pages/Dashboard";
+import Landing from "./pages/Landing";
 import Leaderboard from "./pages/Leaderboard";
 import Login from "./pages/Login";
-import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
+import Signup from "./pages/Signup";
 import UserPage from "./pages/UserPage";
 
 const theme = createTheme({
@@ -35,8 +37,14 @@ function App() {
         <div className="App">
           <Layout>
             <Switch>
+              <Route path="/landing">
+                <Landing />
+              </Route>
               <Route path="/login">
                 <Login />
+              </Route>
+              <Route path="/register">
+                <Signup />
               </Route>
               <PrivateRoute path="/" exact>
                 <Dashboard />
