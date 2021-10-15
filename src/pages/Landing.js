@@ -83,16 +83,15 @@ const Landing = () => {
       <Grid container justifyContent="center">
         <Paper className={classes.loginPaper}>
           <Container className={classes.loginContainer}>
-            <Typography type="p">
-              Hello and welcome to Toplogger Friends. A social aspect of
-              Toplogger.
+            <Typography variant="h6">
+              Hello and welcome to Toplogger Friends.
             </Typography>
             <Box className={classes.buttonBox}>
               <Button
                 className={classes.button}
                 variant="contained"
                 color="primary"
-                onClick={handleSignin}
+                onClick={() => history.push("/login")}
               >
                 Log In
               </Button>
@@ -100,9 +99,9 @@ const Landing = () => {
                 className={classes.button}
                 variant="contained"
                 color="primary"
-                onClick={handleSignup}
+                onClick={() => history.push("/register")}
               >
-                Register
+                I'm new
               </Button>
               <br></br>
             </Box>

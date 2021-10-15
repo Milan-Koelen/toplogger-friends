@@ -1,5 +1,13 @@
-import { Box, Button, Container, Grid, Paper, TextField } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -25,6 +33,16 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     marginTop: theme.spacing(2),
     marginBottom: "O",
+  },
+  title: {
+    textAlign: "center",
+    margin: theme.spacing(1),
+  },
+  textField: {
+    margin: theme.spacing(1),
+  },
+  passwordField: {
+    margin: theme.spacing(1),
   },
 }));
 
@@ -83,6 +101,9 @@ const Login = () => {
       <Grid container justifyContent="center">
         <Paper className={classes.loginPaper}>
           <Container className={classes.loginContainer}>
+            <Typography className={classes.title} variant="h5" component="h3">
+              Welcome back!
+            </Typography>
             <TextField
               id="-basic"
               // variant="outlined"
@@ -90,6 +111,7 @@ const Login = () => {
               placeholder="Email"
               value={email}
               onChange={e => setEmail(e.target.value)}
+              className={classes.textField}
             />
             <br></br>
             <TextField
@@ -99,6 +121,7 @@ const Login = () => {
               placeholder="Password"
               value={password}
               onChange={e => setPassword(e.target.value)}
+              className={classes.passwordField}
             />
             <br></br>
             <Box className={classes.buttonBox}>
@@ -111,9 +134,6 @@ const Login = () => {
                 Login
               </Button>
               <br></br>
-              <Button className={classes.button} variant="contained" onClick={handleSignup}>
-                Register
-              </Button>
             </Box>
           </Container>
         </Paper>
