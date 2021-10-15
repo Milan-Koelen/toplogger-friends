@@ -128,9 +128,7 @@ const Login = () => {
               </Button>
               <br></br>
             </Box>
-            <Link to="/register" className={classes.signupText}>
-              I'm new here and don't have an account.
-            </Link>
+            <Button variant="text"  onClick={history.push("/register")}>I want to sign up</Button>
           </Container>
         </Paper>
       </Grid>
