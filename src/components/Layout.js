@@ -1,4 +1,4 @@
-import { Dashboard } from "@mui/icons-material";
+import Dashboard from "@mui/icons-material/Dashboard";
 import LeaderboardIcon from "@mui/icons-material/Equalizer";
 import Search from "@mui/icons-material/Search";
 import { Avatar } from "@mui/material";
