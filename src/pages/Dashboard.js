@@ -4,9 +4,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
-import { selectUser } from "../features/userSlice";
+import { selectUser, fetchUser } from "../features/userSlice";
 import Boulders from "./Boulders";
 import Leaderboard from "./Leaderboard";
+import GradeHeader from "../components/GradeHeader";
 import { useSpring, animated } from "react-spring";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2),
     marginTop: theme.spacing(10),
   },
-  grade: {
+  tops: {
     textAlign: "center",
     margin: theme.spacing(2),
     fontWeight: 500,
-    fontSize: "3rem",
+    fontSize: "1.7rem",
   },
   profilePicture: { borderRadius: "50%", margin: "auto" },
   paperList: {
@@ -76,11 +77,17 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const dataRecentBoulders = [
-    { Name: "Los Gigantos", grade: 4.85 },
-    { Name: "Giantito", grade: 5.33 },
-    { Name: "Palidans", grade: 7 },
-  ];
+  // const dataRecentBoulders = [
+  //   { Name: "Los Gigantos", grade: 4.85 },
+  //   { Name: "Giantito", grade: 5.33 },
+  //   { Name: "Palidans", grade: 7 },
+  // ];
+
+  const dataRecentBoulders = user.Profile.Accends.map((boulder) => ({
+    Name: boulder.date_logged,
+    grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
+  }));
+
   // const dataRecentBoulders = user.Accends;
   const dataTopBoulders = [
     { Name: "BigBoy", grade: 3.22452 },
@@ -105,6 +112,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(fetchFollowing());
+    dispatch(fetchUser());
   }, [dispatch]);
 
   const classes = useStyles();
@@ -113,7 +121,7 @@ const Dashboard = () => {
   // console.log(user.TotalTops);
   // console.log("+++++=====+++++=====");
 
-  const grade = convertGrade(user.TL_Grade);
+  const grade = convertGrade((user.Profile && user.Profile.Grade) || 0);
 
   return (
     <div className={classes.root}>
@@ -128,9 +136,9 @@ const Dashboard = () => {
       <Typography className={classes.title} variant="h3" component="h3">
         <span className={classes.userName}>{user.name}</span>
       </Typography>
-
-      <Typography className={classes.grade} variant="h5" component="h5">
-        {grade[0]}
+      <GradeHeader grade={grade[0]} percentage={grade[1]} />
+      <Typography className={classes.tops} variant="h5" component="h5">
+        {user.Profile && user.Profile.TotalTops} Accends
       </Typography>
 
       <div className={classes.barScale}>

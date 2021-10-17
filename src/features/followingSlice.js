@@ -19,7 +19,7 @@ export const fetchFollowing = () => {
       const state = getState();
       const jwt = state.user.user.token;
 
-      const result = await fetch(URL + "/", {
+      const result = await fetch(URL + "/following", {
         headers: {
           authorization: jwt,
         },
@@ -32,14 +32,14 @@ export const fetchFollowing = () => {
 
       const data = await result.json();
 
-      dispatch(followingSlice.actions.setFollowing(data.following));
+      dispatch(followingSlice.actions.setFollowing(data));
     } catch (e) {
       console.error(e);
     }
   };
 };
 
-export const followUser = id => {
+export const followUser = (id) => {
   return async (dispatch, getState) => {
     try {
       const user = getState().user.user;
@@ -71,6 +71,6 @@ export const followUser = id => {
   };
 };
 
-export const selectFollowing = state => state.following.following;
+export const selectFollowing = (state) => state.following.following;
 
 export default followingSlice.reducer;

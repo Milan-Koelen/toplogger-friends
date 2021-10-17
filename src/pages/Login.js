@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { login, selectUser } from "../features/userSlice";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   loginContainer: {
     flexGrow: 1,
     marginTop: theme.spacing(4),
@@ -73,7 +73,7 @@ const Login = () => {
     return <></>;
   }
 
-  const handleSignin = e => {
+  const handleSignin = (e) => {
     e.preventDefault();
 
     dispatch(
@@ -103,7 +103,7 @@ const Login = () => {
               type="email"
               placeholder="Email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className={classes.textField}
             />
             <br></br>
@@ -113,7 +113,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               className={classes.passwordField}
             />
             <br></br>
@@ -128,7 +128,9 @@ const Login = () => {
               </Button>
               <br></br>
             </Box>
-            <Button variant="text"  onClick={history.push("/register")}>I want to sign up</Button>
+            <Button variant="text" onClick={() => history.push("/register")}>
+              I want to sign up
+            </Button>
           </Container>
         </Paper>
       </Grid>

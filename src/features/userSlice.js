@@ -10,7 +10,7 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = { ...state.user, ...action.payload };
     },
-    logout: state => {
+    logout: (state) => {
       state.user = {};
     },
   },
@@ -18,7 +18,7 @@ export const userSlice = createSlice({
 export const { logout } = userSlice.actions;
 
 export const login = ({ email, password }) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const result = await fetch(URL + "/signin", {
         method: "POST",
@@ -35,20 +35,10 @@ export const login = ({ email, password }) => {
 
       const data = await result.json();
       console.log(data);
-      console.log(data.name);
-      // console.log(data.grade);
-      // console.log(data.TL_ID.TotalTops);
-      console.log(data.following);
 
       dispatch(
         userSlice.actions.setUser({
           token: data.token,
-          name: data.name,
-          following: data.following,
-          TL_Grade: data.grade,
-          AccendHistory: data.AccendHistory,
-          TotalTops: data.TotalTops,
-          ProfilePictureUrl: data.ProfilePictureUrl,
         })
       );
     } catch (e) {
@@ -58,7 +48,7 @@ export const login = ({ email, password }) => {
 };
 
 export const signup = ({ email, password }) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const result = await fetch(URL + "/signup", {
         method: "POST",
@@ -88,6 +78,34 @@ export const signup = ({ email, password }) => {
   };
 };
 
-export const selectUser = state => state.user.user;
+export const fetchUser = () => {
+  return async (dispatch, getState) => {
+    try {
+      const state = getState();
+      const jwt = state.user.user.token;
+
+      const result = await fetch(URL + "/user", {
+        headers: {
+          authorization: jwt,
+        },
+      });
+
+      if (result.status !== 200) {
+        console.error(await result.text(), result.status);
+        return;
+      }
+
+      const data = await result.json();
+
+      console.log(data);
+
+      dispatch(userSlice.actions.setUser(data));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+};
+
+export const selectUser = (state) => state.user.user;
 
 export default userSlice.reducer;
