@@ -11,7 +11,7 @@ const convertGrade = (gradeValue, system = "font") => {
         return [grade, 100, grades.data[i].name];
       }
       if (gradeValue < grades.data[i].value && i !== 0) {
-        console.log(gradeValue);
+        // console.log(gradeValue);
         const nextGradeValue = grades.data[i].value;
         const grade = grades.data[i - 1];
 
@@ -26,14 +26,14 @@ const convertGrade = (gradeValue, system = "font") => {
 
         const percentage = Math.round((pRestValue / pdiffNextGrade) * 100);
 
-        console.log({
-          TL_grade: gradeValue,
-          Grade: grade.name,
-          i: i,
-          Next: nextGradeValue,
-          Rest: restValue,
-          Dif: diffNextGrade,
-        });
+        // console.log({
+        //   TL_grade: gradeValue,
+        //   Grade: grade.name,
+        //   i: i,
+        //   Next: nextGradeValue,
+        //   Rest: restValue,
+        //   Dif: diffNextGrade,
+        // });
         return [grade.name, percentage, grades.data[i].name];
       }
     }

@@ -85,7 +85,7 @@ const Dashboard = () => {
 
   const dataRecentBoulders =
     user.Profile?.Accends?.map((boulder) => ({
-      Name: boulder.date_logged,
+      Name: boulder.climb.color,
       grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
     })) ?? [];
 

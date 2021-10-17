@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { URL } from "../config";
+import gradeColors from "../features/grades/gradeColors";
 
 export const userSlice = createSlice({
   name: "user",
@@ -106,6 +107,23 @@ export const fetchUser = () => {
   };
 };
 
-export const selectUser = (state) => state.user.user;
+export const selectUser = (state) => {
+  const data = {
+    ...state.user.user,
+    Profile: {
+      ...state.user.user.Profile,
+      Accends: state.user.user.Profile.Accends.map((accend) => ({
+        ...accend,
+        climb: {
+          ...accend.climb,
+          color: gradeColors[accend.climb?.hold_id],
+        },
+      })),
+    },
+  };
+
+  console.log(data.Profile.Accends[0]);
+  return data;
+};
 
 export default userSlice.reducer;
