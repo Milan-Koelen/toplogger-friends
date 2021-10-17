@@ -9,7 +9,7 @@ export default function PrivateRoute({ children, path, exact }) {
   const history = useHistory();
 
   if (!user || !user.token) {
-    history.push("/login");
+    history.push("/landing");
     return <></>;
   }
 

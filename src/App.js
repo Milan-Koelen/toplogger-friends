@@ -3,7 +3,9 @@ import {
   StyledEngineProvider,
   ThemeProvider,
 } from "@mui/material";
+// import { useEffect } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
+// import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import Layout from "./components/Layout";
 import PrivateRoute from "./components/PrivateRoute";
@@ -15,6 +17,7 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Signup from "./pages/Signup";
 import UserPage from "./pages/UserPage";
+// import { getUser } from "./features/userSlice";
 
 const theme = createTheme({
   palette: {
@@ -30,6 +33,13 @@ const theme = createTheme({
 });
 
 function App() {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   console.log("PAGELOAD");
+  //   dispatch(getUser());
+  // }, [dispatch]);
+
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>

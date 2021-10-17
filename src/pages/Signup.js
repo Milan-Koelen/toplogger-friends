@@ -3,9 +3,9 @@ import {
   Button,
   Container,
   Grid,
-  Link,
   Paper,
   TextField,
+  Typography,
 } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import React, { useState } from "react";
@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { selectUser, signup } from "../features/userSlice";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   loginContainer: {
     flexGrow: 1,
     marginTop: theme.spacing(4),
@@ -72,7 +72,7 @@ const Signup = () => {
     return <></>;
   }
 
-  const handleSignup = e => {
+  const handleSignup = (e) => {
     e.preventDefault();
 
     dispatch(
@@ -84,8 +84,8 @@ const Signup = () => {
       })
     );
 
-    setEmail("");
-    setPassword("");
+    // setEmail("");
+    // setPassword("");
   };
 
   return (
@@ -94,13 +94,17 @@ const Signup = () => {
       <Grid container justifyContent="center">
         <Paper className={classes.loginPaper}>
           <Container className={classes.loginContainer}>
+            <Typography className={classes.title} variant="h5" component="h3">
+              Create account
+            </Typography>
             <TextField
               id="-basic"
               // variant="outlined"
               type="email"
+              fullWidth
               placeholder="Email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className={classes.textField}
             />
             <br></br>
@@ -108,9 +112,10 @@ const Signup = () => {
               id="outlined-basic"
               // variant="outlined"
               type="password"
+              fullWidth
               placeholder="Password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               className={classes.passwordField}
             />
             <br></br>
@@ -124,9 +129,9 @@ const Signup = () => {
                 Register
               </Button>
             </Box>
-            <Link to="/login" className={classes.loginText}>
+            <Button variant="text" onClick={() => history.push("/login")}>
               I already have an account.
-            </Link>
+            </Button>
           </Container>
         </Paper>
       </Grid>
