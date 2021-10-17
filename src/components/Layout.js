@@ -1,3 +1,6 @@
+import Dashboard from "@mui/icons-material/Dashboard";
+import LeaderboardIcon from "@mui/icons-material/Equalizer";
+import Search from "@mui/icons-material/Search";
 import { Avatar } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import BottomNavigation from "@mui/material/BottomNavigation";
@@ -5,19 +8,16 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import makeStyles from '@mui/styles/makeStyles';
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Dashboard } from "@mui/icons-material";
-import LeaderboardIcon from "@mui/icons-material/Equalizer";
-import Search from "@mui/icons-material/Search";
+import makeStyles from "@mui/styles/makeStyles";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { logout, selectUser } from "../features/userSlice";
 import Background from "./Background";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     bottom: 0,
@@ -53,7 +53,8 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "capitalize",
     fontSize: "1.1rem",
     marginLeft: "1rem",
-    [theme.breakpoints.down('md')]: {
+    marginRight: "1rem",
+    [theme.breakpoints.down("md")]: {
       display: "none",
     },
   },
@@ -67,7 +68,7 @@ export default function MenuAppBar({ children }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const handleMenu = (event) => {
+  const handleMenu = event => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -78,13 +79,13 @@ export default function MenuAppBar({ children }) {
   const dispatch = useDispatch();
   // const user = useSelector(selectUser);
 
-  const handleLogout = (e) => {
+  const handleLogout = e => {
     e.preventDefault();
     dispatch(logout(e));
     handleClose();
   };
 
-  const routChangeProfile = (route) => {
+  const routChangeProfile = route => {
     let path = `/profile`;
     history.push(path);
     handleClose();
@@ -146,21 +147,23 @@ export default function MenuAppBar({ children }) {
 
       <div className={classes.pageContainer}>{children}</div>
 
-      <BottomNavigation
-        value={tabValue}
-        onChange={(_e, tabIdx) => {
-          history.push(tabRoutes[tabIdx]);
-        }}
-        showLabels
-        className={classes.stickToBottom}
-      >
-        <BottomNavigationAction label="Dashboard" icon={<Dashboard />} />
-        <BottomNavigationAction
-          label="Leaderboard"
-          icon={<LeaderboardIcon />}
-        />
-        <BottomNavigationAction label="Search" icon={<Search />} />
-      </BottomNavigation>
+      {user.token && (
+        <BottomNavigation
+          value={tabValue}
+          onChange={(_e, tabIdx) => {
+            history.push(tabRoutes[tabIdx]);
+          }}
+          showLabels
+          className={classes.stickToBottom}
+        >
+          <BottomNavigationAction label="Dashboard" icon={<Dashboard />} />
+          <BottomNavigationAction
+            label="Leaderboard"
+            icon={<LeaderboardIcon />}
+          />
+          <BottomNavigationAction label="Search" icon={<Search />} />
+        </BottomNavigation>
+      )}
       <Background></Background>
     </div>
   );

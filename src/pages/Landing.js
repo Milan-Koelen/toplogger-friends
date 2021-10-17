@@ -1,18 +1,9 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Link,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { login, selectUser } from "../features/userSlice";
+import { login, selectUser, signup } from "../features/userSlice";
 
 const useStyles = makeStyles(theme => ({
   loginContainer: {
@@ -35,28 +26,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
     marginBottom: "O",
   },
-  title: {
-    textAlign: "center",
-    margin: theme.spacing(1),
-  },
-  textField: {
-    margin: theme.spacing(1),
-  },
-  passwordField: {
-    margin: theme.spacing(1),
-  },
-  signupText: {
-    fontSize: ".8em",
-    color: "grey",
-    textDecoration: "none",
-    marginTop: theme.spacing(1),
-    "$:hover": {
-      cursor: "pointer",
-    },
-  },
 }));
 
-const Login = () => {
+const Landing = () => {
   const classes = useStyles();
 
   // const [name, setName] = useState("");
@@ -88,51 +60,55 @@ const Login = () => {
     setEmail("");
     setPassword("");
   };
+
+  const handleSignup = e => {
+    e.preventDefault();
+
+    dispatch(
+      signup({
+        // name: name,
+        email: email,
+        password: password,
+        loggedIn: true,
+      })
+    );
+
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <div className="login">
       <br></br>
       <Grid container justifyContent="center">
         <Paper className={classes.loginPaper}>
           <Container className={classes.loginContainer}>
-            <Typography className={classes.title} variant="h5" component="h3">
-              Welcome back!
+            <Typography variant="h6">
+              Hello and welcome to Toplogger Friends.
             </Typography>
-            <TextField
-              id="-basic"
-              // variant="outlined"
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              className={classes.textField}
-            />
-            <br></br>
-            <TextField
-              id="outlined-basic"
-              // variant="outlined"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              className={classes.passwordField}
-            />
-            <br></br>
             <Box className={classes.buttonBox}>
               <Button
                 className={classes.button}
                 variant="contained"
                 color="primary"
-                onClick={handleSignin}
+                onClick={() => history.push("/login")}
               >
-                Login
+                Log In
+              </Button>
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="primary"
+                onClick={() => history.push("/register")}
+              >
+                I'm new
               </Button>
               <br></br>
             </Box>
-            <Button variant="text"  onClick={history.push("/register")}>I want to sign up</Button>
           </Container>
         </Paper>
       </Grid>
     </div>
   );
 };
-export default Login;
+export default Landing;
