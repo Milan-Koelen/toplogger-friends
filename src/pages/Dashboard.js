@@ -83,10 +83,11 @@ const Dashboard = () => {
   //   { Name: "Palidans", grade: 7 },
   // ];
 
-  const dataRecentBoulders = user.Profile.Accends.map((boulder) => ({
-    Name: boulder.date_logged,
-    grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
-  }));
+  const dataRecentBoulders =
+    user.Profile?.Accends?.map((boulder) => ({
+      Name: boulder.date_logged,
+      grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
+    })) ?? [];
 
   // const dataRecentBoulders = user.Accends;
   const dataTopBoulders = [
