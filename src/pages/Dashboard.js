@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2),
     marginTop: theme.spacing(10),
   },
-  grade: {
+  tops: {
     textAlign: "center",
     margin: theme.spacing(2),
     fontWeight: 500,
-    fontSize: "3rem",
+    fontSize: "1.7rem",
   },
   profilePicture: { borderRadius: "50%", margin: "auto" },
   paperList: {
@@ -77,11 +77,17 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const dataRecentBoulders = [
-    { Name: "Los Gigantos", grade: 4.85 },
-    { Name: "Giantito", grade: 5.33 },
-    { Name: "Palidans", grade: 7 },
-  ];
+  // const dataRecentBoulders = [
+  //   { Name: "Los Gigantos", grade: 4.85 },
+  //   { Name: "Giantito", grade: 5.33 },
+  //   { Name: "Palidans", grade: 7 },
+  // ];
+
+  const dataRecentBoulders = user.Profile.Accends.map((boulder) => ({
+    Name: boulder.date_logged,
+    grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
+  }));
+
   // const dataRecentBoulders = user.Accends;
   const dataTopBoulders = [
     { Name: "BigBoy", grade: 3.22452 },
@@ -131,8 +137,8 @@ const Dashboard = () => {
         <span className={classes.userName}>{user.name}</span>
       </Typography>
       <GradeHeader grade={grade[0]} percentage={grade[1]} />
-      <Typography className={classes.grade} variant="h5" component="h5">
-        {grade[0]}
+      <Typography className={classes.tops} variant="h5" component="h5">
+        {user.Profile && user.Profile.TotalTops} Accends
       </Typography>
 
       <div className={classes.barScale}>
