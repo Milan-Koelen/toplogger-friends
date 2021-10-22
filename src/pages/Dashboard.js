@@ -93,11 +93,19 @@ const Dashboard = () => {
       grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
     }));
 
-  const dataTopBoulders = [
+  const placeholderTopBoulders = [
     { Name: "BigBoy", grade: 3.22452 },
     { Name: "Karel kutkrimpjes", grade: 10 },
     { Name: "Bob de Boulder", grade: 8.34444 },
   ];
+  const dataTopBoulders = user.Profile?.Accends.sort((a, b) =>
+    a.Grade > b.Grade ? -1 : 1
+  )
+    .slice(0, 10)
+    .map(boulder => ({
+      Name: boulder.date_logged,
+      grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
+    }));
 
   // const data = useSelector(selectFollowing);
 
