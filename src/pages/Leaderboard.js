@@ -25,13 +25,14 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "5%",
     marginRight: "5%",
     marginBottom: theme.spacing(2),
+    borderBottom: "none",
   },
   paper: {
     marginTop: theme.spacing(4),
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    backgroundColor: "rgba(18,18,18,.01)",
+    backgroundColor: "rgba(18,18,18,.05)",
     backdropFilter: "blur(8px)",
   },
   profilepicture: {
@@ -43,6 +44,9 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     cursor: "pointer",
+  },
+  tableCell: {
+    borderBottom: "none",
   },
   percentage: {
     fontSize: ".8em",
@@ -92,14 +96,16 @@ const Leaderboard = () => {
                     className={classes.link}
                     onClick={() => history.push("/user/" + i.TL_ID)}
                   >
-                    <TableCell padding="none">
+                    <TableCell padding="none" className={classes.tableCell}>
                       {Number.parseInt(idx) + 1}
                     </TableCell>
-                    <TableCell>
+                    <TableCell className={classes.tableCell}>
                       <Avatar src={i.ProfilePictureURL}></Avatar>
                     </TableCell>
-                    <TableCell className={classes.name}>{i.Name}</TableCell>
-                    <TableCell padding="none">
+                    <TableCell className={classes.tableCell}>
+                      {i.Name}
+                    </TableCell>
+                    <TableCell padding="none" className={classes.tableCell}>
                       {grade[0]}
                       {grade[1] !== 0 && (
                         <span className={classes.percentage}>{grade[1]}%</span>
