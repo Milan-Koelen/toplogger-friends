@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useSpring } from "react-spring";
 import GradeHeader from "../components/GradeHeader";
 import { fetchFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
@@ -33,11 +32,12 @@ const useStyles = makeStyles(theme => ({
   },
   profilePicture: { borderRadius: "50%", margin: "auto" },
   paperList: {
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(5),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
+    fill: "rgba(50,50,50,.5)",
 
     "&>div": {
       width: "90%",
@@ -98,16 +98,6 @@ const Dashboard = () => {
     { Name: "Karel kutkrimpjes", grade: 10 },
     { Name: "Bob de Boulder", grade: 8.34444 },
   ];
-
-  const props = useSpring({
-    from: { hue: 0 },
-    to: { hue: 1 },
-    loop: true,
-    reset: true,
-    config: {
-      duration: 5000,
-    },
-  });
 
   // const data = useSelector(selectFollowing);
 
