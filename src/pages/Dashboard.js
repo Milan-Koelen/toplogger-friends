@@ -2,15 +2,15 @@ import { Typography } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { animated, useSpring } from "react-spring";
+import GradeHeader from "../components/GradeHeader";
 import { fetchFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
-import { selectUser, fetchUser } from "../features/userSlice";
+import { fetchUser, selectUser } from "../features/userSlice";
 import Boulders from "./Boulders";
 import Leaderboard from "./Leaderboard";
-import GradeHeader from "../components/GradeHeader";
-import { useSpring, animated } from "react-spring";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: "750px",
     margin: "auto",
@@ -83,12 +83,16 @@ const Dashboard = () => {
   //   { Name: "Palidans", grade: 7 },
   // ];
 
-  const dataRecentBoulders = user.Profile.Accends.map((boulder) => ({
+  const allBoulders = user.Profile?.Accends.map(boulder => ({
     Name: boulder.date_logged,
     grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
   }));
 
-  // const dataRecentBoulders = user.Accends;
+  const dataRecentBoulders = user.Profile?.Accends.map(boulder => ({
+    Name: boulder.date_logged,
+    grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
+  }));
+
   const dataTopBoulders = [
     { Name: "BigBoy", grade: 3.22452 },
     { Name: "Karel kutkrimpjes", grade: 10 },
@@ -153,14 +157,14 @@ const Dashboard = () => {
       <animated.div
         className={classes.bar}
         style={{
-          borderColor: props.hue.to((h) => `hsl(${h * 360}, 80%, 39%)`),
+          borderColor: props.hue.to(h => `hsl(${h * 360}, 80%, 39%)`),
         }}
       >
         <animated.div
           className={classes.barElement}
           style={{
             width: grade[1] + "%",
-            backgroundColor: props.hue.to((h) => `hsl(${h * 360}, 80%, 39%)`),
+            backgroundColor: props.hue.to(h => `hsl(${h * 360}, 80%, 39%)`),
           }}
         />
       </animated.div>
@@ -171,8 +175,8 @@ const Dashboard = () => {
 
       <div className={classes.paperList}>
         <Leaderboard />
-        <Boulders data={dataRecentBoulders} title="Recent Boulders" />
-        <Boulders data={dataTopBoulders} title="Top Boulders" />
+        <Boulders data={dataRecentBoulders || []} title="Recent Boulders" />
+        <Boulders data={dataTopBoulders || []} title="Top Boulders" />
       </div>
     </div>
   );
