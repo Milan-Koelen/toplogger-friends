@@ -83,15 +83,15 @@ const Dashboard = () => {
     { Name: "Palidans", grade: 7 },
   ];
 
-  // const allBoulders = user.Profile?.Accends.map(boulder => ({
-  //   Name: boulder.date_logged,
-  //   grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
-  // }));
-
-  const dataRecentBoulders = user.Profile?.Accends?.map(boulder => ({
-    Name: boulder.date_logged,
-    grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
-  }));
+  const allBoulders = user.Profile?.Accends.reverse();
+  const dataRecentBoulders = user.Profile?.Accends.sort((a, b) =>
+    a.date_logged > b.date_logged ? -1 : 1
+  )
+    .slice(0, 10)
+    .map(boulder => ({
+      Name: boulder.date_logged,
+      grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
+    }));
 
   const dataTopBoulders = [
     { Name: "BigBoy", grade: 3.22452 },
@@ -116,7 +116,7 @@ const Dashboard = () => {
   // console.log("+++++=====+++++=====");
 
   const grade = convertGrade((user.Profile && user.Profile.Grade) || 0);
-
+  const x = user.Profile.TotalTops - 1;
   return (
     <div className={classes.root}>
       {/* <div className="chart">
@@ -133,6 +133,12 @@ const Dashboard = () => {
       <GradeHeader grade={grade[0]} percentage={grade[1]} />
       <Typography className={classes.tops} variant="h5" component="h5">
         {user.Profile && user.Profile.TotalTops} Accends
+      </Typography>
+      <Typography className={classes.tops} variant="h5" component="h5">
+        {user.Profile &&
+          user.Profile.Accends[user.Profile?.Accends?.length - 1].date_logged
+            .toString}{" "}
+        Last log
       </Typography>
 
       <div className={classes.paperList}>
