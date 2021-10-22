@@ -8,7 +8,7 @@ let config = {
   life: [5, 15],
   v: [0.3, 0.1],
   tha: [-40, 40],
-  alpha: [0.4, 0.1],
+  alpha: [0.55, 0.2],
   scale: [0.1, 0.4],
   position: "all",
   color: ["#793695", "#ff0000"],

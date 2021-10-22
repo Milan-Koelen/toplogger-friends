@@ -20,7 +20,8 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    // backgroundColor: "rgba(255,255,255,.85)",
+    backgroundColor: "rgba(18,18,18,.01)",
+    backdropFilter: "blur(8px)",
   },
   title: {
     display: "flex",
