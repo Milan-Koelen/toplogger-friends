@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { animated, useSpring } from "react-spring";
+import { useSpring } from "react-spring";
 import GradeHeader from "../components/GradeHeader";
 import { fetchFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
@@ -144,34 +144,6 @@ const Dashboard = () => {
       <Typography className={classes.tops} variant="h5" component="h5">
         {user.Profile && user.Profile.TotalTops} Accends
       </Typography>
-
-      <div className={classes.barScale}>
-        <span>{grade[0]}</span>
-        <span>{grade[2]}</span>
-      </div>
-      <div className={classes.barLabelContainer}>
-        <div className={classes.barLabel} style={{ left: grade[1] + "%" }}>
-          {grade[1] >= 10 && grade[1] <= 90 && grade[1]}%
-        </div>
-      </div>
-      <animated.div
-        className={classes.bar}
-        style={{
-          borderColor: props.hue.to(h => `hsl(${h * 360}, 80%, 39%)`),
-        }}
-      >
-        <animated.div
-          className={classes.barElement}
-          style={{
-            width: grade[1] + "%",
-            backgroundColor: props.hue.to(h => `hsl(${h * 360}, 80%, 39%)`),
-          }}
-        />
-      </animated.div>
-      {/* 
-      <Typography className={classes.title} variant="h5" component="h5">
-        Boulders Logged: {user.TotalTops}
-      </Typography> */}
 
       <div className={classes.paperList}>
         <Leaderboard />
