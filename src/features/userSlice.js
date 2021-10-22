@@ -11,7 +11,7 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = { ...state.user, ...action.payload };
     },
-    logout: (state) => {
+    logout: state => {
       state.user = {};
     },
   },
@@ -19,7 +19,7 @@ export const userSlice = createSlice({
 export const { logout } = userSlice.actions;
 
 export const login = ({ email, password }) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const result = await fetch(URL + "/signin", {
         method: "POST",
@@ -49,7 +49,7 @@ export const login = ({ email, password }) => {
 };
 
 export const signup = ({ email, password }) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const result = await fetch(URL + "/signup", {
         method: "POST",
@@ -107,12 +107,12 @@ export const fetchUser = () => {
   };
 };
 
-export const selectUser = (state) => {
+export const selectUser = state => {
   const data = {
     ...state.user.user,
     Profile: {
       ...state.user.user.Profile,
-      Accends: state.user.user.Profile.Accends.map((accend) => ({
+      Accends: state.user.user.Profile?.Accends.map(accend => ({
         ...accend,
         climb: {
           ...accend.climb,
@@ -122,7 +122,7 @@ export const selectUser = (state) => {
     },
   };
 
-  console.log(data.Profile.Accends[0]);
+  // console.log(data.Profile?.Accends[0]);
   return data;
 };
 
