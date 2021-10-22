@@ -1,7 +1,7 @@
-import BackspaceIcon from "@mui/icons-material/Backspace";
+// import BackspaceIcon from "@mui/icons-material/Backspace";
 import {
   Avatar,
-  IconButton,
+  // IconButton,
   Paper,
   Table,
   TableBody,
@@ -105,7 +105,7 @@ const Leaderboard = () => {
                         <span className={classes.percentage}>{grade[1]}%</span>
                       )}
                     </TableCell>
-                    <TableCell padding="none">
+                    {/* <TableCell padding="none">
                       <IconButton
                         edge="end"
                         aria-label="follow"
@@ -115,7 +115,7 @@ const Leaderboard = () => {
                       >
                         <BackspaceIcon />
                       </IconButton>
-                    </TableCell>
+                    </TableCell> */}
                   </TableRow>
                 );
               })}
