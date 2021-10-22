@@ -77,11 +77,11 @@ const useStyles = makeStyles(theme => ({
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  // const dataRecentBoulders = [
-  //   { Name: "Los Gigantos", grade: 4.85 },
-  //   { Name: "Giantito", grade: 5.33 },
-  //   { Name: "Palidans", grade: 7 },
-  // ];
+  const placeholderBoulders = [
+    { Name: "Los Gigantos", grade: 4.85 },
+    { Name: "Giantito", grade: 5.33 },
+    { Name: "Palidans", grade: 7 },
+  ];
 
   const allBoulders = user.Profile?.Accends.map(boulder => ({
     Name: boulder.date_logged,
@@ -175,8 +175,14 @@ const Dashboard = () => {
 
       <div className={classes.paperList}>
         <Leaderboard />
-        <Boulders data={dataRecentBoulders || []} title="Recent Boulders" />
-        <Boulders data={dataTopBoulders || []} title="Top Boulders" />
+        <Boulders
+          data={dataRecentBoulders || placeholderBoulders}
+          title="Recent Boulders"
+        />
+        <Boulders
+          data={dataTopBoulders || placeholderBoulders}
+          title="Top Boulders"
+        />
       </div>
     </div>
   );
