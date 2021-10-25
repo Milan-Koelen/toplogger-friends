@@ -44,6 +44,9 @@ const useStyles = makeStyles(theme => ({
       marginBottom: theme.spacing(4),
     },
   },
+  gradeHeader: {
+    backdropFilter: "blur(8px)",
+  },
   bar: {
     width: "90%",
     height: 40,
@@ -83,8 +86,10 @@ const Dashboard = () => {
     { Name: "Palidans", grade: 7 },
   ];
 
-  const allBoulders = user.Profile?.Accends.reverse();
-  const dataRecentBoulders = user.Profile?.Accends.sort((a, b) =>
+  const allBoulders = user.Profile?.Accends?.sort((a, b) =>
+    a.Grade > b.Grade ? -1 : 1
+  );
+  const dataRecentBoulders = user.Profile?.Accends?.sort((a, b) =>
     a.date_logged > b.date_logged ? -1 : 1
   )
     .slice(0, 10)
@@ -98,7 +103,7 @@ const Dashboard = () => {
     { Name: "Karel kutkrimpjes", grade: 10 },
     { Name: "Bob de Boulder", grade: 8.34444 },
   ];
-  const dataTopBoulders = user.Profile?.Accends.sort((a, b) =>
+  const dataTopBoulders = user.Profile?.Accends?.sort((a, b) =>
     a.Grade > b.Grade ? -1 : 1
   )
     .slice(0, 10)
@@ -138,15 +143,16 @@ const Dashboard = () => {
       <Typography className={classes.title} variant="h3" component="h3">
         <span className={classes.userName}>{user.name}</span>
       </Typography>
-      <GradeHeader grade={grade[0]} percentage={grade[1]} />
+      <GradeHeader
+        className={classes.gradeHeader}
+        grade={grade[0]}
+        percentage={grade[1]}
+      />
       <Typography className={classes.tops} variant="h5" component="h5">
         {user.Profile && user.Profile.TotalTops} Accends
       </Typography>
       <Typography className={classes.tops} variant="h5" component="h5">
-        {user.Profile &&
-          user.Profile.Accends[user.Profile?.Accends?.length - 1].date_logged
-            .toString}{" "}
-        Last log
+        {/* {allBoulders[0]?.date_logged} Last log */}
       </Typography>
 
       <div className={classes.paperList}>
