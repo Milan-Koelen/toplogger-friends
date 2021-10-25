@@ -1,16 +1,20 @@
 // import BackspaceIcon from "@mui/icons-material/Backspace";
 import {
   Avatar,
+  Box,
   // IconButton,
   Paper,
+  Tab,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableRow,
+  Tabs,
   Typography,
 } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
+import PropTypes from "prop-types";
 import { React } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -77,41 +81,100 @@ const Leaderboard = () => {
   };
 
   const classes = useStyles();
-  return (
-    <Paper className={classes.paper}>
-      <Typography variant="h5" className={classes.title}>
-        Leaderboard
-      </Typography>
-      <TableContainer>
-        <Table className={classes.table} size="small">
-          <TableBody>
-            {sortableData
-              .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))
-              .map((i, idx) => {
-                const grade = convertGrade(i.Grade);
 
-                return (
-                  <TableRow
-                    key={i.idx}
-                    className={classes.link}
-                    onClick={() => history.push("/user/" + i.TL_ID)}
-                  >
-                    <TableCell padding="none" className={classes.tableCell}>
-                      {Number.parseInt(idx) + 1}
-                    </TableCell>
-                    <TableCell className={classes.tableCell}>
-                      <Avatar src={i.ProfilePictureURL}></Avatar>
-                    </TableCell>
-                    <TableCell className={classes.tableCell}>
-                      {i.Name}
-                    </TableCell>
-                    <TableCell padding="none" className={classes.tableCell}>
-                      {grade[0]}
-                      {grade[1] !== 0 && (
-                        <span className={classes.percentage}>{grade[1]}%</span>
-                      )}
-                    </TableCell>
-                    {/* <TableCell padding="none">
+  function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 2 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+  TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+  };
+
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      "aria-controls": `simple-tabpanel-${index}`,
+    };
+  }
+
+  function BasicTabs() {
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
+    return (
+      <Paper className={classes.paper}>
+        <Typography variant="h5" className={classes.title}>
+          Leaderboard
+        </Typography>
+        <Box sx={{ width: "100%" }}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+            >
+              <Tab label="Friends" {...a11yProps(0)} />
+              <Tab label="All Gyms" {...a11yProps(1)} />
+            </Tabs>
+          </Box>
+          <TabPanel value={value} index={0}>
+            <TableContainer>
+              <Table className={classes.table} size="small">
+                <TableBody>
+                  {sortableData
+                    .sort((a, b) => (a.Grade > b.Grade ? -1 : 1))
+                    .map((i, idx) => {
+                      const grade = convertGrade(i.Grade);
+
+                      return (
+                        <TableRow
+                          key={i.idx}
+                          className={classes.link}
+                          onClick={() => history.push("/user/" + i.TL_ID)}
+                        >
+                          <TableCell
+                            padding="none"
+                            className={classes.tableCell}
+                          >
+                            {Number.parseInt(idx) + 1}
+                          </TableCell>
+                          <TableCell className={classes.tableCell}>
+                            <Avatar src={i.ProfilePictureURL}></Avatar>
+                          </TableCell>
+                          <TableCell className={classes.tableCell}>
+                            {i.Name}
+                          </TableCell>
+                          <TableCell
+                            padding="none"
+                            className={classes.tableCell}
+                          >
+                            {grade[0]}
+                            {grade[1] !== 0 && (
+                              <span className={classes.percentage}>
+                                {grade[1]}%
+                              </span>
+                            )}
+                          </TableCell>
+                          {/* <TableCell padding="none">
                       <IconButton
                         edge="end"
                         aria-label="follow"
@@ -122,13 +185,20 @@ const Leaderboard = () => {
                         <BackspaceIcon />
                       </IconButton>
                     </TableCell> */}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper>
-  );
+                        </TableRow>
+                      );
+                    })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            Item Two
+          </TabPanel>
+        </Box>
+      </Paper>
+    );
+  }
 };
+
 export default Leaderboard;
