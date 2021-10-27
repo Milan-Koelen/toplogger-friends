@@ -31,12 +31,6 @@ context("End 2 End Test", () => {
 
     cy.wait(500);
 
-    cy.get(".makeStyles-buttonBox-14 > .MuiButton-root")
-      .should("be.visible")
-      .click();
-
-    cy.wait(500);
-
     cy.get(".MuiButton-root").should("be.visible").click();
     cy.get('.MuiList-root > [tabindex="-1"]').click();
   });
