@@ -5,7 +5,7 @@ context("Login Test", () => {
     cy.visit("localhost:3000");
   });
 
-  it("cy.go() - Login and dashboard load", () => {
+  it("Login and dashboard load", () => {
     // https://on.cypress.io/go
 
     cy.visit("localhost:3000", {
@@ -20,8 +20,8 @@ context("Login Test", () => {
     cy.get(".makeStyles-buttonBox-14 > .MuiButton-root").click();
   });
 
-  // it("cy.reload() - reload the page", () => {
-  //   cy.reload();
-  //   cy.reload(true);
-  // });
+  it("reload the page withouth logout", () => {
+    cy.reload();
+    // cy.reload(true);
+  });
 });
