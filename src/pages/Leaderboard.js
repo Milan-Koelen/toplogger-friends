@@ -18,7 +18,6 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { selectFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion.js";
-import { selectUser } from "../features/userSlice";
 
 const useStyles = makeStyles(theme => ({
   table: {
@@ -58,7 +57,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Leaderboard = () => {
-  const user = useSelector(selectUser);
   const data = useSelector(selectFollowing);
   const history = useHistory();
   const sortableData = data.map(x => x);

@@ -3,7 +3,6 @@ import {
   Button,
   Container,
   Grid,
-  Link,
   Paper,
   TextField,
   Typography,
@@ -14,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { login, selectUser } from "../features/userSlice";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   loginContainer: {
     flexGrow: 1,
     marginTop: theme.spacing(4),
@@ -73,7 +72,7 @@ const Login = () => {
     return <></>;
   }
 
-  const handleSignin = (e) => {
+  const handleSignin = e => {
     e.preventDefault();
 
     dispatch(
@@ -103,7 +102,7 @@ const Login = () => {
               type="email"
               placeholder="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
               className={classes.textField}
             />
             <br></br>
@@ -113,7 +112,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               className={classes.passwordField}
             />
             <br></br>
@@ -123,6 +122,7 @@ const Login = () => {
                 variant="contained"
                 color="primary"
                 onClick={handleSignin}
+                id="loginBtn"
               >
                 Login
               </Button>
