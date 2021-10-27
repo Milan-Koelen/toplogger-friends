@@ -138,7 +138,9 @@ export default function MenuAppBar({ children }) {
                 onClose={handleClose}
               >
                 <MenuItem onClick={routChangeProfile}>Profile</MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                <MenuItem onClick={handleLogout} id="logoutButton">
+                  Logout
+                </MenuItem>
               </Menu>
             </div>
           )}

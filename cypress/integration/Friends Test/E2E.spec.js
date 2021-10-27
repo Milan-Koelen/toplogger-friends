@@ -27,12 +27,12 @@ context("End 2 End Test", () => {
     cy.contains("Login").should("be.visible");
     cy.get("#-basic").should("be.visible").type("koelen.milan@gmail.com");
     cy.get("#outlined-basic").should("be.visible").type("pindakaas");
-    cy.contains("Login").should("be.visible").click();
+    cy.get("Button[id='loginBtn']").should("be.visible").click();
 
     cy.wait(500);
 
-    cy.get(".MuiButton-root").should("be.visible").click();
-    cy.get('.MuiList-root > [tabindex="-1"]').click();
+    cy.get('div[id="profileMenu"]').should("be.visible").click();
+    cy.get('li[id="logoutButton"]').click();
   });
 
   const email = "koelen.milan@gmail.com";
