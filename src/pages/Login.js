@@ -77,7 +77,6 @@ const Login = () => {
 
     dispatch(
       login({
-        // name: name,
         email: email,
         password: password,
         loggedIn: true,

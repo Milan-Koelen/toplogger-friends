@@ -71,6 +71,9 @@ function App() {
               <PrivateRoute path="/profile">
                 <Profile />
               </PrivateRoute>
+              <PrivateRoute path="/user">
+                <Profile />
+              </PrivateRoute>
             </Switch>
           </Layout>
         </div>
