@@ -30,10 +30,7 @@ context("End 2 End Test", () => {
     cy.get(".makeStyles-buttonBox-14 > .MuiButton-root")
       .should("be.visible")
       .click();
-    cy.wait(500);
-    cy.get(".MuiBottomNavigation-root > :nth-child(1)")
-      .should("be.visible")
-      .click();
+
     cy.wait(500);
 
     cy.get("#profileMenu").should("be.visible").click();
