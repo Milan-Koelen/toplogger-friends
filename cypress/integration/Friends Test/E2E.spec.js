@@ -18,8 +18,8 @@ context("End 2 End Test", () => {
 
   it("Login and out through UI", () => {
     cy.wait(500);
-
-    cy.contains("Log In").should("be.visible").click();
+    cy.visit("localhost:3000/login").get("#loginContainer");
+    cy.contains("Login").should("be.visible").click();
     cy.wait(500);
 
     // Login
@@ -27,6 +27,10 @@ context("End 2 End Test", () => {
     cy.contains("Login").should("be.visible");
     cy.get("#-basic").should("be.visible").type("koelen.milan@gmail.com");
     cy.get("#outlined-basic").should("be.visible").type("pindakaas");
+    cy.contains("Login").should("be.visible").click();
+
+    cy.wait(500);
+
     cy.get(".makeStyles-buttonBox-14 > .MuiButton-root")
       .should("be.visible")
       .click();
