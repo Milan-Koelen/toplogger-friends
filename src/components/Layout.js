@@ -111,7 +111,7 @@ export default function MenuAppBar({ children }) {
             Toplogger Friends
           </Typography>
           {user.token && (
-            <div className={classes.profileSection}>
+            <div className={classes.profileSection} id="profileMenu">
               <Button
                 aria-label="account of current user"
                 aria-controls="menu-appbar"

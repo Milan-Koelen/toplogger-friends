@@ -29,7 +29,7 @@
     "start": "export REACT_APP_API_URL=http://localhost:4000 && react-scripts start",
     "start_against_prod": "export REACT_APP_API_URL=http://85.145.226.121:7000 && react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cypress open",
     "eject": "react-scripts eject",
     "lint": "eslint ./src/**/*.js "
   },
@@ -52,6 +52,8 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "cypress": "^8.7.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-cypress": "^2.12.1"
   }
 }

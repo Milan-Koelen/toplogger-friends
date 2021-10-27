@@ -1,9 +1,9 @@
 import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { login, selectUser, signup } from "../features/userSlice";
+import { selectUser } from "../features/userSlice";
 
 const useStyles = makeStyles(theme => ({
   loginContainer: {
@@ -31,12 +31,6 @@ const useStyles = makeStyles(theme => ({
 const Landing = () => {
   const classes = useStyles();
 
-  // const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const dispatch = useDispatch();
-
   const user = useSelector(selectUser);
   const history = useHistory();
 
@@ -44,38 +38,6 @@ const Landing = () => {
     history.push("/");
     return <></>;
   }
-
-  const handleSignin = e => {
-    e.preventDefault();
-
-    dispatch(
-      login({
-        // name: name,
-        email: email,
-        password: password,
-        loggedIn: true,
-      })
-    );
-
-    setEmail("");
-    setPassword("");
-  };
-
-  const handleSignup = e => {
-    e.preventDefault();
-
-    dispatch(
-      signup({
-        // name: name,
-        email: email,
-        password: password,
-        loggedIn: true,
-      })
-    );
-
-    setEmail("");
-    setPassword("");
-  };
 
   return (
     <div className="login">

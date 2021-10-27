@@ -1,27 +1,26 @@
-import { makeStyles } from "@mui/styles";
 import React from "react";
 
-const useStyles = makeStyles(theme => ({
-  box: {
-    width: 100,
-    height: 100,
-    borderRadius: 20 /*1*/,
-    border: "10px solid transparent" /*2*/,
-    background: "linear-gradient(45deg,red,blue) border-box" /*3*/,
-    backdropFilter: "blur(8)",
+// const useStyles = makeStyles(theme => ({
+//   box: {
+//     width: 100,
+//     height: 100,
+//     borderRadius: 20 /*1*/,
+//     border: "10px solid transparent" /*2*/,
+//     background: "linear-gradient(45deg,red,blue) border-box" /*3*/,
+//     backdropFilter: "blur(8)",
 
-    mask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
-    maskComposite: "destination-out",
-    //   -webkit-mask: /*4*/
-    //      linear-gradient(#fff 0 0) padding-box,
-    //      linear-gradient(#fff 0 0),
-    //   -webkit-mask-composite: destination-out, /*5'*/
-    // maskComposite: "exclude" /*5*/,
-  },
-}));
+//     mask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+//     maskComposite: "destination-out",
+//     //   -webkit-mask: /*4*/
+//     //      linear-gradient(#fff 0 0) padding-box,
+//     //      linear-gradient(#fff 0 0),
+//     //   -webkit-mask-composite: destination-out, /*5'*/
+//     // maskComposite: "exclude" /*5*/,
+//   },
+// }));
 
 export default function GradeHeader({ grade, percentage }) {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   let w = 470;
   const h = 470;
