@@ -4,7 +4,7 @@ context("End 2 End Test", () => {
   beforeEach(() => {
     cy.visit("localhost:3000");
   });
-  it("Load page", () => {
+  it("Landing Page page", () => {
     cy.reload();
   });
 
@@ -15,7 +15,7 @@ context("End 2 End Test", () => {
     cy.wait(500);
 
     // Login page
-    cy.get("#profileMenu").should("not.exist");
+    // cy.get("#profileMenu").should("not.exist");
     cy.contains("Login").should("be.visible");
     cy.get("#-basic").should("be.visible").type("koelen.milan@gmail.com");
     cy.get("#outlined-basic").should("be.visible").type("pindakaas");

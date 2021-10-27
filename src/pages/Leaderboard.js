@@ -3,13 +3,11 @@ import {
   Avatar,
   // IconButton,
   Paper,
-  Tab,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableRow,
-  Tabs,
   Typography,
 } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
@@ -60,6 +58,7 @@ const Leaderboard = () => {
   const data = useSelector(selectFollowing);
   const history = useHistory();
   const sortableData = data.map(x => x);
+  // const user = useSelector(selectUser);
 
   // const handleUnfollow = e => {
   //   const requestOptions = {
@@ -82,14 +81,14 @@ const Leaderboard = () => {
       <Typography variant="h5" className={classes.title}>
         Leaderboard
       </Typography>
-      <Tabs
+      {/* <Tabs
         value={value}
         onChange={handleChange}
         aria-label="basic tabs example"
       >
         <Tab label="Friends" {...a11yProps(0)} />
         <Tab label="All Gyms" {...a11yProps(1)} />
-      </Tabs>
+      </Tabs> */}
 
       <TableContainer>
         <Table className={classes.table} size="small">
