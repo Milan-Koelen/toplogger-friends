@@ -33,7 +33,7 @@ context("End 2 End Test", () => {
 
     cy.wait(500);
 
-    cy.get("#profileMenu").should("be.visible").click();
+    cy.get(".MuiButton-root").should("be.visible").click();
     cy.get('.MuiList-root > [tabindex="-1"]').click();
   });
 
