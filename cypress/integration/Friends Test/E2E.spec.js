@@ -4,7 +4,26 @@ context("End 2 End Test", () => {
   beforeEach(() => {
     cy.visit("localhost:3000");
   });
+  it("Load page", () => {
+    cy.reload();
+  });
 
+  it("Load and Login", () => {
+    cy.wait(500);
+
+    cy.contains("Log In").should("be.visible").click();
+    cy.wait(500);
+
+    // Login page
+    cy.get("#profileMenu").should("not.exist");
+    cy.contains("Login").should("be.visible");
+    cy.get("#-basic").should("be.visible").type("koelen.milan@gmail.com");
+    cy.get("#outlined-basic").should("be.visible").type("pindakaas");
+    cy.get(".makeStyles-buttonBox-14 > .MuiButton-root")
+      .should("be.visible")
+      .click();
+    cy.wait(500);
+  });
   it("Login and dashboard load", () => {
     // Landing page
     cy.wait(500);
