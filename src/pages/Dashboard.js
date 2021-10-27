@@ -86,9 +86,9 @@ const Dashboard = () => {
     { Name: "Palidans", grade: 7 },
   ];
 
-  const allBoulders = user.Profile?.Accends?.sort((a, b) =>
-    a.Grade > b.Grade ? -1 : 1
-  );
+  // const allBoulders = user.Profile?.Accends?.sort((a, b) =>
+  //   a.Grade > b.Grade ? -1 : 1
+  // );
   const dataRecentBoulders = user.Profile?.Accends?.sort((a, b) =>
     a.date_logged > b.date_logged ? -1 : 1
   )
@@ -98,11 +98,11 @@ const Dashboard = () => {
       grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
     }));
 
-  const placeholderTopBoulders = [
-    { Name: "BigBoy", grade: 3.22452 },
-    { Name: "Karel kutkrimpjes", grade: 10 },
-    { Name: "Bob de Boulder", grade: 8.34444 },
-  ];
+  // const placeholderTopBoulders = [
+  //   { Name: "BigBoy", grade: 3.22452 },
+  //   { Name: "Karel kutkrimpjes", grade: 10 },
+  //   { Name: "Bob de Boulder", grade: 8.34444 },
+  // ];
   const dataTopBoulders = user.Profile?.Accends?.sort((a, b) =>
     a.Grade > b.Grade ? -1 : 1
   )
@@ -129,7 +129,6 @@ const Dashboard = () => {
   // console.log("+++++=====+++++=====");
 
   const grade = convertGrade((user.Profile && user.Profile.Grade) || 0);
-  const x = user.Profile.TotalTops - 1;
   return (
     <div className={classes.root}>
       {/* <div className="chart">

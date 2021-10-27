@@ -14,10 +14,8 @@ import makeStyles from "@mui/styles/makeStyles";
 import { React } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { URL } from "../config.js";
 import { selectFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion.js";
-import { selectUser } from "../features/userSlice";
 
 const useStyles = makeStyles(theme => ({
   table: {
@@ -57,24 +55,23 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Leaderboard = () => {
-  const user = useSelector(selectUser);
   const data = useSelector(selectFollowing);
   const history = useHistory();
   const sortableData = data.map(x => x);
 
-  const handleUnfollow = e => {
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: user.token,
-      },
-      body: JSON.stringify({ unfollow: e.currentTarget.value }),
-    };
-    fetch(URL + "/unfollow", requestOptions)
-      .then(response => response.json())
-      .then(console.log("user deleted"));
-  };
+  // const handleUnfollow = e => {
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       authorization: user.token,
+  //     },
+  //     body: JSON.stringify({ unfollow: e.currentTarget.value }),
+  //   };
+  //   fetch(URL + "/unfollow", requestOptions)
+  //     .then(response => response.json())
+  //     .then(console.log("user deleted"));
+  // };
 
   const classes = useStyles();
   return (
