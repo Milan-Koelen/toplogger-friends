@@ -1,42 +1,31 @@
 // <reference types="cypress" />;
 
-context("End 2 End Test", () => {
-  beforeEach(() => {
-    cy.visit("localhost:3000");
-  });
-  it("Landing Page & Private routes test", () => {
-    cy.visit("localhost:3000/user");
-    cy.url().should("contain", "landing");
-    cy.visit("localhost:3000/search");
-    cy.url().should("contain", "landing");
-    cy.visit("localhost:3000/profile");
-    cy.url().should("contain", "landing");
-    cy.visit("localhost:3000/");
-    cy.url().should("contain", "landing");
-    cy.reload();
-  });
+// context("End 2 End Test", () => {
+//   beforeEach(() => {
+//     cy.visit("localhost:3000");
+//   });
 
-  it("Login and out through UI", () => {
-    cy.wait(500);
-    cy.visit("localhost:3000/login").get("#loginContainer");
-    cy.contains("Login").should("be.visible").click();
-    cy.wait(500);
+//   it("Login and out through UI", () => {
+//     cy.wait(500);
+//     cy.visit("localhost:3000/login").get("#loginContainer");
+//     cy.contains("Login").should("be.visible").click();
+//     cy.wait(500);
 
-    // Login
+//     // Login
 
-    cy.contains("Login").should("be.visible");
-    cy.get("#-basic").should("be.visible").type("koelen.milan@gmail.com");
-    cy.get("#outlined-basic").should("be.visible").type("pindakaas");
-    cy.get("Button[id='loginBtn']").should("be.visible").click();
+//     cy.contains("Login").should("be.visible");
+//     cy.get("#-basic").should("be.visible").type("koelen.milan@gmail.com");
+//     cy.get("#outlined-basic").should("be.visible").type("pindakaas");
+//     cy.get("Button[id='loginBtn']").should("be.visible").click();
 
-    cy.wait(500);
+//     cy.wait(500);
 
-    cy.get('div[id="profileMenu"]').should("be.visible").click();
-    cy.get('li[id="logoutButton"]').click();
-  });
+//     cy.get('div[id="profileMenu"]').should("be.visible").click();
+//     cy.get('li[id="logoutButton"]').click();
+//   });
 
-  const email = "koelen.milan@gmail.com";
-  const password = "pindakaas";
+//   const email = "koelen.milan@gmail.com";
+//   const password = "pindakaas";
 
   // it("Login witouth UI", () => {
   //   cy.request("POST", "https://api.friends.milankoelen.nl/signin", {
