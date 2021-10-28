@@ -113,6 +113,7 @@ export default function MenuAppBar({ children }) {
           {user.token && (
             <div className={classes.profileSection}>
               <Button
+                data-cy="profileMenu"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
@@ -123,7 +124,6 @@ export default function MenuAppBar({ children }) {
                 <span className={classes.userName}>{user.name}</span>
               </Button>
               <Menu
-                data-cy="profileMenu"
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
