@@ -19,7 +19,7 @@ context("Login UI", () => {
 
     cy.wait(500);
 
-    cy.get('[data-cy="profileMenu"]').click();
+    cy.get('[aria-label="account of current user"]').click();
     cy.get('[data-cy="logoutButton"]').click();
   });
 });
