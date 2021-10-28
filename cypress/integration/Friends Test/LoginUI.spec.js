@@ -20,7 +20,7 @@ context("Login UI", () => {
 
     cy.wait(500);
 
-    cy.get('div[id="profileMenu"]').should("be.visible").click();
+    cy.get('[data-cy="logoutButton"]').should("be.visible").click();
     cy.get('li[id="logoutButton"]').click();
   });
 });
