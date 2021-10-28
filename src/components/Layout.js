@@ -118,12 +118,12 @@ export default function MenuAppBar({ children }) {
                 aria-haspopup="true"
                 onClick={handleMenu}
                 color="inherit"
-                data-cy="profileMenu"
               >
                 <Avatar src={user.profilePicture}></Avatar>
                 <span className={classes.userName}>{user.name}</span>
               </Button>
               <Menu
+                data-cy="profileMenu"
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
