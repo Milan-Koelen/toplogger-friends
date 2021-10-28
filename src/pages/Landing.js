@@ -11,10 +11,13 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
     verticalAlign: "middle",
+    fill: "rgba(50,50,50,.5)",
   },
   loginPaper: {
     maxWidth: "75vw",
     marginTop: "20vh",
+    backdropFilter: "blur(8)",
+    fill: "rgba(50,50,50,.5)",
   },
   button: {
     margin: theme.spacing(1),

@@ -91,7 +91,10 @@ const Login = () => {
       <br></br>
       <Grid container justifyContent="center">
         <Paper className={classes.loginPaper}>
-          <Container className={classes.loginContainer} id="loginContainer">
+          <Container
+            className={classes.loginContainer}
+            data-cy="loginContainer"
+          >
             <Typography className={classes.title} variant="h5" component="h3">
               Welcome back!
             </Typography>
@@ -101,6 +104,7 @@ const Login = () => {
               type="email"
               placeholder="Email"
               value={email}
+              data-cy="emailField"
               onChange={e => setEmail(e.target.value)}
               className={classes.textField}
             />
@@ -111,6 +115,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               value={password}
+              data-cy="passField"
               onChange={e => setPassword(e.target.value)}
               className={classes.passwordField}
             />
@@ -121,7 +126,7 @@ const Login = () => {
                 variant="contained"
                 color="primary"
                 onClick={handleSignin}
-                id="loginBtn"
+                data-cy="loginBtn"
               >
                 Login
               </Button>

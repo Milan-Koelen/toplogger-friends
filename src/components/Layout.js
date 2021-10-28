@@ -111,7 +111,7 @@ export default function MenuAppBar({ children }) {
             Toplogger Friends
           </Typography>
           {user.token && (
-            <div className={classes.profileSection} id="profileMenu">
+            <div className={classes.profileSection} data-cy="profileMenu">
               <Button
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -138,7 +138,7 @@ export default function MenuAppBar({ children }) {
                 onClose={handleClose}
               >
                 <MenuItem onClick={routChangeProfile}>Profile</MenuItem>
-                <MenuItem onClick={handleLogout} id="logoutButton">
+                <MenuItem onClick={handleLogout} data-cy="logoutButton">
                   Logout
                 </MenuItem>
               </Menu>

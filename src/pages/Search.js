@@ -29,9 +29,6 @@ const useStyles = makeStyles(theme => ({
     maxWidth: "750px",
     height: "100%",
   },
-  demo: {
-    backgroundColor: theme.palette.background.paper,
-  },
   title: {
     margin: theme.spacing(4, "auto", 2),
   },
@@ -39,6 +36,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     padding: theme.spacing(4),
+    fill: "rgba(50,50,50,.5)",
   },
   searchBar: {
     flexGrow: 1,
@@ -48,6 +46,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
+    backdropFilter: "blurr(8)",
+    fill: "rgba(50,50,50,.5)",
+    marginTop: theme.spacing(5),
   },
 }));
 
@@ -126,7 +127,14 @@ const SearchUser = () => {
           </IconButton>
         </div>
 
-        <List style={{ flexGrow: 1, overflow: "auto" }}>
+        <List
+          style={{
+            flexGrow: 1,
+            overflow: "auto",
+            backdropFilter: "blur(8)",
+            fill: "rgba(50,50,50,.5)",
+          }}
+        >
           {data.map((i, idx) => (
             <ListItem component={Link} to={"/user/" + i.TL_ID}>
               <ListItemAvatar>
