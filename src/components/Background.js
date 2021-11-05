@@ -2,11 +2,11 @@ import ParticlesBg from "particles-bg";
 import React, { Component } from "react";
 
 let config = {
-  num: [0.5, 1],
-  rps: 0.1,
+  num: [0, 4, 8],
+  rps: 0.55,
   radius: [5, 40],
   life: [5, 15],
-  v: [0.3, 0.1],
+  v: [0.2, 0.01],
   tha: [-40, 40],
   alpha: [0.55, 0.2],
   scale: [0.1, 0.4],
