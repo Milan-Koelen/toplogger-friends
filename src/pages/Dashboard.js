@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileHeader from "../components/ProfileHeader";
 import { fetchFollowing } from "../features/followingSlice";
-import convertGrade from "../features/gradeConversion";
 import { fetchUser, selectUser } from "../features/userSlice";
 import Boulders from "./Boulders";
 import Leaderboard from "./Leaderboard";
@@ -127,7 +126,6 @@ const Dashboard = () => {
   // console.log(user.TotalTops);
   // console.log("+++++=====+++++=====");
 
-  const grade = convertGrade((user.Profile && user.Profile.Grade) || 0);
   return (
     <div className={classes.root}>
       {/* <div className="chart">
