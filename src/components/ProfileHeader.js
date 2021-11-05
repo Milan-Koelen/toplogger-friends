@@ -1,12 +1,11 @@
+import { Typography } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ProfileHeader from "../components/ProfileHeader";
 import { fetchFollowing } from "../features/followingSlice";
 import convertGrade from "../features/gradeConversion";
 import { fetchUser, selectUser } from "../features/userSlice";
-import Boulders from "./Boulders";
-import Leaderboard from "./Leaderboard";
+import GradeHeader from "./GradeHeader";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,19 +29,6 @@ const useStyles = makeStyles(theme => ({
     fontSize: "1.7rem",
   },
   profilePicture: { borderRadius: "50%", margin: "auto" },
-  paperList: {
-    marginTop: theme.spacing(5),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    fill: "rgba(50,50,50,.5)",
-
-    "&>div": {
-      width: "90%",
-      marginBottom: theme.spacing(4),
-    },
-  },
   gradeHeader: {
     backdropFilter: "blur(8px)",
   },
@@ -79,42 +65,6 @@ const useStyles = makeStyles(theme => ({
 const Dashboard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const placeholderBoulders = [
-    { Name: "Los Gigantos", grade: 4.85 },
-    { Name: "Giantito", grade: 5.33 },
-    { Name: "Palidans", grade: 7 },
-  ];
-
-  // const allBoulders = user.Profile?.Accends?.sort((a, b) =>
-  //   a.Grade > b.Grade ? -1 : 1
-  // );
-  const dataRecentBoulders = user.Profile?.Accends?.sort((a, b) =>
-    a.date_logged > b.date_logged ? -1 : 1
-  )
-    .slice(0, 10)
-    .map(boulder => ({
-      Name: boulder.date_logged,
-      grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
-    }));
-
-  // const placeholderTopBoulders = [
-  //   { Name: "BigBoy", grade: 3.22452 },
-  //   { Name: "Karel kutkrimpjes", grade: 10 },
-  //   { Name: "Bob de Boulder", grade: 8.34444 },
-  // ];
-  const dataTopBoulders = user.Profile?.Accends?.sort((a, b) =>
-    a.Grade > b.Grade ? -1 : 1
-  )
-    .slice(0, 10)
-    .map(boulder => ({
-      Name: boulder.date_logged,
-      grade: (boulder.climb?.grade || boulder.climb?.opinion) ?? 0,
-    }));
-
-  // const data = useSelector(selectFollowing);
-
-  // console.log(data);
-  // console.log(user);
 
   useEffect(() => {
     dispatch(fetchFollowing());
@@ -130,24 +80,23 @@ const Dashboard = () => {
   const grade = convertGrade((user.Profile && user.Profile.Grade) || 0);
   return (
     <div className={classes.root}>
-      {/* <div className="chart">
-        <VictoryChart>
-          <VictoryBar data={data} x="quarter" y="earnings" />
-        </VictoryChart>
-      </div> */}
-      <ProfileHeader />
-
-      <div className={classes.paperList}>
-        <Leaderboard />
-        <Boulders
-          data={dataRecentBoulders || placeholderBoulders}
-          title="Recent Boulders"
-        />
-        <Boulders
-          data={dataTopBoulders || placeholderBoulders}
-          title="Top Boulders"
-        />
-      </div>
+      <Typography className={classes.title} variant="h3" component="h3">
+        Welcome
+      </Typography>
+      <Typography className={classes.title} variant="h3" component="h3">
+        <span className={classes.userName}>{user.name}</span>
+      </Typography>
+      <GradeHeader
+        className={classes.gradeHeader}
+        grade={grade[0]}
+        percentage={grade[1]}
+      />
+      <Typography className={classes.tops} variant="h5" component="h5">
+        {user.Profile && user.Profile.TotalTops} Accends
+      </Typography>
+      <Typography className={classes.tops} variant="h5" component="h5">
+        {/* {allBoulders[0]?.date_logged} Last log */}
+      </Typography>
     </div>
   );
 };
